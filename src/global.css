@@ -1,0 +1,26 @@
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar {
+	background: #212529;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #0d6efd;
+}
+
+.navbar {
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.disabledCursor {
+	cursor: defualt;
+}
+
+.hidden {
+	size: 0px 0px;
+}

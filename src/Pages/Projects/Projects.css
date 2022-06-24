@@ -1,0 +1,26 @@
+.row > div > p {
+	padding-top: 25px;
+}
+
+#Projects::before {
+	content: "";
+	position: fixed;
+	z-index: -1;
+	background-image: url("https://www.bounteous.com/sites/default/files/styles/default/public/insights/2019-10/previews/20191003_blog_scoping_a_data_science_project_in_a_smarter_way_website.png");
+	background-repeat: no-repeat;
+	background-size: 1920px 1080px;
+	background-position: center;
+	width: 100%;
+	height: 100%;
+
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+}
+
+#Projects {
+	z-index: 0;
+	padding-top: 50px;
+}
