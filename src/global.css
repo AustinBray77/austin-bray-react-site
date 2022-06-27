@@ -24,3 +24,15 @@
 .hidden {
 	size: 0px 0px;
 }
+
+.br-10 {
+	border-radius: 10px !important;
+}
+
+.br-15 {
+	border-radius: 15px !important;
+}
+
+.br-20 {
+	border-radius: 20px !important;
+}

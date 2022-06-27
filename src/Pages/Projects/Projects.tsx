@@ -9,7 +9,7 @@ const ProjRow = (props: {
 }) => {
 	return (
 		<Row>
-			<div className="my-5 p-5 bg-dark text-info">
+			<div className="my-5 p-5 bg-dark text-info br-15">
 				<h1>{props.title}</h1>
 				<Row>
 					<Col sm={12} md={6}>

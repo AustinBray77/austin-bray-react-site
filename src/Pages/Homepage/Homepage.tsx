@@ -8,7 +8,7 @@ const HPCard = (props: { children: JSX.Element | JSX.Element[] }) => {
 			sm={12}
 			md={5}
 			align="center"
-			className="bg-dark pt-5 px-5 pb-3 m-4 text-info position-relative"
+			className="bg-dark pt-5 px-5 pb-3 m-4 text-info position-relative br-10"
 		>
 			{props.children}
 		</Col>
