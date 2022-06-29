@@ -10,6 +10,11 @@
 	background: #0d6efd;
 }
 
+#PageNotFound {
+	padding-top: 75px;
+	height: 100vh;
+}
+
 .navbar {
 	position: fixed;
 	right: 0;

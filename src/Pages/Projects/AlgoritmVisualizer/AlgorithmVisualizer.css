@@ -1,0 +1,8 @@
+.grid-container {
+	display: grid;
+	padding-top: 75px;
+}
+
+.grid-container > div {
+	background-color: red;
+}

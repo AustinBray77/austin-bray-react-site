@@ -58,6 +58,18 @@ export default function Projects(): JSX.Element {
 						computers.
 					</p>
 				</ProjRow>
+				<ProjRow
+					title="Algorithm Visualizer"
+					img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+				>
+					<p></p>
+				</ProjRow>
+				<ProjRow
+					title="Web Testing Software"
+					img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+				>
+					<p></p>
+				</ProjRow>
 			</Container>
 		</div>
 	);
