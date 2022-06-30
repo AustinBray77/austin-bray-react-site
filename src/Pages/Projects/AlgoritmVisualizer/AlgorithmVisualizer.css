@@ -1,8 +1,7 @@
 .grid-container {
 	display: grid;
-	padding-top: 75px;
-}
-
-.grid-container > div {
-	background-color: red;
+	column-gap: 5px;
+	row-gap: 5px;
+	margin-top: 75px;
+	box-sizing: unset !important;
 }
