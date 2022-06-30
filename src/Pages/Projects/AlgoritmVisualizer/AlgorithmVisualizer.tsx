@@ -38,6 +38,7 @@ export default class AlgorithmVisualizer extends React.Component<
 		"#0d6efd",
 		"#ffc107",
 		"#dc3545",
+		"#20c997",
 	];
 	usedCoords: Set<number[]> = new Set();
 	abort: boolean = false;
@@ -61,6 +62,8 @@ export default class AlgorithmVisualizer extends React.Component<
 		this.startAStar = this.startAStar.bind(this);
 		this.aStar = this.aStar.bind(this);
 		this.updateTile = this.updateTile.bind(this);
+		this.startDFS = this.startDFS.bind(this);
+		this.dfs = this.dfs.bind(this);
 	}
 
 	createGrid(size: number): number[][] {
@@ -220,6 +223,16 @@ export default class AlgorithmVisualizer extends React.Component<
 		);
 	}
 
+	pathContains2(path: number[][], x: number, y: number): boolean {
+		for (let i: number = 0; i < path.length; i++) {
+			if (path[i][0] == x && path[i][1] == y) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	pathContains(path: number[][], x: number, y: number, h: number): boolean {
 		for (let i: number = 0; i < path.length; i++) {
 			if (path[i][0] == x && path[i][1] == y && path[i][2] == h) {
@@ -241,7 +254,6 @@ export default class AlgorithmVisualizer extends React.Component<
 		}
 
 		path.push(current);
-		this.usedCoords.add(current);
 
 		const allowUpdates: boolean =
 			current[0] != this.start[0] || current[1] != this.start[1];
@@ -351,6 +363,99 @@ export default class AlgorithmVisualizer extends React.Component<
 			}
 
 			if (res == true) {
+				await delay(speed);
+
+				if (allowUpdates) {
+					this.updateTile(current[0], current[1], 6);
+				}
+
+				return true;
+			}
+		}
+
+		await delay(speed);
+
+		if (allowUpdates) {
+			this.updateTile(current[0], current[1], 5);
+		}
+
+		return false;
+	}
+
+	async startDFS(): Promise<void> {
+		await this.dfs(this.start, []);
+	}
+
+	async dfs(current: number[], path: number[][]): Promise<boolean> {
+		if (current[0] == this.end[0] && current[1] == this.end[1]) {
+			return true;
+		}
+
+		if (this.abort) {
+			return false;
+		}
+
+		const { grid, tiles, speed }: GridState = this.state;
+
+		path.push(current);
+
+		const allowUpdates: boolean =
+			current[0] != this.start[0] || current[1] != this.start[1];
+
+		if (allowUpdates) {
+			this.updateTile(current[0], current[1], 4);
+		}
+
+		let nextCoords: number[][] = [];
+
+		if (current[0] >= 1) {
+			let next: number[] = [current[0] - 1, current[1]];
+			if (grid[next[0]][next[1]] != 1 && !path.includes(next)) {
+				nextCoords.push(next);
+			}
+		}
+		if (current[0] < tiles - 1) {
+			let next: number[] = [current[0] + 1, current[1]];
+			if (grid[next[0]][next[1]] != 1 && !path.includes(next)) {
+				nextCoords.push(next);
+			}
+		}
+		if (current[1] >= 1) {
+			let next: number[] = [current[0], current[1] - 1];
+			if (grid[next[0]][next[1]] != 1 && !path.includes(next)) {
+				nextCoords.push(next);
+			}
+		}
+		if (current[1] < tiles - 1) {
+			let next: number[] = [current[0], current[1] + 1];
+			if (grid[next[0]][next[1]] != 1 && !path.includes(next)) {
+				nextCoords.push(next);
+			}
+		}
+
+		for (let i: number = 0; i < nextCoords.length; i++) {
+			if (
+				this.state.grid[nextCoords[i][0]][nextCoords[i][1]] == 5 ||
+				this.pathContains2(path, nextCoords[i][0], nextCoords[i][1])
+			) {
+				continue;
+			}
+
+			await delay(speed);
+
+			let res: boolean = await this.dfs(nextCoords[i], path);
+
+			if (this.abort) {
+				return false;
+			}
+
+			if (res == true) {
+				await delay(speed);
+
+				if (allowUpdates) {
+					this.updateTile(current[0], current[1], 6);
+				}
+
 				return true;
 			}
 		}
@@ -414,7 +519,7 @@ export default class AlgorithmVisualizer extends React.Component<
 					</Col>
 					<Col xs={3}>
 						<Row className="px-5">
-							<Button onClick={this.startAStar}>Start DFS</Button>
+							<Button onClick={this.startDFS}>Start DFS</Button>
 						</Row>
 					</Col>
 					<Col xs={3}>
