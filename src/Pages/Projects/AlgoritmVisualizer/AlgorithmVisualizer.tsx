@@ -64,6 +64,8 @@ export default class AlgorithmVisualizer extends React.Component<
 		this.updateTile = this.updateTile.bind(this);
 		this.startDFS = this.startDFS.bind(this);
 		this.dfs = this.dfs.bind(this);
+		this.startBFS = this.startBFS.bind(this);
+		this.bfs = this.bfs.bind(this);
 	}
 
 	createGrid(size: number): number[][] {
@@ -217,10 +219,7 @@ export default class AlgorithmVisualizer extends React.Component<
 	}
 
 	async startAStar(): Promise<void> {
-		await this.aStar(
-			[this.start[0], this.start[1], manhattanDist(this.start, this.end)],
-			[]
-		);
+		await this.aStar();
 	}
 
 	pathContains2(path: number[][], x: number, y: number): boolean {
@@ -243,140 +242,109 @@ export default class AlgorithmVisualizer extends React.Component<
 		return false;
 	}
 
-	async aStar(current: number[], path: number[][]): Promise<boolean> {
-		if (this.abort) {
-			return false;
-		}
+	async aStar(): Promise<boolean> {
+		let queue: number[][] = [
+			[this.start[0], this.start[1], manhattanDist(this.start, this.end)],
+		];
 
-		const { tiles, speed }: GridState = this.state;
-		if (current[0] == this.end[0] && current[1] == this.end[1]) {
-			return true;
-		}
+		for (let pos: number = 0; pos < queue.length; pos++) {
+			let current: number[] = queue[pos];
 
-		path.push(current);
-
-		const allowUpdates: boolean =
-			current[0] != this.start[0] || current[1] != this.start[1];
-
-		if (allowUpdates) {
-			this.updateTile(current[0], current[1], 4);
-		}
-
-		const { grid }: GridState = this.state;
-
-		let nextCoords: number[][] = [];
-
-		if (current[0] >= 1) {
-			let next: number[] = [current[0] - 1, current[1]];
-			next.push(manhattanDist(next, this.end));
-
-			if (
-				grid[next[0]][next[1]] != 1 &&
-				!this.pathContains(path, next[0], next[1], next[2])
-			) {
-				nextCoords.push(next);
+			if (current[0] == this.end[0] && current[1] == this.end[1]) {
+				return true;
 			}
-		}
-		if (current[0] < tiles - 1) {
-			let next: number[] = [current[0] + 1, current[1]];
-			next.push(manhattanDist(next, this.end));
-
-			if (
-				grid[next[0]][next[1]] != 1 &&
-				!this.pathContains(path, next[0], next[1], next[2])
-			) {
-				let ins: boolean = false;
-
-				for (let i: number = 0; i < nextCoords.length; i++) {
-					if (nextCoords[i][2] > next[2]) {
-						nextCoords.splice(i, 0, next);
-						ins = true;
-						break;
-					}
-				}
-
-				if (!ins) {
-					nextCoords.push(next);
-				}
-			}
-		}
-		if (current[1] >= 1) {
-			let next: number[] = [current[0], current[1] - 1];
-
-			next.push(manhattanDist(next, this.end));
-
-			if (
-				grid[next[0]][next[1]] != 1 &&
-				!this.pathContains(path, next[0], next[1], next[2])
-			) {
-				let ins: boolean = false;
-
-				for (let i: number = 0; i < nextCoords.length; i++) {
-					if (nextCoords[i][2] > next[2]) {
-						nextCoords.splice(i, 0, next);
-						ins = true;
-						break;
-					}
-				}
-
-				if (!ins) {
-					nextCoords.push(next);
-				}
-			}
-		}
-		if (current[1] < tiles - 1) {
-			let next: number[] = [current[0], current[1] + 1];
-
-			next.push(manhattanDist(next, this.end));
-
-			if (
-				grid[next[0]][next[1]] != 1 &&
-				!this.pathContains(path, next[0], next[1], next[2])
-			) {
-				let ins: boolean = false;
-
-				for (let i: number = 0; i < nextCoords.length; i++) {
-					if (nextCoords[i][2] > next[2]) {
-						nextCoords.splice(i, 0, next);
-						ins = true;
-						break;
-					}
-				}
-
-				if (!ins) {
-					nextCoords.push(next);
-				}
-			}
-		}
-
-		for (let i: number = 0; i < nextCoords.length; i++) {
-			if (this.state.grid[nextCoords[i][0]][nextCoords[i][1]] == 5) {
-				continue;
-			}
-
-			await delay(speed);
-
-			let res: boolean = await this.aStar(nextCoords[i], path);
 
 			if (this.abort) {
 				return false;
 			}
 
-			if (res == true) {
-				await delay(speed);
+			const { grid, tiles, speed }: GridState = this.state;
 
-				if (allowUpdates) {
-					this.updateTile(current[0], current[1], 6);
-				}
+			const allowUpdates: boolean =
+				current[0] != this.start[0] || current[1] != this.start[1];
 
-				return true;
+			if (allowUpdates) {
+				this.updateTile(current[0], current[1], 4);
 			}
-		}
 
-		await delay(speed);
+			if (current[0] >= 1) {
+				let next: number[] = [current[0] - 1, current[1]];
+				next.push(manhattanDist(next, this.end));
+				if (
+					grid[next[0]][next[1]] != 1 &&
+					grid[next[0]][next[1]] != 5 &&
+					!this.pathContains(queue, next[0], next[1], next[2])
+				) {
+					let i: number = pos + 1;
 
-		if (allowUpdates) {
-			this.updateTile(current[0], current[1], 5);
+					for (; i < queue.length; i++) {
+						if (queue[i][2] > next[2]) {
+							break;
+						}
+					}
+
+					queue.splice(i, 0, next);
+				}
+			}
+			if (current[0] < tiles - 1) {
+				let next: number[] = [current[0] + 1, current[1]];
+				next.push(manhattanDist(next, this.end));
+				if (
+					grid[next[0]][next[1]] != 1 &&
+					grid[next[0]][next[1]] != 5 &&
+					!this.pathContains(queue, next[0], next[1], next[2])
+				) {
+					let i: number = pos + 1;
+
+					for (; i < queue.length; i++) {
+						if (queue[i][2] > next[2]) {
+							break;
+						}
+					}
+
+					queue.splice(i, 0, next);
+				}
+			}
+			if (current[1] >= 1) {
+				let next: number[] = [current[0], current[1] - 1];
+				next.push(manhattanDist(next, this.end));
+				if (
+					grid[next[0]][next[1]] != 1 &&
+					grid[next[0]][next[1]] != 5 &&
+					!this.pathContains(queue, next[0], next[1], next[2])
+				) {
+					let i: number = pos + 1;
+
+					for (; i < queue.length; i++) {
+						if (queue[i][2] > next[2]) {
+							break;
+						}
+					}
+
+					queue.splice(i, 0, next);
+				}
+			}
+			if (current[1] < tiles - 1) {
+				let next: number[] = [current[0], current[1] + 1];
+				next.push(manhattanDist(next, this.end));
+				if (
+					grid[next[0]][next[1]] != 1 &&
+					grid[next[0]][next[1]] != 5 &&
+					!this.pathContains(queue, next[0], next[1], next[2])
+				) {
+					let i: number = pos + 1;
+
+					for (; i < queue.length; i++) {
+						if (queue[i][2] > next[2]) {
+							break;
+						}
+					}
+
+					queue.splice(i, 0, next);
+				}
+			}
+
+			await delay(speed);
 		}
 
 		return false;
@@ -469,6 +437,82 @@ export default class AlgorithmVisualizer extends React.Component<
 		return false;
 	}
 
+	async startBFS(): Promise<void> {
+		await this.bfs();
+	}
+
+	async bfs(): Promise<boolean> {
+		let queue: number[][] = [this.start];
+
+		for (let pos: number = 0; pos < queue.length; pos++) {
+			let current: number[] = queue[pos];
+
+			if (current[0] == this.end[0] && current[1] == this.end[1]) {
+				return true;
+			}
+
+			if (this.abort) {
+				return false;
+			}
+
+			const { grid, tiles, speed }: GridState = this.state;
+
+			const allowUpdates: boolean =
+				current[0] != this.start[0] || current[1] != this.start[1];
+
+			if (allowUpdates) {
+				this.updateTile(current[0], current[1], 4);
+			}
+
+			let nextCoords: number[][] = [];
+
+			if (current[0] >= 1) {
+				let next: number[] = [current[0] - 1, current[1]];
+				if (
+					grid[next[0]][next[1]] != 1 &&
+					grid[next[0]][next[1]] != 5 &&
+					!this.pathContains2(queue, next[0], next[1])
+				) {
+					queue.push(next);
+				}
+			}
+			if (current[0] < tiles - 1) {
+				let next: number[] = [current[0] + 1, current[1]];
+				if (
+					grid[next[0]][next[1]] != 1 &&
+					grid[next[0]][next[1]] != 5 &&
+					!this.pathContains2(queue, next[0], next[1])
+				) {
+					queue.push(next);
+				}
+			}
+			if (current[1] >= 1) {
+				let next: number[] = [current[0], current[1] - 1];
+				if (
+					grid[next[0]][next[1]] != 1 &&
+					grid[next[0]][next[1]] != 5 &&
+					!this.pathContains2(queue, next[0], next[1])
+				) {
+					queue.push(next);
+				}
+			}
+			if (current[1] < tiles - 1) {
+				let next: number[] = [current[0], current[1] + 1];
+				if (
+					grid[next[0]][next[1]] != 1 &&
+					grid[next[0]][next[1]] != 5 &&
+					!this.pathContains2(queue, next[0], next[1])
+				) {
+					queue.push(next);
+				}
+			}
+
+			await delay(speed);
+		}
+
+		return false;
+	}
+
 	render() {
 		const { tiles, speed, setting }: GridState = this.state;
 		return (
@@ -524,7 +568,7 @@ export default class AlgorithmVisualizer extends React.Component<
 					</Col>
 					<Col xs={3}>
 						<Row className="px-5">
-							<Button onClick={this.startAStar}>Start BFS</Button>
+							<Button onClick={this.startBFS}>Start BFS</Button>
 						</Row>
 					</Col>
 				</Row>
