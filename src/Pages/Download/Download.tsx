@@ -10,15 +10,38 @@ function DownloadFile(file: string): void {
 function DownloadElement(props: {
 	children: string | JSX.Element | JSX.Element[];
 	filePath: string;
+	sourceCode: string;
 }): JSX.Element {
 	return (
-		<Row className="bg-dark mb-4 br-20">
-			<Col xs={6} md={3} className="p-4 text-center">
+		<Row className="bg-dark mt-4 br-20">
+			<Col xs={6} className="py-4 text-center">
 				{props.children}
 			</Col>
-			<Col xs={0} md={6}></Col>
-			<Col xs={6} md={3} className="p-3 text-center">
-				<Button onClick={() => DownloadFile(props.filePath)}>Download</Button>
+			<Col xs={3} className="py-4 text-center">
+				<Row className="px-3">
+					{props.filePath != "" ? (
+						<Button onClick={() => DownloadFile(props.filePath)}>
+							Download
+						</Button>
+					) : (
+						<Button disabled>Download</Button>
+					)}
+				</Row>
+			</Col>
+			<Col xs={3} className="py-4 px-auto text-center">
+				<Row className="px-3">
+					{props.sourceCode != "" ? (
+						<Button
+							onClick={() => {
+								window.location.href = props.sourceCode;
+							}}
+						>
+							Source
+						</Button>
+					) : (
+						<Button disabled>Source</Button>
+					)}
+				</Row>
 			</Col>
 		</Row>
 	);
@@ -26,30 +49,20 @@ function DownloadElement(props: {
 
 export default function Download(): JSX.Element {
 	return (
-		<div id="Download">
-			<Container className="pt-5">
-				<Row>
-					<Col xs={2}></Col>
-					<Col xs={8}>
-						<DownloadElement filePath="GameOfLifeWin32.zip">
-							<div className="text-light">Game Of Life Win 32</div>
-						</DownloadElement>
-						<DownloadElement filePath="GameOfLifeWin32.zip">
-							<div className="text-light">Game Of Life Win 32</div>
-						</DownloadElement>
-						<DownloadElement filePath="GameOfLifeWin32.zip">
-							<div className="text-light">Game Of Life Win 32</div>
-						</DownloadElement>
-						<DownloadElement filePath="GameOfLifeWin32.zip">
-							<div className="text-light">Game Of Life Win 32</div>
-						</DownloadElement>
-						<DownloadElement filePath="GameOfLifeWin32.zip">
-							<div className="text-light">Game Of Life Win 32</div>
-						</DownloadElement>
-					</Col>
-					<Col xs={2}></Col>
-				</Row>
-			</Container>
-		</div>
+		<Container id="Download" className="">
+			<Row className="justify-content-center">
+				<Col xs={8}>
+					<DownloadElement filePath="GameOfLifeWin32.zip" sourceCode="">
+						<h3 className="text-light">Game Of Life Win 32</h3>
+					</DownloadElement>
+					<DownloadElement
+						filePath=""
+						sourceCode="https://github.com/AustinBray77/austin-bray-react-site/tree/master/src/Pages/Projects/AlgoritmVisualizer"
+					>
+						<h3 className="text-light">Algorithm Visualizer</h3>
+					</DownloadElement>
+				</Col>
+			</Row>
+		</Container>
 	);
 }

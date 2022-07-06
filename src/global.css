@@ -10,9 +10,20 @@
 	background: #0d6efd;
 }
 
-#PageNotFound {
-	padding-top: 75px;
+#app > .container::before {
+	height: 100%;
+	width: 100%;
+}
+
+#app > .container {
 	height: 100vh;
+	width: 100%;
+	padding-top: 75px;
+	max-width: none !important;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .navbar {
@@ -40,4 +51,9 @@
 
 .br-20 {
 	border-radius: 20px !important;
+}
+
+.row {
+	margin-left: auto;
+	margin-right: auto;
 }
