@@ -2,5 +2,4 @@
 	display: grid;
 	column-gap: 0.5vh;
 	row-gap: 0.5vh;
-	/*box-sizing: unset !important;*/
 }

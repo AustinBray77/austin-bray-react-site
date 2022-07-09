@@ -4,14 +4,21 @@ import "./Contact.css";
 
 export default function Contact(): JSX.Element {
 	return (
-		<Container id="Contact" className="bg-light">
-			<Row className="justify-content-center">
-				<Col xs={4} className="bg-dark text-light text-center py-5">
+		<Container id="Contact">
+			<Row className="justify-content-center my-5">
+				<Col xs={4} className="bg-dark text-light text-center py-4">
 					<h1>Contact Information</h1>
 					<p>
 						Email Address: austin.bray77@gmail.com
 						<br />
-						Phone Number: +1 (647) 982-3309
+						<br />
+						Github: <a href="https://github.com/AustinBray77">AustinBray77</a>
+						<br />
+						<br />
+						LinkedIn:{" "}
+						<a href="https://www.linkedin.com/in/austin-bray-63061522b/">
+							Austin Bray
+						</a>
 					</p>
 				</Col>
 			</Row>

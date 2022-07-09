@@ -28,12 +28,13 @@ export default function Homepage(): JSX.Element {
 					</p>
 				</HPCard>
 				<HPCard>
-					<h1>Welcome To Austin's Website</h1>
-					<p>
-						This website is a hub for viewing all of my projects and progress in
-						the field of computer science. Through this, I hope to give you a
-						look at what I am capable of and what I could possibly do for you.
-					</p>
+					<div className="d-flex align-items-center justify-content-center p-4">
+						<img
+							className="py-4"
+							style={{ height: "300px", width: "auto" }}
+							src="./headshot.jpg"
+						/>
+					</div>
 				</HPCard>
 			</Row>
 			<Row className="justify-content-center">

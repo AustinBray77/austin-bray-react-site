@@ -143,7 +143,7 @@ export default class AlgorithmVisualizer extends React.Component<
 		return grid;
 	}
 
-	resetGrid() {
+	resetGrid(): void {
 		let newGrid = this.state.grid;
 
 		for (let i: number = 0; i < this.state.tiles; i++) {
@@ -254,9 +254,8 @@ export default class AlgorithmVisualizer extends React.Component<
 		return (
 			<div
 				style={{
-					/*
 					width: size.toString() + "vh",
-					height: size.toString() + "vh",*/
+					height: size.toString() + "vh",
 					gridTemplateRows: gridData,
 					gridTemplateColumns: gridData,
 				}}
@@ -593,7 +592,7 @@ export default class AlgorithmVisualizer extends React.Component<
 		return false;
 	}
 
-	async animatePath() {
+	async animatePath(): Promise<void> {
 		let newPaths: number[][][] = [];
 		let smallest: number = 0;
 
@@ -725,17 +724,28 @@ export default class AlgorithmVisualizer extends React.Component<
 		alert("Maze Generated");
 	}
 
-	render() {
+	render(): JSX.Element {
 		const { tiles, speed, setting, size }: GridState = this.state;
+
+		document.title = "Algorithm Visualizer by Austin Bray";
 
 		return (
 			<Container id="AlgorithmVisualizer">
 				<Row>
 					{this.renderAlgoTest()}
-					<div className="d-flex-inline">
-						<Row className=" p-2 justify-content-center">
+
+					<div style={{ width: `calc(100% - ${size}vh)` }}>
+						<Row className="p-2 justify-content-center text-light text-center">
+							<h1>{document.title}</h1>
+							<p className="px-5">
+								To start, draw obstacles on the grid or generate a maze, and
+								then pick a search algorithm to search from the start (green
+								point) to the finish (blue point).
+							</p>
+						</Row>
+						<Row className="p-2 justify-content-center text-light">
 							<Col xs={3}>
-								<div className="text-center text-light">
+								<div className="text-center">
 									Tile Count: {tiles}x{tiles}
 								</div>
 								<input
@@ -750,7 +760,7 @@ export default class AlgorithmVisualizer extends React.Component<
 								/>
 							</Col>
 							<Col xs={3}>
-								<div className="text-center text-light">Speed: {speed}ms</div>
+								<div className="text-center">Speed: {speed}ms</div>
 								<input
 									type="range"
 									className="form-range"

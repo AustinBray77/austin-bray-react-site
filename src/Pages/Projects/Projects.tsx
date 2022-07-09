@@ -16,7 +16,7 @@ const ProjRow = (props: {
 						{props.children}
 					</Col>
 					<Col sm={12} md={6}>
-						<img src={props.img} className="rounded img-fluid" />
+						{/* <img src={props.img} className="rounded img-fluid" /> */}
 					</Col>
 				</Row>
 			</div>
@@ -52,8 +52,9 @@ export default function Projects(): JSX.Element {
 					projects. I used to C++ and the WIN 32 Api for windows to create this
 					project. My goal from this project was to learn more about object
 					oriented C++ and the WIN 32 Api, which I believe I was successful in
-					doing. To use this project simply go to the downloads page and
-					download it from there, it is only available for windows computers.
+					doing. To use this project simply go to the{" "}
+					<a href="/download">downloads</a> page and download it from there, it
+					is only available for windows computers.
 				</p>
 			</ProjRow>
 			<ProjRow
