@@ -1,12 +1,14 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import "./Homepage.css";
+import "./MHomepage.css";
 import HPCard from "./HPCard";
 
-export default function Homepage(): JSX.Element {
+export default function MHomepage(): JSX.Element {
+	console.log("here");
+
 	return (
-		<Container id="Homepage">
-			<Row className="justify-content-center">
+		<Container id="MHomepage">
+			<Row className="justify-contenct-center">
 				<HPCard>
 					<h1>Welcome To Austin's Website</h1>
 					<p>
@@ -15,6 +17,8 @@ export default function Homepage(): JSX.Element {
 						look at what I am capable of and what I could possibly do for you.
 					</p>
 				</HPCard>
+			</Row>
+			<Row className="justify-contenct-center">
 				<HPCard>
 					<div
 						className="d-flex align-items-center justify-content-center p-4"
@@ -28,7 +32,7 @@ export default function Homepage(): JSX.Element {
 					</div>
 				</HPCard>
 			</Row>
-			<Row className="justify-content-center">
+			<Row className="justify-contenct-center">
 				<HPCard>
 					<h1>Coding Projects</h1>
 					<p style={{ paddingBottom: 60 }}>
@@ -43,6 +47,8 @@ export default function Homepage(): JSX.Element {
 						Click Here!
 					</button>
 				</HPCard>
+			</Row>
+			<Row className="justify-contenct-center">
 				<HPCard>
 					<h1>Experience And Resume</h1>
 					<p style={{ paddingBottom: 60 }}>

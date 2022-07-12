@@ -1,0 +1,36 @@
+.col-md-5 > p {
+	padding-top: 5%;
+}
+
+.bottom-banner {
+	position: absolute;
+	bottom: 30px;
+	left: 10%;
+	right: 10%;
+}
+
+#MHomepage::before {
+	content: "";
+	position: fixed;
+	z-index: -1;
+	background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg");
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	background-position: center;
+
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+}
+
+img {
+	position: absolute;
+	left: auto;
+	right: auto;
+	top: 50%;
+	-webkit-transform: translateY(-50%) !important;
+	-ms-transform: translateY(-50%) !important;
+	transform: translateY(-50%) !important;
+}

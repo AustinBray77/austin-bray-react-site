@@ -17,19 +17,25 @@ const dist = (a: number[], b: number[]): number =>
 	Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2));
 
 const pathContains2DBuffer = (
-	path: number[][],
+	grid: number[][],
 	x: number,
 	y: number,
 	buf: number
 ): number => {
 	let out: number = 0;
 
-	for (let i: number = 0; i < path.length; i++) {
-		for (let j: number = -buf; j <= buf; j++) {
-			for (let k: number = -buf; k <= buf; k++) {
-				if (path[i][0] == x + j && path[i][1] == y + k) {
-					out++;
-				}
+	for (
+		let i: number = Math.max(x - buf, 0);
+		i <= x + buf && i < grid.length;
+		i++
+	) {
+		for (
+			let j: number = Math.max(y - buf, 0);
+			j <= y + buf && j < grid.length;
+			j++
+		) {
+			if (grid[i][j] != 1) {
+				out++;
 			}
 		}
 	}
@@ -71,6 +77,18 @@ function copyArr<T>(arr: T[][]): T[][] {
 
 	return out;
 }
+
+const timer = async (fn: any): Promise<number> => {
+	let start: number = new Date().getTime();
+
+	await fn();
+
+	let end: number = new Date().getTime();
+
+	return new Promise((resolve, reject) => {
+		resolve(end - start);
+	});
+};
 
 let mouseState = 0;
 
@@ -627,23 +645,22 @@ export default class AlgorithmVisualizer extends React.Component<
 
 		for (let i: number = 0; i < tiles; i++) {
 			for (let j: number = 0; j < tiles; j++) {
-				if (newGrid[i][j] != 2 && newGrid[i][j] != 3) {
+				if (newGrid[i][j] != 3) {
 					newGrid[i][j] = 1;
 				}
 			}
 		}
 
 		let cur: number[] = [this.end[0], this.end[1]];
-		let path: number[][] = [];
-		let pathOffset: number = 0;
+		let path: number[][] = [cur];
 		let buffer: number = 1;
 
-		while (pathOffset < path.length || path.length == 0) {
+		while (path.length > 0) {
 			if (this.abort) {
 				return;
 			}
 
-			if (pathOffset == 0) {
+			if (newGrid[cur[0]][cur[1]] == 1) {
 				await delay(speed);
 				path.push(cur);
 			}
@@ -656,8 +673,12 @@ export default class AlgorithmVisualizer extends React.Component<
 
 				if (speed > 0) {
 					this.updateTile(cur[0], cur[1], 0);
-				} else {
-					newGrid[cur[0]][cur[1]] = 0;
+				}
+			} else if (cur[0] == this.start[0] && cur[1] == this.start[1]) {
+				newGrid[cur[0]][cur[1]] = 2;
+
+				if (speed > 0) {
+					this.updateTile(cur[0], cur[1], 2);
 				}
 			}
 
@@ -667,9 +688,9 @@ export default class AlgorithmVisualizer extends React.Component<
 				let next: number[] = [cur[0] - 1, cur[1]];
 
 				if (
-					pathContains2DBuffer(path, next[0], next[1], buffer) <
+					pathContains2DBuffer(grid, next[0], next[1], buffer) <
 						buffer * 2 + 1 &&
-					!pathContains2D(path, next[0], next[1])
+					newGrid[next[0]][next[1]] != 0
 				) {
 					nextCoords.push(next);
 				}
@@ -678,9 +699,9 @@ export default class AlgorithmVisualizer extends React.Component<
 				let next: number[] = [cur[0] + 1, cur[1]];
 
 				if (
-					pathContains2DBuffer(path, next[0], next[1], buffer) <
+					pathContains2DBuffer(grid, next[0], next[1], buffer) <
 						buffer * 2 + 1 &&
-					!pathContains2D(path, next[0], next[1])
+					newGrid[next[0]][next[1]] != 0
 				) {
 					nextCoords.push(next);
 				}
@@ -689,9 +710,9 @@ export default class AlgorithmVisualizer extends React.Component<
 				let next: number[] = [cur[0], cur[1] - 1];
 
 				if (
-					pathContains2DBuffer(path, next[0], next[1], buffer) <
+					pathContains2DBuffer(grid, next[0], next[1], buffer) <
 						buffer * 2 + 1 &&
-					!pathContains2D(path, next[0], next[1])
+					newGrid[next[0]][next[1]] != 0
 				) {
 					nextCoords.push(next);
 				}
@@ -700,20 +721,22 @@ export default class AlgorithmVisualizer extends React.Component<
 				let next: number[] = [cur[0], cur[1] + 1];
 
 				if (
-					pathContains2DBuffer(path, next[0], next[1], buffer) <
+					pathContains2DBuffer(grid, next[0], next[1], buffer) <
 						buffer * 2 + 1 &&
-					!pathContains2D(path, next[0], next[1])
+					newGrid[next[0]][next[1]] != 0
 				) {
 					nextCoords.push(next);
 				}
 			}
 			if (nextCoords.length > 0) {
 				cur = nextCoords[Math.round(Math.random() * (nextCoords.length - 1))];
-				pathOffset = 0;
 			} else {
-				cur = path[path.length - ++pathOffset];
+				path.pop();
+				cur = path[path.length - 1];
 			}
 		}
+
+		newGrid[this.start[0]][this.start[1]] = 2;
 
 		this.setState(() => {
 			return {
