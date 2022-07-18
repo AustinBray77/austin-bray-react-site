@@ -9,14 +9,14 @@ const ProjRow = (props: {
 }) => {
 	return (
 		<Row className="p-5">
-			<div className="p-5 br-15 bg-dark text-info">
-				<h1>{props.title}</h1>
+			<div className="br-15 bg-dark text-info p-5">
 				<Row>
 					<Col sm={12} md={6}>
+						<h1 className="text-center">{props.title}</h1>
 						{props.children}
 					</Col>
-					<Col sm={12} md={6}>
-						{/* <img src={props.img} className="rounded img-fluid" /> */}
+					<Col sm={12} md={6} className="img-col position-relative">
+						<img src={props.img} className="rounded img-fluid" />
 					</Col>
 				</Row>
 			</div>
@@ -27,10 +27,7 @@ const ProjRow = (props: {
 export default function Projects(): JSX.Element {
 	return (
 		<Container id="Projects">
-			<ProjRow
-				title="Block Snake 2D"
-				img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-			>
+			<ProjRow title="Block Snake 2D" img="/blcksnk.png">
 				<p>
 					Block Snake 2D is my first major Unity project coded in C#. The goal
 					of this project was to see through the full publication of an app on a
@@ -43,10 +40,7 @@ export default function Projects(): JSX.Element {
 					code for this project, go to the source code page.
 				</p>
 			</ProjRow>
-			<ProjRow
-				title="Conway's Game Of Life"
-				img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-			>
+			<ProjRow title="Conway's Game Of Life" img="/gameoflife(temp).png">
 				<p>
 					A replication of conway's game of life was another one of my major
 					projects. I used to C++ and the WIN 32 Api for windows to create this
@@ -57,10 +51,7 @@ export default function Projects(): JSX.Element {
 					is only available for windows computers.
 				</p>
 			</ProjRow>
-			<ProjRow
-				title="Chess In The library"
-				img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-			>
+			<ProjRow title="Chess In The library" img="/citl.png">
 				<p>
 					<a href="https://www.chessinthelibrary.com">
 						Chees In The Library.com
@@ -72,10 +63,7 @@ export default function Projects(): JSX.Element {
 					managing and hosting a website.
 				</p>
 			</ProjRow>
-			<ProjRow
-				title="Algorithm Visualizer"
-				img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-			>
+			<ProjRow title="Algorithm Visualizer" img="/algovisualizer.png">
 				<p>
 					Algorithm Visualizer is a visual grid interface allowing beginner
 					students to learn about how different search algorithms work. I used
@@ -86,10 +74,7 @@ export default function Projects(): JSX.Element {
 					project, visit the <a href="/download">downloads</a> page.
 				</p>
 			</ProjRow>
-			<ProjRow
-				title="Web Testing Software"
-				img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-			>
+			<ProjRow title="Web Testing Software" img="/mern.jpeg">
 				<p>
 					I have created software for managing and testing live production sites
 					of a large corporation. This software was made using node.js, react,

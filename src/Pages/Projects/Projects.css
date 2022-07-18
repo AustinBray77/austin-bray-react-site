@@ -22,3 +22,12 @@
 	z-index: 0;
 	padding-top: 50px;
 }
+
+.img-col {
+	min-height: 300px !important;
+}
+
+.img-col > img {
+	height: 300px !important;
+	width: auto !important;
+}
