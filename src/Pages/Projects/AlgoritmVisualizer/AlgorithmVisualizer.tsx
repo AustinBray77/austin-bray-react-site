@@ -1,7 +1,6 @@
 import React from "react";
 import "./AlgorithmVisualizer.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { serialize } from "v8";
 
 type GridState = {
 	size: number;
@@ -123,7 +122,7 @@ export default class AlgorithmVisualizer extends React.Component<
 		super(props);
 
 		this.state = {
-			size: 75,
+			size: 87,
 			tiles: 10,
 			grid: this.createGrid(10),
 			speed: 50,
@@ -266,7 +265,7 @@ export default class AlgorithmVisualizer extends React.Component<
 		let gridData = "";
 
 		for (let i: number = 0; i < tiles; i++) {
-			gridData += ((size - 0.5 * (tiles - 1)) / tiles).toString() + "vh ";
+			gridData += ((size - 0.2 * (tiles - 1)) / tiles).toString() + "vh ";
 		}
 
 		return (
@@ -775,7 +774,7 @@ export default class AlgorithmVisualizer extends React.Component<
 									type="range"
 									className="form-range"
 									min="5"
-									max="40"
+									max="60"
 									defaultValue={10}
 									onChange={(e) => {
 										this.updateTileCount(parseInt(e.target.value));
@@ -804,17 +803,35 @@ export default class AlgorithmVisualizer extends React.Component<
 						<Row className="justify-content-center  p-2">
 							<Col xs={3}>
 								<Row className="px-1">
-									<Button onClick={this.startAStar}>Start A*</Button>
+									<Button
+										onClick={() => {
+											timer(this.startAStar).then((res) => console.log(res));
+										}}
+									>
+										Start A*
+									</Button>
 								</Row>
 							</Col>
 							<Col xs={3}>
 								<Row className="px-1">
-									<Button onClick={this.startDFS}>Start DFS</Button>
+									<Button
+										onClick={() => {
+											timer(this.startDFS).then((res) => console.log(res));
+										}}
+									>
+										Start DFS
+									</Button>
 								</Row>
 							</Col>
 							<Col xs={3}>
 								<Row className="px-1">
-									<Button onClick={this.startBFS}>Start BFS</Button>
+									<Button
+										onClick={() => {
+											timer(this.startBFS).then((res) => console.log(res));
+										}}
+									>
+										Start BFS
+									</Button>
 								</Row>
 							</Col>
 						</Row>

@@ -12,6 +12,7 @@ import Download from "./Pages/Download/Download";
 import AlgorithmVisualizer from "./Pages/Projects/AlgoritmVisualizer/AlgorithmVisualizer";
 import Contact from "./Pages/Contact/Contact";
 import { Container } from "react-bootstrap";
+import Encryptor from "./Pages/Projects/Encryptor/Encryptor";
 
 function PageNotFound(): JSX.Element {
 	return (
@@ -34,6 +35,7 @@ export default function App(): JSX.Element {
 					<Route index element={isMobile() ? <MHomepage /> : <Homepage />} />
 					<Route path="/projects" element={<Projects />} />
 					<Route path="/projects/algo" element={<AlgorithmVisualizer />} />
+					<Route path="/projects/encryptor" element={<Encryptor />} />
 					<Route path="/download" element={<Download />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="*" element={<PageNotFound />} />

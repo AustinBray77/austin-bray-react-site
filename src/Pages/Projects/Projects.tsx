@@ -58,6 +58,21 @@ export default function Projects(): JSX.Element {
 				</p>
 			</ProjRow>
 			<ProjRow
+				title="Chess In The library"
+				img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+			>
+				<p>
+					<a href="https://www.chessinthelibrary.com">
+						Chees In The Library.com
+					</a>{" "}
+					is a wordpress site used to manage a chess club in Toronto. I am not
+					the creator of this site but I have been the manager of it since
+					August 2021. This is not a paid position as I am working as a
+					volunteer. Through this I have learned alot about wordpress as well as
+					managing and hosting a website.
+				</p>
+			</ProjRow>
+			<ProjRow
 				title="Algorithm Visualizer"
 				img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
 			>
