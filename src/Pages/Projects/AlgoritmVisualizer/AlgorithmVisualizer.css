@@ -1,5 +1,10 @@
-.grid-container {
+#AlgorithmVisualizer .grid-container {
 	display: grid;
 	column-gap: 0.2vh;
 	row-gap: 0.2vh;
+}
+
+#AlgorithmVisualizer .gort {
+	position: absolute;
+	opacity: 60%;
 }

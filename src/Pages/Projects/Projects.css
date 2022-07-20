@@ -1,4 +1,4 @@
-.row > div > p {
+#Projects .row > div > p {
 	padding-top: 25px;
 }
 
@@ -23,11 +23,11 @@
 	padding-top: 50px;
 }
 
-.img-col {
+#Projects .img-col {
 	min-height: 300px !important;
 }
 
-.img-col > img {
+#Projects .img-col > img {
 	height: 300px !important;
 	width: auto !important;
 }

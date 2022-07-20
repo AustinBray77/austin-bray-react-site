@@ -15,7 +15,7 @@ const ProjRow = (props: {
 						<h1 className="text-center">{props.title}</h1>
 						{props.children}
 					</Col>
-					<Col sm={12} md={6} className="img-col position-relative">
+					<Col sm={12} md={6} className="img-col position-relative text-center">
 						<img src={props.img} className="rounded img-fluid" />
 					</Col>
 				</Row>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./AlgorithmVisualizer.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { delay, dist } from "../../../functions";
 
 type GridState = {
 	size: number;
@@ -8,12 +9,9 @@ type GridState = {
 	grid: number[][];
 	speed: number;
 	setting: number;
+	gort: boolean;
+	wawa: boolean;
 };
-
-const delay = (ms: number): Promise<void> =>
-	new Promise((res) => setTimeout(res, ms));
-const dist = (a: number[], b: number[]): number =>
-	Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2));
 
 const pathContains2DBuffer = (
 	grid: number[][],
@@ -127,6 +125,8 @@ export default class AlgorithmVisualizer extends React.Component<
 			grid: this.createGrid(10),
 			speed: 50,
 			setting: 0,
+			gort: false,
+			wawa: false,
 		};
 
 		this.updateTileCount = this.updateTileCount.bind(this);
@@ -226,7 +226,7 @@ export default class AlgorithmVisualizer extends React.Component<
 	}
 
 	generateGrid(): JSX.Element[] {
-		const { tiles, grid, setting }: GridState = this.state;
+		const { tiles, grid, setting, size }: GridState = this.state;
 		let output: JSX.Element[] = [];
 
 		for (let i: number = 0; i < tiles; i++) {
@@ -237,6 +237,7 @@ export default class AlgorithmVisualizer extends React.Component<
 							backgroundColor: this.colors[grid[i][j]],
 							border: "none",
 						}}
+						className="text-center p-0"
 						onMouseDown={() => {
 							if (setting == 0 && (i != this.start[0] || j != this.start[1])) {
 								this.gridCellClick(i, j);
@@ -255,7 +256,6 @@ export default class AlgorithmVisualizer extends React.Component<
 				);
 			}
 		}
-
 		return output;
 	}
 
@@ -276,7 +276,7 @@ export default class AlgorithmVisualizer extends React.Component<
 					gridTemplateRows: gridData,
 					gridTemplateColumns: gridData,
 				}}
-				className="grid-container"
+				className="grid-container p-0"
 			>
 				{this.generateGrid()}
 			</div>
@@ -747,13 +747,37 @@ export default class AlgorithmVisualizer extends React.Component<
 	}
 
 	render(): JSX.Element {
-		const { tiles, speed, setting, size }: GridState = this.state;
+		const { tiles, speed, setting, size, gort, wawa }: GridState = this.state;
 
 		document.title = "Algorithm Visualizer by Austin Bray";
 
 		return (
 			<Container id="AlgorithmVisualizer">
 				<Row>
+					{gort ? (
+						<img
+							src="https://pbs.twimg.com/media/FLqUmCiXIAEnxvC.jpg"
+							style={{
+								height: size.toString() + "vh",
+								width: size.toString() + "vh",
+							}}
+							className="px-0 gort"
+						/>
+					) : (
+						""
+					)}
+					{wawa ? (
+						<img
+							src="https://i.ytimg.com/vi/vW23W0aDCjQ/maxresdefault.jpg"
+							style={{
+								height: size.toString() + "vh",
+								width: size.toString() + "vh",
+							}}
+							className="px-0 gort"
+						/>
+					) : (
+						""
+					)}
 					{this.renderAlgoTest()}
 
 					<div style={{ width: `calc(100% - ${size}vh)` }}>
@@ -798,6 +822,40 @@ export default class AlgorithmVisualizer extends React.Component<
 										});
 									}}
 								/>
+							</Col>
+							<Col xs={3}>
+								<div className="form-check text-center">
+									<label>Gort Mode</label>
+									<input
+										type="checkbox"
+										className="form-check-input"
+										checked={gort}
+										onChange={() => {
+											this.setState((state) => {
+												return {
+													gort: !state.gort,
+													wawa: false,
+												};
+											});
+										}}
+									/>
+								</div>
+								<div className="form-check text-center">
+									<label>Wawa Mode</label>
+									<input
+										type="checkbox"
+										className="form-check-input"
+										checked={wawa}
+										onChange={() => {
+											this.setState((state) => {
+												return {
+													wawa: !state.wawa,
+													gort: false,
+												};
+											});
+										}}
+									/>
+								</div>
 							</Col>
 						</Row>
 						<Row className="justify-content-center  p-2">

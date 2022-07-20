@@ -1,8 +1,8 @@
-.col-md-5 > p {
+#Homepage .col-md-5 > p {
 	padding-top: 5%;
 }
 
-.bottom-banner {
+#Homepage .bottom-banner {
 	position: absolute;
 	bottom: 30px;
 	left: 10%;
@@ -25,7 +25,7 @@
 	filter: blur(5px);
 }
 
-img {
+#Homepage img {
 	position: absolute;
 	left: auto;
 	right: auto;
