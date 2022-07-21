@@ -36,8 +36,11 @@ export default function Projects(): JSX.Element {
 					was successful in both of these goals and it really taught me alot
 					about how much it actaully takes to make a fully functioning app and
 					how to push it to production. To download and play Block Snake 2D ,
-					click <a href="www.googleplaystore.com/">here</a>. To see the source
-					code for this project, go to the source code page.
+					click{" "}
+					<a href="https://play.google.com/store/apps/details?id=com.SixBeachesGaming.BlockSnake2D">
+						here
+					</a>
+					. To see the source code for this project, go to the source code page.
 				</p>
 			</ProjRow>
 			<ProjRow title="Conway's Game Of Life" img="/gameoflife(temp).png">

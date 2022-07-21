@@ -13,7 +13,7 @@
 	content: "";
 	position: fixed;
 	z-index: -1;
-	background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg");
+	background-image: url("/homepage_back.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-position: center;

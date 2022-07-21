@@ -756,7 +756,7 @@ export default class AlgorithmVisualizer extends React.Component<
 				<Row>
 					{gort ? (
 						<img
-							src="https://pbs.twimg.com/media/FLqUmCiXIAEnxvC.jpg"
+							src="/gort.jpg"
 							style={{
 								height: size.toString() + "vh",
 								width: size.toString() + "vh",
@@ -768,7 +768,7 @@ export default class AlgorithmVisualizer extends React.Component<
 					)}
 					{wawa ? (
 						<img
-							src="https://i.ytimg.com/vi/vW23W0aDCjQ/maxresdefault.jpg"
+							src="/wawa.jpg"
 							style={{
 								height: size.toString() + "vh",
 								width: size.toString() + "vh",

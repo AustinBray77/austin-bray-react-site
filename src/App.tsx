@@ -13,6 +13,7 @@ import AlgorithmVisualizer from "./Pages/Projects/AlgoritmVisualizer/AlgorithmVi
 import Contact from "./Pages/Contact/Contact";
 import { Container } from "react-bootstrap";
 import Encryptor from "./Pages/Projects/Encryptor/Encryptor";
+import Totris from "./Pages/Projects/Totris/Totris";
 
 function PageNotFound(): JSX.Element {
 	return (
@@ -36,6 +37,7 @@ export default function App(): JSX.Element {
 					<Route path="/projects" element={<Projects />} />
 					<Route path="/projects/algo" element={<AlgorithmVisualizer />} />
 					<Route path="/projects/encryptor" element={<Encryptor />} />
+					<Route path="/projects/totris" element={<Totris />} />
 					<Route path="/download" element={<Download />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="*" element={<PageNotFound />} />

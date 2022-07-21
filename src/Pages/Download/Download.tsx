@@ -20,7 +20,16 @@ function DownloadElement(props: {
 			<Col xs={3} className="py-4 text-center">
 				<Row className="px-3">
 					{props.filePath != "" ? (
-						<Button onClick={() => DownloadFile(props.filePath)}>
+						<Button
+							onClick={() => {
+								console.log();
+								if (props.filePath.substring(0, 4) != "http") {
+									DownloadFile(props.filePath);
+								} else {
+									window.location.href = props.filePath;
+								}
+							}}
+						>
 							Download
 						</Button>
 					) : (
@@ -60,6 +69,12 @@ export default function Download(): JSX.Element {
 						sourceCode="https://github.com/AustinBray77/austin-bray-react-site/tree/master/src/Pages/Projects/AlgoritmVisualizer"
 					>
 						<h3 className="text-light">Algorithm Visualizer</h3>
+					</DownloadElement>
+					<DownloadElement
+						filePath="https://play.google.com/store/apps/details?id=com.SixBeachesGaming.BlockSnake2D"
+						sourceCode="https://github.com/AustinBray77/BlockSnake2D"
+					>
+						<h3 className="text-light">Block Snake 2D</h3>
 					</DownloadElement>
 				</Col>
 			</Row>
