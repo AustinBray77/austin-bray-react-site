@@ -120,7 +120,7 @@ export default class AlgorithmVisualizer extends React.Component<
 		super(props);
 
 		this.state = {
-			size: 87,
+			size: 80,
 			tiles: 10,
 			grid: this.createGrid(10),
 			speed: 50,

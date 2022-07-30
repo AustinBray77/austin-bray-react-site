@@ -19,6 +19,11 @@ export default function Contact(): JSX.Element {
 						<a href="https://www.linkedin.com/in/austin-bray-63061522b/">
 							Austin Bray
 						</a>
+						<br />
+						<br />
+						<a href="https://www.paypal.com/donate/?business=M9JLUXRAW3GKS&no_recurring=0&item_name=Help+keep+Austin+Bray+.com+free+by+donating+to+help+with+development+and+server+costs.&currency_code=CAD">
+							Donate
+						</a>
 					</p>
 				</Col>
 			</Row>

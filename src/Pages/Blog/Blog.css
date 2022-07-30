@@ -1,0 +1,29 @@
+#Blog::before {
+	content: "";
+	position: fixed;
+	z-index: -1;
+	background-image: url("/base_back.jpeg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+
+	/*
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);*/
+}
+
+#Blog {
+	z-index: 0;
+}
+
+#Blog .smallImg {
+	display: block;
+	max-height: 300px;
+}
+
+#Blog .largeImg {
+	width: 100%;
+}

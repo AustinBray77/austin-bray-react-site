@@ -17,6 +17,16 @@ export default function Navbar(): JSX.Element {
 				Home
 			</Link>
 			<Link
+				to="/blog"
+				className={
+					"btn btn-dark bg-dark border border-dark m-1" +
+					(location.pathname == "/blog" ? "disabledCursor" : "")
+				}
+				id="BlogBTN"
+			>
+				Blog
+			</Link>
+			<Link
 				to="/projects"
 				className={
 					"btn btn-dark bg-dark border border-dark m-1" +

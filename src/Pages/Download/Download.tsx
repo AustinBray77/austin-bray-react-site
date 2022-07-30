@@ -23,14 +23,18 @@ function DownloadElement(props: {
 						<Button
 							onClick={() => {
 								console.log();
-								if (props.filePath.substring(0, 4) != "http") {
+								if (
+									props.filePath.substring(props.filePath.length - 4) == ".zip"
+								) {
 									DownloadFile(props.filePath);
 								} else {
 									window.location.href = props.filePath;
 								}
 							}}
 						>
-							Download
+							{props.filePath.substring(props.filePath.length - 4) == ".zip"
+								? "Download"
+								: "View"}
 						</Button>
 					) : (
 						<Button disabled>Download</Button>
@@ -65,7 +69,7 @@ export default function Download(): JSX.Element {
 						<h3 className="text-light">Game Of Life Win 32</h3>
 					</DownloadElement>
 					<DownloadElement
-						filePath=""
+						filePath="/projects/algo"
 						sourceCode="https://github.com/AustinBray77/austin-bray-react-site/tree/master/src/Pages/Projects/AlgoritmVisualizer"
 					>
 						<h3 className="text-light">Algorithm Visualizer</h3>

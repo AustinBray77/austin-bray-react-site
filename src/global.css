@@ -19,17 +19,27 @@
 	height: 100vh;
 	width: 100%;
 	padding-top: 62px;
+	padding-bottom: 45px;
 	max-width: none !important;
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: 0;
 	padding-right: 0;
+	overflow: auto;
 }
 
 .navbar {
 	position: fixed;
 	right: 0;
 	left: 0;
+	z-index: 1;
+}
+
+#Footer {
+	position: fixed;
+	right: 0;
+	left: 0;
+	bottom: 0;
 	z-index: 1;
 }
 
