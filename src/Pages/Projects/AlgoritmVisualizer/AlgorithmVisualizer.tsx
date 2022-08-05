@@ -1,7 +1,7 @@
 import React from "react";
 import "./AlgorithmVisualizer.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { delay, dist } from "../../../functions";
+import { delay, dist, playFreq } from "../../../functions";
 
 type GridState = {
 	size: number;
@@ -602,6 +602,8 @@ export default class AlgorithmVisualizer extends React.Component<
 					queue.push(next);
 				}
 			}
+
+			playFreq((pos + 1) * 440, speed > 0 ? speed : 10);
 
 			await delay(speed);
 		}

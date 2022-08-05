@@ -18,3 +18,15 @@ export function create2DArr<T>(cols: number, rows: number, base: T): T[][] {
 
 	return output;
 }
+
+const audioContext = new window.AudioContext();
+
+export function playFreq(frequency: number, duration: number) {
+	let oscillator: OscillatorNode = new OscillatorNode(audioContext);
+
+	oscillator.type = "square";
+	oscillator.frequency.value = frequency;
+	oscillator.connect(audioContext.destination);
+	oscillator.start();
+	oscillator.stop(duration);
+}
