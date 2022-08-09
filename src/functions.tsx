@@ -21,12 +21,24 @@ export function create2DArr<T>(cols: number, rows: number, base: T): T[][] {
 
 const audioContext = new window.AudioContext();
 
-export function playFreq(frequency: number, duration: number) {
+export async function playFreq(frequency: number, duration: number) {
 	let oscillator: OscillatorNode = new OscillatorNode(audioContext);
+	let gainNode: GainNode = audioContext.createGain();
 
-	oscillator.type = "square";
+	//Oscillator Node >>> Gain Node >>> Audio Context
+	console.log(frequency);
+
+	oscillator.type = "sine";
+
+	oscillator.connect(gainNode);
+	gainNode.connect(audioContext.destination);
+
 	oscillator.frequency.value = frequency;
-	oscillator.connect(audioContext.destination);
+	gainNode.gain.value = 0.3;
+
 	oscillator.start();
-	oscillator.stop(duration);
+
+	await delay(duration);
+
+	oscillator.stop();
 }

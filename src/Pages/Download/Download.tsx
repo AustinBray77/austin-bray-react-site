@@ -65,7 +65,10 @@ export default function Download(): JSX.Element {
 		<Container id="Download" className="">
 			<Row className="justify-content-center">
 				<Col xs={8}>
-					<DownloadElement filePath="GameOfLifeWin32.zip" sourceCode="">
+					<DownloadElement
+						filePath="GameOfLifeWin32.zip"
+						sourceCode="https://github.com/AustinBray77/game-of-life-cpp"
+					>
 						<h3 className="text-light">Game Of Life Win 32</h3>
 					</DownloadElement>
 					<DownloadElement

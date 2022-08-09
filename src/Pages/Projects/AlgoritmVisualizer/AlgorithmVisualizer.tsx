@@ -66,6 +66,10 @@ const pathContains3D = (
 };
 
 function copyArr<T>(arr: T[][]): T[][] {
+	if (arr == undefined) {
+		return [];
+	}
+
 	let out: T[][] = [];
 
 	for (let i = 0; i < arr.length; i++) {
@@ -115,6 +119,7 @@ export default class AlgorithmVisualizer extends React.Component<
 	abort: boolean = false;
 	start: number[] = [0, 0];
 	end: number[] = [9, 9];
+	dfsCounter: number = 0;
 
 	constructor(props: any) {
 		super(props);
@@ -416,6 +421,11 @@ export default class AlgorithmVisualizer extends React.Component<
 				}
 			}
 
+			playFreq(
+				220 * Math.pow(2, 4 * pos * Math.pow(this.state.tiles, -2)),
+				speed > 0 ? speed : 10
+			);
+
 			await delay(speed);
 		}
 
@@ -423,6 +433,8 @@ export default class AlgorithmVisualizer extends React.Component<
 	}
 
 	async startDFS(): Promise<void> {
+		this.dfsCounter = 0;
+
 		let res: boolean = await this.dfs(this.start, []);
 
 		if (res) {
@@ -431,6 +443,8 @@ export default class AlgorithmVisualizer extends React.Component<
 	}
 
 	async dfs(current: number[], path: number[][]): Promise<boolean> {
+		this.dfsCounter++;
+
 		path.push(current);
 
 		if (this.abort) {
@@ -450,6 +464,11 @@ export default class AlgorithmVisualizer extends React.Component<
 		if (allowUpdates) {
 			this.updateTile(current[0], current[1], 4);
 		}
+
+		playFreq(
+			220 * Math.pow(2, 4 * this.dfsCounter * Math.pow(this.state.tiles, -2)),
+			speed > 0 ? speed : 10
+		);
 
 		let nextCoords: number[][] = [];
 
@@ -603,7 +622,10 @@ export default class AlgorithmVisualizer extends React.Component<
 				}
 			}
 
-			playFreq((pos + 1) * 440, speed > 0 ? speed : 10);
+			playFreq(
+				220 * Math.pow(2, 4 * pos * Math.pow(this.state.tiles, -2)),
+				speed > 0 ? speed : 10
+			);
 
 			await delay(speed);
 		}
@@ -631,6 +653,11 @@ export default class AlgorithmVisualizer extends React.Component<
 
 		for (let i: number = 1; i < newPaths[smallest].length - 1; i++) {
 			await delay(speed);
+
+			playFreq(
+				220 * Math.pow(2, (4 * i) / newPaths[smallest].length),
+				speed > 0 ? speed : 10
+			);
 
 			if (this.abort) {
 				break;

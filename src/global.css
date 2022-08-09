@@ -33,6 +33,8 @@
 	right: 0;
 	left: 0;
 	z-index: 1;
+	overflow-y: visible !important;
+	max-height: 62px;
 }
 
 #Footer {
@@ -43,8 +45,8 @@
 	z-index: 1;
 }
 
-.disabledCursor {
-	cursor: defualt;
+.disabled-cursor {
+	pointer-events: none;
 }
 
 .hidden {
@@ -66,4 +68,16 @@
 .row {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #212529;
+	min-width: 160px;
+	z-index: 1;
+}
+
+.show {
+	display: block;
 }

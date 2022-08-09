@@ -30,6 +30,8 @@ const isMobile = (): boolean => {
 };
 
 export default function App(): JSX.Element {
+	document.title = "Austin Bray's React Site";
+
 	return (
 		<div id="app">
 			<Router>
