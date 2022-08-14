@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { ArticleIds, ArticleTitles } from "./Pages/Blog/Articles";
 
 const NavLink = (props: {
 	path: string;
@@ -22,15 +23,55 @@ const NavLink = (props: {
 	);
 };
 
+const blogLinkList = (): JSX.Element[] => {
+	let output: JSX.Element[] = [];
+
+	for (let i: number = 0; i < ArticleIds.length - 1; i++) {
+		output.push(
+			<NavLink
+				path={"/blog/" + ArticleIds[i]}
+				id={`Blog${i}BTN`}
+				title={ArticleTitles[i]}
+			/>
+		);
+		output.push(<br />);
+	}
+
+	return output;
+};
+
 export default function Navbar(): JSX.Element {
 	const [ShowProjectsDropdown, setShowProjectsDropdown] = useState(0);
+	const [ShowBlogsDropdown, setShowBlogsDropdown] = useState(0);
 
 	return (
 		<div
 			className={"navbar navbar-expand-lg navbar-dark bg-dark text-light pl-1"}
 		>
 			<NavLink path="/" id="HomeBTN" title="Home" />
-			<NavLink path="/blog" id="BlogBTN" title="Blog" />
+			<div
+				onMouseEnter={() => {
+					setShowBlogsDropdown(1);
+				}}
+				onMouseLeave={() => {
+					setShowBlogsDropdown(0);
+				}}
+			>
+				<NavLink path="/blog" id="BlogBTN" title="Blog" />
+				<span
+					className="iconify"
+					data-icon="simple-line-icons:arrow-down"
+					style={{ color: "#f8f9fa" }}
+				></span>
+				<div
+					id="BlogsDropdown"
+					className={
+						"bg-dark dropdown-content " + (ShowBlogsDropdown == 1 ? "show" : "")
+					}
+				>
+					{blogLinkList()}
+				</div>
+			</div>
 			<div
 				onMouseEnter={() => {
 					setShowProjectsDropdown(1);

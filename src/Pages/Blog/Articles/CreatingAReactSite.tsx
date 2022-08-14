@@ -77,12 +77,6 @@ export default function CreatingAReactSite(): JSX.Element {
 					react website!
 				</p>
 			</div>
-			<div className="mb-5">
-				<h3>
-					Thank you for reading! - Help keep education free by donating to our
-					paypal, information on the <a href="/contact">contact</a> page.
-				</h3>
-			</div>
 		</div>
 	);
 }
