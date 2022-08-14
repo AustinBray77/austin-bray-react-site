@@ -21,7 +21,7 @@ export default function Top10Tools(): JSX.Element {
 			</div>
 			<div className="mb-5">
 				<h3>#1 - Visual Studio Code</h3>
-				<img src="TopToolsForDevs2022/vsc.png" className="largeimg" />
+				<img src="/Blog/TopToolsForDevs2022/vsc.png" className="largeimg" />
 				<p>
 					Visual Studio Code is currently the most versatile IDE available with
 					its market of extensions and barebones nature. This allows it to have
@@ -37,7 +37,10 @@ export default function Top10Tools(): JSX.Element {
 			</div>
 			<div className="mb-5">
 				<h3>#2 - Git</h3>
-				<img src="TopToolsForDevs2022/Git-Icon.png" className="largeimg" />
+				<img
+					src="/Blog/TopToolsForDevs2022/Git-Icon.png"
+					className="largeimg"
+				/>
 				<p>
 					Git is the premium source control software available today, allowing
 					you to upload your code online to a hoster like Github and collaborate
@@ -54,7 +57,7 @@ export default function Top10Tools(): JSX.Element {
 			<div className="mb-5">
 				<h3>#3 - Virtual Cottage</h3>
 				<img
-					src="TopToolsForDevs2022/virtual-cottage.jpg"
+					src="/Blog/TopToolsForDevs2022/virtual-cottage.jpg"
 					className="largeimg"
 				/>
 				<p>
@@ -70,7 +73,10 @@ export default function Top10Tools(): JSX.Element {
 			</div>
 			<div className="mb-5">
 				<h3>#4 - Steam</h3>
-				<img src="TopToolsForDevs2022/Steam_icon.png" className="largeimg" />
+				<img
+					src="/Blog/TopToolsForDevs2022/Steam_icon.png"
+					className="largeimg"
+				/>
 				<p>
 					Many people think of steam as just a webstore for pc games, but in
 					reality it is much more. Firstly, many popular development programs
@@ -86,7 +92,10 @@ export default function Top10Tools(): JSX.Element {
 			</div>
 			<div className="mb-5">
 				<h3>#5 - Filezilla</h3>
-				<img src="TopToolsForDevs2022/FileZilla.png" className="largeimg" />
+				<img
+					src="/Blog/TopToolsForDevs2022/FileZilla.png"
+					className="largeimg"
+				/>
 				<p>
 					FileZilla is an FTP client program that allows you to remotely ssh
 					into your servers for file transfers. Although you could do perform
