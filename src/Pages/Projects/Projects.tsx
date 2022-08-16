@@ -77,7 +77,7 @@ export default function Projects(): JSX.Element {
 					project, visit the <a href="/download">downloads</a> page.
 				</p>
 			</ProjRow>
-			<ProjRow title="Totris" img="/algovisualizer.png">
+			<ProjRow title="Totris" img="/totris.png">
 				<p>
 					Totris is a different spin on the popular game Tetris. I used React
 					and Typescript to create this project. My goal with this project to
