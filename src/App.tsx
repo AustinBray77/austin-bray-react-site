@@ -16,6 +16,7 @@ import Encryptor from "./Pages/Projects/Encryptor/Encryptor";
 import Totris from "./Pages/Projects/Totris/Totris";
 import Blog from "./Pages/Blog/Blog";
 import Footer from "./Footer";
+import AboutMe from "./Pages/AboutMe/AboutMe";
 
 function PageNotFound(): JSX.Element {
 	return (
@@ -46,6 +47,7 @@ export default function App(): JSX.Element {
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/blog" element={<Blog />} />
 					<Route path="/blog/:article" element={<Blog />} />
+					<Route path="/about-me" element={<AboutMe />} />
 					<Route path="*" element={<PageNotFound />} />
 				</Switch>
 				<Footer />

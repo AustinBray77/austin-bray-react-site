@@ -8,7 +8,7 @@ function ShowArticles(): JSX.Element[] {
 		output.push(
 			<div
 				onClick={() => {
-					window.location.href = "blog/" + ArticleIds[i];
+					window.location.href = ArticleIds[i];
 				}}
 				className="text-info p-4"
 			>

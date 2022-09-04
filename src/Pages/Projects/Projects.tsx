@@ -6,7 +6,7 @@ const ProjRow = (props: {
 	children: JSX.Element | JSX.Element[];
 	title: string;
 	img: string;
-}) => {
+}): JSX.Element => {
 	return (
 		<Row className="p-5">
 			<div className="br-15 bg-dark text-info p-5">

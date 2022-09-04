@@ -99,6 +99,7 @@ export default function Navbar(): JSX.Element {
 				</div>
 			</div>
 			<NavLink path="/download" id="DownloadBTN" title="Download" />
+			<NavLink path="/about-me" id="AboutMeBTN" title="About Me" />
 			<NavLink path="/contact" id="ContactBTN" title="Contact" />
 		</div>
 	);

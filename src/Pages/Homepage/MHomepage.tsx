@@ -59,7 +59,7 @@ export default function MHomepage(): JSX.Element {
 					</p>
 					<button
 						className="btn btn-info bottom-banner"
-						onClick={() => document.getElementById("ContactBTN")!.click()}
+						onClick={() => document.getElementById("AboutMeBTN")!.click()}
 					>
 						My Resume
 					</button>
