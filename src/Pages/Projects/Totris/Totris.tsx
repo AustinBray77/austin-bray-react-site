@@ -1,9 +1,10 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { create2DArr, delay } from "../../../functions";
 
 type TotrisState = {
 	grid: number[][];
+	score: number;
 };
 
 const size = 75;
@@ -52,6 +53,7 @@ class Piece {
 	_posY: number;
 	_type: number;
 	_canMove: boolean;
+	_hasMoved: boolean;
 
 	constructor(type: number) {
 		this._orientation = 0;
@@ -60,6 +62,7 @@ class Piece {
 		this._posY = -1;
 		this._posX = 3;
 		this._canMove = true;
+		this._hasMoved = false;
 
 		this.calcOccupyingSquares = this.calcOccupyingSquares.bind(this);
 		this.calcStoppingPattern = this.calcStoppingPattern.bind(this);
@@ -234,6 +237,13 @@ class Piece {
 	}
 
 	move(x: number, y: number, grid: number[][]): number[][] {
+		console.log(x);
+		console.log(this._posY);
+
+		if (x != 0 && this._posY <= 0) {
+			return grid;
+		}
+
 		if (
 			this._posX + x < 0 ||
 			(this._posX + x + this._pattern[0].length - 1 >= width &&
@@ -289,6 +299,10 @@ class Piece {
 	}
 
 	rotate(dir: number, grid: number[][]): number[][] {
+		if (this._posY == 0) {
+			return grid;
+		}
+
 		this._orientation += dir;
 
 		if (this._orientation > 3) this._orientation = 0;
@@ -315,10 +329,13 @@ export default class Totris extends React.Component<any, TotrisState> {
 
 	pieceCounter: number = 0;
 	curPiece: Piece = this.newPiece();
+	stopGame: boolean = false;
+
 	constructor(props: TotrisState) {
 		super(props);
 		this.state = {
 			grid: create2DArr<number>(height, width, 0),
+			score: 0,
 		};
 
 		this.render = this.render.bind(this);
@@ -326,8 +343,6 @@ export default class Totris extends React.Component<any, TotrisState> {
 		this.renderBoard = this.renderBoard.bind(this);
 		this.gameLoop = this.gameLoop.bind(this);
 		this.keyPressHandler = this.keyPressHandler.bind(this);
-
-		this.gameLoop();
 	}
 
 	newPiece(): Piece {
@@ -383,6 +398,11 @@ export default class Totris extends React.Component<any, TotrisState> {
 	}
 
 	async gameLoop(): Promise<void> {
+		this.speed = 400;
+		this.setState(() => {
+			return { grid: create2DArr<number>(height, width, 0), score: 0 };
+		});
+
 		while (true) {
 			await delay(this.speed);
 
@@ -395,6 +415,15 @@ export default class Totris extends React.Component<any, TotrisState> {
 			if (!this.curPiece.getCanMove()) {
 				//Check for line breaks
 				let lines: number[][] = this.curPiece.getOccupyingSquares();
+
+				if (
+					lines[0][0] == undefined ||
+					lines[0][0] > height ||
+					lines[0][0] < 0
+				) {
+					alert("Game Over");
+					break;
+				}
 
 				for (let i: number = 0; i < lines.length; i++) {
 					let breakLine = true;
@@ -424,11 +453,23 @@ export default class Totris extends React.Component<any, TotrisState> {
 								lines[j][0]++;
 							}
 						}
+
+						this.setState((state) => {
+							return { score: state.score + 1 };
+						});
 					}
 				}
 
 				console.log(`Spawn Piece: ${++this.pieceCounter}`);
 				this.curPiece = this.newPiece();
+
+				if (this.speed > 10) {
+					this.speed -= 5;
+				}
+			}
+
+			if (this.stopGame) {
+				break;
 			}
 		}
 	}
@@ -467,14 +508,49 @@ export default class Totris extends React.Component<any, TotrisState> {
 		}
 	}
 
+	async restartGame(): Promise<void> {
+		this.stopGame = true;
+		this.curPiece = this.newPiece();
+		await delay(this.speed * 2);
+		this.stopGame = false;
+
+		this.gameLoop();
+	}
+
 	render(): JSX.Element {
 		document.title = "Totris by Austin Bray";
+		const { score } = this.state;
 
 		return (
 			<Container id="Totris" tabIndex={0} onKeyDown={this.keyPressHandler}>
-				<Row className="text-center">
-					<Col className="text-center" xs={12}>
+				<Row className="text-center justify-content-center text-light">
+					<Col xs={4}>
+						<h1>Totris</h1>
+						<h3>Controls</h3>
+						<p>
+							A: Move Piece Left <br /> S: Move Piece Down <br /> D: Move Piece
+							Right <br /> &lt;-: Rotate Piece Counter Clockwise <br /> -&gt;:
+							Rotate Piece Clockwise
+						</p>
+					</Col>
+					<Col xs={4}>
 						{this.renderBoard()}
+						<Row className="mt-4">
+							<Col xs={4}>
+								<Row>
+									<Button
+										onClick={() => {
+											this.gameLoop();
+										}}
+									>
+										Start
+									</Button>
+								</Row>
+							</Col>
+						</Row>
+					</Col>
+					<Col xs={4}>
+						<h1>Score: {score}</h1>
 					</Col>
 				</Row>
 			</Container>
