@@ -1,10 +1,13 @@
 import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import ReactDOM from "react-dom";
 import { create2DArr, delay } from "../../../functions";
 
 type TotrisState = {
 	grid: number[][];
+	storedGrid: number[][];
 	score: number;
+	gameIsRunning: boolean;
 };
 
 const size = 75;
@@ -53,7 +56,7 @@ class Piece {
 	_posY: number;
 	_type: number;
 	_canMove: boolean;
-	_hasMoved: boolean;
+	_deadDropping: boolean;
 
 	constructor(type: number) {
 		this._orientation = 0;
@@ -62,7 +65,7 @@ class Piece {
 		this._posY = -1;
 		this._posX = 3;
 		this._canMove = true;
-		this._hasMoved = false;
+		this._deadDropping = false;
 
 		this.calcOccupyingSquares = this.calcOccupyingSquares.bind(this);
 		this.calcStoppingPattern = this.calcStoppingPattern.bind(this);
@@ -216,6 +219,14 @@ class Piece {
 		return this._canMove;
 	}
 
+	setDeadDrop(value: boolean): void {
+		this._deadDropping = value;
+	}
+
+	isDeadDropping(): boolean {
+		return this._deadDropping;
+	}
+
 	_updateGrid(grid: number[][]): number[][] {
 		if (this._posY > 0) {
 			for (let i: number = 0; i < this._occupyingSquares.length; i++) {
@@ -226,7 +237,7 @@ class Piece {
 		this._occupyingSquares = this.calcOccupyingSquares();
 		this._stoppingPattern = this.calcStoppingPattern();
 
-		console.log(this._stoppingPattern);
+		//console.log(this._stoppingPattern);
 
 		for (let i: number = 0; i < this._occupyingSquares.length; i++) {
 			grid[this._occupyingSquares[i][0]][this._occupyingSquares[i][1]] =
@@ -237,10 +248,7 @@ class Piece {
 	}
 
 	move(x: number, y: number, grid: number[][]): number[][] {
-		console.log(x);
-		console.log(this._posY);
-
-		if (x != 0 && this._posY <= 0) {
+		if (x != 0 && (this._posY <= 0 || this._deadDropping)) {
 			return grid;
 		}
 
@@ -278,13 +286,13 @@ class Piece {
 					this._stoppingPattern[side][i][1]
 				] != 0
 			) {
-				console.log(
+				/*console.log(
 					`Value at stop ${
 						grid[this._stoppingPattern[side][i][0]][
 							this._stoppingPattern[side][i][0]
 						]
 					}`
-				);
+				);*/
 				this._canMove = false;
 				return grid;
 			}
@@ -293,9 +301,17 @@ class Piece {
 		this._posX += x;
 		this._posY += y;
 
-		console.log(`Moving by: (${x},${y})`);
+		//console.log(`Moving by: (${x},${y})`);
 
 		return this._updateGrid(grid);
+	}
+
+	deadDrop(grid: number[][]): number[][] {
+		while (this.getCanMove()) {
+			grid = this.move(0, 1, grid);
+		}
+
+		return grid;
 	}
 
 	rotate(dir: number, grid: number[][]): number[][] {
@@ -325,17 +341,21 @@ export default class Totris extends React.Component<any, TotrisState> {
 		"#d63384",
 		"#6610f2",
 		"#6f42c1",
+		"#212529",
 	];
 
 	pieceCounter: number = 0;
 	curPiece: Piece = this.newPiece();
+	bankedPiece: undefined | number = undefined;
 	stopGame: boolean = false;
 
 	constructor(props: TotrisState) {
 		super(props);
 		this.state = {
 			grid: create2DArr<number>(height, width, 0),
+			storedGrid: create2DArr<number>(5, 5, this.colors.length - 1),
 			score: 0,
+			gameIsRunning: false,
 		};
 
 		this.render = this.render.bind(this);
@@ -349,13 +369,11 @@ export default class Totris extends React.Component<any, TotrisState> {
 		return new Piece(Math.floor(Math.random() * patterns.length));
 	}
 
-	drawTiles(): JSX.Element[] {
-		const { grid }: TotrisState = this.state;
-
+	drawTiles(grid: number[][]): JSX.Element[] {
 		let output: JSX.Element[] = [];
 
-		for (let i: number = 0; i < height; i++) {
-			for (let j: number = 0; j < width; j++) {
+		for (let i: number = 0; i < grid.length; i++) {
+			for (let j: number = 0; j < grid[0].length; j++) {
 				output.push(
 					<div
 						style={{
@@ -370,29 +388,29 @@ export default class Totris extends React.Component<any, TotrisState> {
 		return output;
 	}
 
-	renderBoard(): JSX.Element {
+	renderBoard(x: number, y: number, s: number, grid: number[][]): JSX.Element {
 		let gridDataX: string = "",
 			gridDataY: string = "";
 
-		for (let i: number = 0; i < width; i++) {
-			gridDataX += ((size - 0.2 * (height - 1)) / height).toString() + "vh ";
+		for (let i: number = 0; i < x; i++) {
+			gridDataX += ((s - 0.2 * (y - 1)) / y).toString() + "vh ";
 		}
 
-		for (let i: number = 0; i < height; i++) {
-			gridDataY += ((size - 0.2 * (height - 1)) / height).toString() + "vh ";
+		for (let i: number = 0; i < y; i++) {
+			gridDataY += ((s - 0.2 * (y - 1)) / y).toString() + "vh ";
 		}
 
 		return (
 			<div
 				style={{
-					width: size.toString() + "vh",
-					height: size.toString() + "vh",
+					width: s.toString() + "vh",
+					height: s.toString() + "vh",
 					gridTemplateRows: gridDataY,
 					gridTemplateColumns: gridDataX,
 				}}
 				className="grid-container"
 			>
-				{this.drawTiles()}
+				{this.drawTiles(grid)}
 			</div>
 		);
 	}
@@ -403,7 +421,15 @@ export default class Totris extends React.Component<any, TotrisState> {
 			return { grid: create2DArr<number>(height, width, 0), score: 0 };
 		});
 
+		this.setState(() => {
+			return { gameIsRunning: true };
+		});
+
 		while (true) {
+			if (this.stopGame) {
+				break;
+			}
+
 			await delay(this.speed);
 
 			await this.setState((state) => {
@@ -412,7 +438,31 @@ export default class Totris extends React.Component<any, TotrisState> {
 				};
 			});
 
+			let didDeadDrop = false;
+
+			if (this.curPiece.isDeadDropping()) {
+				await this.setState((state) => {
+					return {
+						grid: this.curPiece.deadDrop(state.grid),
+					};
+				});
+				this.curPiece.setDeadDrop(false);
+				didDeadDrop = true;
+				console.log(didDeadDrop);
+			}
+
 			if (!this.curPiece.getCanMove()) {
+				console.log(didDeadDrop);
+
+				if (!didDeadDrop) {
+					await delay(20);
+					console.log("here2");
+
+					if (this.curPiece.getCanMove()) {
+						continue;
+					}
+				}
+
 				//Check for line breaks
 				let lines: number[][] = this.curPiece.getOccupyingSquares();
 
@@ -460,40 +510,76 @@ export default class Totris extends React.Component<any, TotrisState> {
 					}
 				}
 
-				console.log(`Spawn Piece: ${++this.pieceCounter}`);
+				this.curPiece.setDeadDrop(false);
 				this.curPiece = this.newPiece();
 
 				if (this.speed > 10) {
-					this.speed -= 5;
+					this.speed -= 2.5;
 				}
 			}
-
-			if (this.stopGame) {
-				break;
-			}
 		}
+
+		this.setState(() => {
+			return { gameIsRunning: false };
+		});
 	}
 
-	keyPressHandler(event: React.KeyboardEvent<HTMLDivElement>): void {
-		console.log(event.code);
-		console.log(event.code.substring(0, 5));
+	async keyPressHandler(
+		event: React.KeyboardEvent<HTMLDivElement>
+	): Promise<void> {
+		//console.log(event.code);
+		//console.log(event.code.substring(0, 5));
 
 		if (this.curPiece.getPosY() < 0) return;
 
 		if (event.code == "KeyD") {
 			if (this.curPiece.getPosX() < width - 1) {
-				this.setState((state) => {
+				await this.setState((state) => {
 					return { grid: this.curPiece.move(1, 0, state.grid) };
 				});
+				await delay(1);
 			}
 		} else if (event.code == "KeyA") {
 			if (this.curPiece.getPosX() > 0) {
-				this.setState((state) => {
+				await this.setState((state) => {
 					return { grid: this.curPiece.move(-1, 0, state.grid) };
 				});
+				await delay(1);
 			}
+		} else if (event.code == "KeyC") {
+			let nextBank: number = this.curPiece.getType();
+			let newGrid: number[][] = this.state.grid;
+			let occupying: number[][] = this.curPiece.getOccupyingSquares();
+
+			for (let i: number = 0; i < occupying.length; i++) {
+				newGrid[occupying[i][0]][occupying[i][1]] = 0;
+			}
+
+			this.curPiece = new Piece(
+				this.bankedPiece != undefined
+					? this.bankedPiece
+					: Math.floor(Math.random() * patterns.length)
+			);
+
+			this.bankedPiece = nextBank;
+
+			let newStoredGrid: number[][] = this.state.storedGrid;
+
+			newStoredGrid = create2DArr<number>(5, 5, this.colors.length - 1);
+
+			for (let i: number = 0; i < patterns[this.bankedPiece].length; i++) {
+				for (let j: number = 0; j < patterns[this.bankedPiece][0].length; j++) {
+					newStoredGrid[i][j] = patterns[this.bankedPiece][i][j]
+						? this.bankedPiece + 1
+						: this.colors.length - 1;
+				}
+			}
+
+			this.setState(() => {
+				return { grid: newGrid, storedGrid: newStoredGrid };
+			});
 		} else if (event.code.substring(0, 5) == "Arrow") {
-			this.setState((state) => {
+			await this.setState((state) => {
 				return {
 					grid: this.curPiece.rotate(
 						event.code.substring(5) == "Right" ? 1 : -1,
@@ -501,10 +587,14 @@ export default class Totris extends React.Component<any, TotrisState> {
 					),
 				};
 			});
+			await delay(1);
 		} else if (event.code == "KeyS") {
-			this.setState((state) => {
+			await this.setState((state) => {
 				return { grid: this.curPiece.move(0, 1, state.grid) };
 			});
+			await delay(1);
+		} else if (event.code.substring(0, 5) == "Space") {
+			this.curPiece.setDeadDrop(true);
 		}
 	}
 
@@ -519,7 +609,9 @@ export default class Totris extends React.Component<any, TotrisState> {
 
 	render(): JSX.Element {
 		document.title = "Totris by Austin Bray";
-		const { score } = this.state;
+		const { grid, storedGrid, score, gameIsRunning } = this.state;
+
+		console.log(`Stored grid state: ${storedGrid.length}`);
 
 		return (
 			<Container id="Totris" tabIndex={0} onKeyDown={this.keyPressHandler}>
@@ -534,13 +626,15 @@ export default class Totris extends React.Component<any, TotrisState> {
 						</p>
 					</Col>
 					<Col xs={4}>
-						{this.renderBoard()}
+						{this.renderBoard(width, height, size, grid)}
 						<Row className="mt-4">
 							<Col xs={4}>
 								<Row>
 									<Button
+										id="startBTN"
+										disabled={gameIsRunning}
 										onClick={() => {
-											this.gameLoop();
+											this.restartGame();
 										}}
 									>
 										Start
@@ -549,8 +643,11 @@ export default class Totris extends React.Component<any, TotrisState> {
 							</Col>
 						</Row>
 					</Col>
-					<Col xs={4}>
+					<Col xs={4} className="text-start">
 						<h1>Score: {score}</h1>
+						<h3>Stored Piece:</h3>
+						{this.renderBoard(5, 5, 10, storedGrid)}
+						<h3>Next Pieces:</h3>
 					</Col>
 				</Row>
 			</Container>
