@@ -42,7 +42,7 @@ export default function App(): JSX.Element {
 					<Route path="/projects" element={<Projects />} />
 					<Route path="/projects/algo" element={<AlgorithmVisualizer />} />
 					<Route path="/projects/encryptor" element={<Encryptor />} />
-					<Route path="/projects/totris" element={<Totris />} />
+					{/*<Route path="/projects/totris" element={<Totris />} />*/}
 					<Route path="/download" element={<Download />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/blog" element={<Blog />} />

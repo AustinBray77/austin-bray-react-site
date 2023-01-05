@@ -24,7 +24,9 @@ function DownloadElement(props: {
 							onClick={() => {
 								console.log();
 								if (
-									props.filePath.substring(props.filePath.length - 4) == ".zip"
+									props.filePath.substring(props.filePath.length - 4) ==
+										".zip" ||
+									props.filePath.substring(props.filePath.length - 4) == ".msi"
 								) {
 									DownloadFile(props.filePath);
 								} else {
@@ -32,7 +34,8 @@ function DownloadElement(props: {
 								}
 							}}
 						>
-							{props.filePath.substring(props.filePath.length - 4) == ".zip"
+							{props.filePath.substring(props.filePath.length - 4) == ".zip" ||
+							props.filePath.substring(props.filePath.length - 4) == ".msi"
 								? "Download"
 								: "View"}
 						</Button>
@@ -82,6 +85,18 @@ export default function Download(): JSX.Element {
 						sourceCode="https://github.com/AustinBray77/BlockSnake2D"
 					>
 						<h3 className="text-light">Block Snake 2D</h3>
+					</DownloadElement>
+					<DownloadElement
+						filePath="https://github.com/AustinBray77/ScienceFairProject"
+						sourceCode="https://github.com/AustinBray77/ScienceFairProject"
+					>
+						<h3 className="text-light">Brachristochrone AI Pathfinder</h3>
+					</DownloadElement>
+					<DownloadElement
+						filePath="PSD-Viewer-Setup.msi"
+						sourceCode="https://github.com/AustinBray77/PSD-Viewer"
+					>
+						<h3 className="text-light">PSD Viewer</h3>
 					</DownloadElement>
 				</Col>
 			</Row>

@@ -6,6 +6,7 @@ import { create2DArr, delay } from "../../../functions";
 type TotrisState = {
 	grid: number[][];
 	storedGrid: number[][];
+	queueGrid: number[][];
 	score: number;
 	gameIsRunning: boolean;
 };
@@ -346,6 +347,7 @@ export default class Totris extends React.Component<any, TotrisState> {
 
 	pieceCounter: number = 0;
 	curPiece: Piece = this.newPiece();
+	pieceQueue: number[] = [];
 	bankedPiece: undefined | number = undefined;
 	stopGame: boolean = false;
 
@@ -354,6 +356,7 @@ export default class Totris extends React.Component<any, TotrisState> {
 		this.state = {
 			grid: create2DArr<number>(height, width, 0),
 			storedGrid: create2DArr<number>(5, 5, this.colors.length - 1),
+			queueGrid: create2DArr<number>(5, 25, this.colors.length - 1),
 			score: 0,
 			gameIsRunning: false,
 		};
@@ -365,8 +368,12 @@ export default class Totris extends React.Component<any, TotrisState> {
 		this.keyPressHandler = this.keyPressHandler.bind(this);
 	}
 
+	randomPiece(): number {
+		return Math.floor(Math.random() * patterns.length);
+	}
+
 	newPiece(): Piece {
-		return new Piece(Math.floor(Math.random() * patterns.length));
+		return new Piece(this.randomPiece());
 	}
 
 	drawTiles(grid: number[][]): JSX.Element[] {
@@ -386,6 +393,16 @@ export default class Totris extends React.Component<any, TotrisState> {
 		}
 
 		return output;
+	}
+
+	loadPieceQueueFromPieces() {
+		let newQueueGrid: number[][] = create2DArr<number>(25, 25, 0);
+		let nextPiece: Piece = new Piece(this.pieceQueue[0]);
+		newQueueGrid = nextPiece.move(0, 1, newQueueGrid);
+
+		this.setState((state) => {
+			return { queueGrid: newQueueGrid };
+		});
 	}
 
 	renderBoard(x: number, y: number, s: number, grid: number[][]): JSX.Element {
@@ -424,6 +441,12 @@ export default class Totris extends React.Component<any, TotrisState> {
 		this.setState(() => {
 			return { gameIsRunning: true };
 		});
+
+		for (let i: number = 0; i < 5; i++) {
+			this.pieceQueue.push(this.randomPiece());
+		}
+
+		this.loadPieceQueueFromPieces();
 
 		while (true) {
 			if (this.stopGame) {
@@ -511,7 +534,11 @@ export default class Totris extends React.Component<any, TotrisState> {
 				}
 
 				this.curPiece.setDeadDrop(false);
-				this.curPiece = this.newPiece();
+				this.curPiece = new Piece(this.pieceQueue[0]);
+				this.pieceQueue.splice(0, 1);
+				this.pieceQueue.push(this.randomPiece());
+
+				this.loadPieceQueueFromPieces();
 
 				if (this.speed > 10) {
 					this.speed -= 2.5;
@@ -609,7 +636,7 @@ export default class Totris extends React.Component<any, TotrisState> {
 
 	render(): JSX.Element {
 		document.title = "Totris by Austin Bray";
-		const { grid, storedGrid, score, gameIsRunning } = this.state;
+		const { grid, storedGrid, queueGrid, score, gameIsRunning } = this.state;
 
 		console.log(`Stored grid state: ${storedGrid.length}`);
 
@@ -648,6 +675,7 @@ export default class Totris extends React.Component<any, TotrisState> {
 						<h3>Stored Piece:</h3>
 						{this.renderBoard(5, 5, 10, storedGrid)}
 						<h3>Next Pieces:</h3>
+						{this.renderBoard(5, 25, 40, queueGrid)}
 					</Col>
 				</Row>
 			</Container>

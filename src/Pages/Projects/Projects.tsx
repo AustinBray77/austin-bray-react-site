@@ -69,15 +69,16 @@ export default function Projects(): JSX.Element {
 			<ProjRow title="Algorithm Visualizer" img="/algovisualizer.png">
 				<p>
 					Algorithm Visualizer is a visual grid interface allowing beginner
-					students to learn about how different search algorithms work. I used
-					React and Typescript to create this project. My goal with this project
-					was to practice different search algorithms and learning about
+					students to learn about how different search algorithms work. This
+					also includes a visualization for a custom maze generation algorithm.
+					I used React and Typescript to create this project. My goal with this
+					project was to practice different search algorithms and learning about
 					creating a practical user interface. To use this project, click{" "}
 					<a href="/projects/algo">here</a>. To see the source code for this
 					project, visit the <a href="/download">downloads</a> page.
 				</p>
 			</ProjRow>
-			<ProjRow title="Totris" img="/totris.png">
+			{/* <ProjRow title="Totris" img="/totris.png">
 				<p>
 					Totris is a different spin on the popular game Tetris. I used React
 					and Typescript to create this project. My goal with this project to
@@ -86,15 +87,37 @@ export default function Projects(): JSX.Element {
 					click <a href="/projects/totris">here</a>. To see the source code for
 					this project, visit the <a href="/download">downloads</a> page.
 				</p>
-			</ProjRow>
-			<ProjRow title="Web Testing Software" img="/mern.jpeg">
+			</ProjRow> */}
+			<ProjRow title="Pathfinding AI" img="/AI.png">
 				<p>
-					I have created software for managing and testing live production sites
-					of a large corporation. This software was made using node.js, react,
-					and javascript. My goal with this project was to create reliable
-					software, learn how to use the fetch api, and to create a project
-					based on a clients demands. I believe all of these goals were well
-					met. This software is currently not publically available.
+					For my grade 11 physics class, I was instructed to create an
+					experiment which incorporated the concepts of physics for a science
+					fair. What my partner and I decided to do was create a machine
+					learning algorithm and see if it could solve for the brachistochrone
+					curve. We accomplished this by placing it in an environment where
+					there was a ball and an endpoint, and the goal of the AI was to draw a
+					path or ramp that would cause the ball to reach the endpoint. If the
+					AI worked correctly this would eventually result in the
+					brachistochrone curve bein generated. Our AI was able to solve for
+					something close to this, but there were some bugs in our training so
+					it was imcomplete. This was accomplished using the Unity Physics
+					Engine (game engine) and the TensorFlow library, and it was all done
+					in C#. To see the report for this project, click{" "}
+					<a href="https://docs.google.com/document/d/1WCK0FexNg3sInjDyLThfPBmfUKq7GCzCT0iAbQmWQQg/edit?usp=sharing">
+						here
+					</a>
+					. To see the source code for this project, visit the{" "}
+					<a href="/download">downloads</a> page.
+				</p>
+			</ProjRow>
+			<ProjRow title="Password Manager" img="/AI.png">
+				<p>
+					As a project for myself, I created a tool to manage and encrypt my
+					passwords. The goal of this project was to create a secure desktop
+					appliction with a practical and effective use. This was built using
+					the WinForms library using the C# programming language. To use this
+					project or download the source code, visit the{" "}
+					<a href="/download">downloads</a> page.
 				</p>
 			</ProjRow>
 		</Container>
