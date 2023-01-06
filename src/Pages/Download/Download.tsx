@@ -72,31 +72,31 @@ export default function Download(): JSX.Element {
 						filePath="GameOfLifeWin32.zip"
 						sourceCode="https://github.com/AustinBray77/game-of-life-cpp"
 					>
-						<h3 className="text-light">Game Of Life Win 32</h3>
+						<h3 className="text-light">Game Of Life Win 32 (Windows)</h3>
 					</DownloadElement>
 					<DownloadElement
 						filePath="/projects/algo"
 						sourceCode="https://github.com/AustinBray77/austin-bray-react-site/tree/master/src/Pages/Projects/AlgoritmVisualizer"
 					>
-						<h3 className="text-light">Algorithm Visualizer</h3>
+						<h3 className="text-light">Algorithm Visualizer (Web)</h3>
 					</DownloadElement>
 					<DownloadElement
 						filePath="https://play.google.com/store/apps/details?id=com.SixBeachesGaming.BlockSnake2D"
 						sourceCode="https://github.com/AustinBray77/BlockSnake2D"
 					>
-						<h3 className="text-light">Block Snake 2D</h3>
+						<h3 className="text-light">Block Snake 2D (Android)</h3>
 					</DownloadElement>
 					<DownloadElement
-						filePath="https://github.com/AustinBray77/ScienceFairProject"
+						filePath=""
 						sourceCode="https://github.com/AustinBray77/ScienceFairProject"
 					>
-						<h3 className="text-light">Brachristochrone AI Pathfinder</h3>
+						<h3 className="text-light">Brachristochrone AI Pathfinder (N/A)</h3>
 					</DownloadElement>
 					<DownloadElement
 						filePath="PSD-Viewer-Setup.msi"
 						sourceCode="https://github.com/AustinBray77/PSD-Viewer"
 					>
-						<h3 className="text-light">PSD Viewer</h3>
+						<h3 className="text-light">PSD Viewer (Windows)</h3>
 					</DownloadElement>
 				</Col>
 			</Row>

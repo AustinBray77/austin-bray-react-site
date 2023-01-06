@@ -94,8 +94,8 @@ export default function Navbar(): JSX.Element {
 					}
 				>
 					<NavLink path="/projects/algo" id="AlgoBTN" title="Algo Visualizer" />
-					<br />
-					<NavLink path="/projects/totris" id="TotrisBTN" title="Totris" />
+					{/*<br />
+					<NavLink path="/projects/totris" id="TotrisBTN" title="Totris" />*/}
 				</div>
 			</div>
 			<NavLink path="/download" id="DownloadBTN" title="Download" />

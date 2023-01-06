@@ -110,7 +110,7 @@ export default function Projects(): JSX.Element {
 					<a href="/download">downloads</a> page.
 				</p>
 			</ProjRow>
-			<ProjRow title="Password Manager" img="/AI.png">
+			<ProjRow title="Password Manager" img="/psdviewer.png">
 				<p>
 					As a project for myself, I created a tool to manage and encrypt my
 					passwords. The goal of this project was to create a secure desktop
