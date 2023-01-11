@@ -17,6 +17,7 @@ import Totris from "./Pages/Projects/Totris/Totris";
 import Blog from "./Pages/Blog/Blog";
 import Footer from "./Footer";
 import AboutMe from "./Pages/AboutMe/AboutMe";
+import DecompressionQuiz from "./Pages/Projects/DecompressionQuiz/DecompressionQuiz";
 
 function PageNotFound(): JSX.Element {
 	return (
@@ -42,6 +43,10 @@ export default function App(): JSX.Element {
 					<Route path="/projects" element={<Projects />} />
 					<Route path="/projects/algo" element={<AlgorithmVisualizer />} />
 					<Route path="/projects/encryptor" element={<Encryptor />} />
+					<Route
+						path="/projects/decompression-quiz"
+						element={<DecompressionQuiz />}
+					/>
 					{/*<Route path="/projects/totris" element={<Totris />} />*/}
 					<Route path="/download" element={<Download />} />
 					<Route path="/contact" element={<Contact />} />

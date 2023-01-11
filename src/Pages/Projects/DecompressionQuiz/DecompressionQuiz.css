@@ -1,0 +1,271 @@
+#DecompQuiz::before {
+	content: "";
+	position: fixed;
+	z-index: -1;
+	background-image: linear-gradient(#6dffff, #0026ff, #000000);
+	background-repeat: no-repeat;
+	background-size: 100% 500%;
+	background-position: bottom;
+}
+
+#DecompQuiz {
+	z-index: 0;
+	padding-top: 50px;
+}
+
+@keyframes movebg1 {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 100%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 80%;
+	}
+}
+
+@-webkit-keyframes movebg1 {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 100%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 80%;
+	}
+}
+
+@keyframes movebg2 {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 80%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 60%;
+	}
+}
+
+@-webkit-keyframes movebg2 {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 80%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 60%;
+	}
+}
+
+@keyframes movebg3 {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 60%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 40%;
+	}
+}
+
+@-webkit-keyframes movebg3 {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 60%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 40%;
+	}
+}
+
+@keyframes movebg4 {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 40%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 20%;
+	}
+}
+
+@-webkit-keyframes movebg4 {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 40%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 20%;
+	}
+}
+
+@keyframes movebgfin {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 20%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 0%;
+	}
+}
+
+@-webkit-keyframes movebgfin {
+	from {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 20%;
+	}
+	to {
+		background-image: linear-gradient(#6dffff, #0026ff, #000000);
+		background-repeat: no-repeat;
+		background-size: 100% 500%;
+		background-position: 0% 0%;
+	}
+}
+
+@keyframes rowfin {
+	from {
+		opacity: 100%;
+	}
+	to {
+		opacity: 0%;
+	}
+}
+
+@-webkit-keyframes rowfin {
+	from {
+		opacity: 100%;
+	}
+	to {
+		opacity: 0%;
+	}
+}
+
+.move-bg-1 {
+	animation-name: movebg1;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: movebg1;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+}
+
+.bg-pos-1 {
+	background-image: linear-gradient(#6dffff, #0026ff, #000000);
+	background-repeat: no-repeat;
+	background-size: 100% 500%;
+	background-position: 0% 80%;
+}
+
+.move-bg-2 {
+	animation-name: movebg2;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: movebg2;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+}
+
+.bg-pos-2 {
+	background-image: linear-gradient(#6dffff, #0026ff, #000000);
+	background-repeat: no-repeat;
+	background-size: 100% 500%;
+	background-position: 0% 60%;
+}
+
+.move-bg-3 {
+	animation-name: movebg3;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: movebg3;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+}
+
+.bg-pos-3 {
+	background-image: linear-gradient(#6dffff, #0026ff, #000000);
+	background-repeat: no-repeat;
+	background-size: 100% 500%;
+	background-position: 0% 40%;
+}
+
+.move-bg-4 {
+	animation-name: movebg4;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: movebg4;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+}
+
+.bg-pos-4 {
+	background-image: linear-gradient(#6dffff, #0026ff, #000000);
+	background-repeat: no-repeat;
+	background-size: 100% 500%;
+	background-position: 0% 20%;
+}
+
+.move-bg-fin {
+	animation-name: movebgfin;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: movebgfin;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: 1;
+}
+
+.bg-pos-fin {
+	background-image: linear-gradient(#6dffff, #0026ff, #000000);
+	background-repeat: no-repeat;
+	background-size: 100% 500%;
+	background-position: 0% 0%;
+}
+
+.row-fin {
+	animation-name: rowfin;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: rowfin;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: 1;
+}
