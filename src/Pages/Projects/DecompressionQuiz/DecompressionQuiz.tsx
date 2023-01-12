@@ -54,6 +54,31 @@ const questions = [
 		["True", "False"],
 		0
 	),
+	new Question(
+		"What is the equation for the chemical equilibrium for decompression sickness?",
+		[
+			"N2(g) <=> N2(aq) && He(g) <=> He(aq)",
+			"Fr(s) <=> Fr(g)",
+			"N2(g) <=> N2(aq)",
+			"H2(g) <=> H2(aq)",
+		],
+		0
+	),
+	new Question(
+		"What is NOT a way to treat decompression sickness?",
+		[
+			"Drink lots of fluids",
+			"Hyberbaric Oxygen Therapy",
+			"Rest",
+			"Take ibuprofen or acetaminophen",
+		],
+		3
+	),
+	new Question(
+		"What else is decompression sickness also called?",
+		["Diver Sickness", "The Bends", "Diver's Brain", "The Sickness"],
+		1
+	),
 ];
 
 export default function DecompressionQuiz(): JSX.Element {
@@ -67,7 +92,7 @@ export default function DecompressionQuiz(): JSX.Element {
 	const [isFinished, updateFinished] = useState(false);
 
 	const generateQuestions = (): number[] => {
-		let questionOrder = [0, 1, 2, 3, 4];
+		let questionOrder: number[] = Array.from(Array(questions.length).keys());
 		let randomizedQuestions: number[] = [];
 
 		for (let i = 0; i < 5; i++) {
@@ -256,7 +281,7 @@ export default function DecompressionQuiz(): JSX.Element {
 										too quickly again.
 									</h3>
 									<h3>
-										You are now paralized and are unable to continue ascending,
+										You are now paralyzed and are unable to continue ascending,
 										causing you to drown as your air tank runs out.
 									</h3>
 								</div>
