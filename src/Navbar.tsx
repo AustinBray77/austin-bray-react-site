@@ -13,7 +13,7 @@ const NavLink = (props: {
 		<Link
 			to={props.path}
 			className={
-				"btn btn-dark bg-dark border border-dark m-2 " +
+				"btn btn-dark bg-lpitch border border-dark m-2 " +
 				(location.pathname == props.path ? "disabled-cursor" : "")
 			}
 			id={props.id}
@@ -46,7 +46,9 @@ export default function Navbar(): JSX.Element {
 
 	return (
 		<div
-			className={"navbar navbar-expand-lg navbar-dark bg-dark text-light pl-1"}
+			className={
+				"navbar navbar-expand-lg navbar-dark bg-lpitch text-light pl-1"
+			}
 		>
 			<NavLink path="/" id="HomeBTN" title="Home" />
 			<div
@@ -66,7 +68,8 @@ export default function Navbar(): JSX.Element {
 				<div
 					id="BlogsDropdown"
 					className={
-						"bg-dark dropdown-content " + (ShowBlogsDropdown == 1 ? "show" : "")
+						"bg-lpitch dropdown-content " +
+						(ShowBlogsDropdown == 1 ? "show" : "")
 					}
 				>
 					{blogLinkList()}
@@ -89,7 +92,7 @@ export default function Navbar(): JSX.Element {
 				<div
 					id="ProjectsDropdown"
 					className={
-						"bg-dark dropdown-content " +
+						"bg-lpitch dropdown-content " +
 						(ShowProjectsDropdown == 1 ? "show" : "")
 					}
 				>

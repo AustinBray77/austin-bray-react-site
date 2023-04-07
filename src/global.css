@@ -81,3 +81,34 @@
 .show {
 	display: block;
 }
+
+.bg-pitch {
+	background-color: #010101;
+}
+
+.bg-lpitch {
+	background-color: #111111;
+}
+
+.fade-in {
+	animation: fadeIn 1s 1;
+	-webkit-animation: fadeIn 5s 1;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0%;
+	}
+	100% {
+		opacity: 100%;
+	}
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		opacity: 0%;
+	}
+	100% {
+		opacity: 100%;
+	}
+}
