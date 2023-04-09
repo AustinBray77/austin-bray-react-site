@@ -1,0 +1,76 @@
+.fade-in {
+	animation: fadeIn 1s 1;
+	-webkit-animation: fadeIn 5s 1;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0%;
+	}
+	100% {
+		opacity: 100%;
+	}
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		opacity: 0%;
+	}
+	100% {
+		opacity: 100%;
+	}
+}
+
+.hidden-anim-left,
+.hidden-anim-right {
+	opacity: 0;
+	filter: blur(5px);
+}
+
+.hidden-anim-right {
+	transform: translateX(100%);
+}
+
+.hidden-anim-left {
+	transform: translateX(-100%);
+}
+
+.hidden-anim-slide-down {
+	opacity: 0;
+	filter: blur(5px);
+	margin-top: 0px;
+}
+
+.margin-slide-down {
+	opacity: 1;
+	filter: blur(0px);
+	margin-top: 25px;
+	transition-duration: 1s;
+}
+
+.fly-in {
+	opacity: 1;
+	filter: blur(0);
+	transform: translateX(0);
+	transition-duration: 1s;
+}
+
+.anim-speed-1 {
+	transition-duration: 1s !important;
+}
+
+.anim-speed-2 {
+	transition-duration: 2s !important;
+}
+
+.anim-speed-3 {
+	transition-duration: 3s !important;
+}
+
+.anim-speed-4 {
+	transition-duration: 4s !important;
+}
+
+.anim-speed-5 {
+	transition-duration: 5s !important;
+}

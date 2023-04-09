@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./Projects.css";
 
@@ -6,16 +6,47 @@ const ProjRow = (props: {
 	children: JSX.Element | JSX.Element[];
 	title: string;
 	img: string;
+	topRow?: boolean;
 }): JSX.Element => {
+	const rowRef = useRef<HTMLDivElement>(null);
+	const [showElements, setShowElements] = useState(false);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver((entries) => {
+			let entry = entries[0];
+
+			if (entry.isIntersecting) {
+				setShowElements(true);
+			} else {
+				setShowElements(false);
+			}
+		});
+
+		if (rowRef.current != null) {
+			observer.observe(rowRef.current);
+		}
+	});
+
 	return (
-		<Row className="p-5">
-			<div className="br-15 bg-dark text-info p-5">
+		<Row style={{ marginTop: props.topRow ? "300px" : "550px" }}>
+			<div className="p-5 bg-pitch text-light" ref={rowRef}>
 				<Row>
-					<Col sm={12} md={6}>
-						<h1 className="text-center">{props.title}</h1>
+					<Col
+						sm={12}
+						md={6}
+						className={showElements ? "fly-in" : "hidden-anim-left"}
+					>
+						<h1 className="text-start">{props.title}</h1>
 						{props.children}
 					</Col>
-					<Col sm={12} md={6} className="img-col position-relative text-center">
+					<Col
+						sm={12}
+						md={6}
+						className={
+							"img-col position-relative text-center " +
+							(showElements ? "fly-in" : "hidden-anim-right")
+						}
+					>
 						<img src={props.img} className="rounded img-fluid" />
 					</Col>
 				</Row>
@@ -27,7 +58,7 @@ const ProjRow = (props: {
 export default function Projects(): JSX.Element {
 	return (
 		<Container id="Projects">
-			<ProjRow title="Block Snake 2D" img="/blcksnk.png">
+			<ProjRow title="Block Snake 2D" img="/blcksnk.png" topRow={true}>
 				<p>
 					Block Snake 2D is my first major Unity project coded in C#. The goal
 					of this project was to see through the full publication of an app on a

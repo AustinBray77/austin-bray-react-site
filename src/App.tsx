@@ -18,6 +18,7 @@ import Blog from "./Pages/Blog/Blog";
 import Footer from "./Footer";
 import AboutMe from "./Pages/AboutMe/AboutMe";
 import DecompressionQuiz from "./Pages/Projects/DecompressionQuiz/DecompressionQuiz";
+import Freelance from "./Pages/Freelance/Freelance";
 
 function PageNotFound(): JSX.Element {
 	return (
@@ -53,6 +54,7 @@ export default function App(): JSX.Element {
 					<Route path="/blog" element={<Blog />} />
 					<Route path="/blog/:article" element={<Blog />} />
 					<Route path="/about-me" element={<AboutMe />} />
+					<Route path="/freelance" element={<Freelance />} />
 					<Route path="*" element={<PageNotFound />} />
 				</Switch>
 				<Footer />

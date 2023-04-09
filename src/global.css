@@ -25,14 +25,15 @@
 	margin-right: auto;
 	padding-left: 0;
 	padding-right: 0;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .navbar {
 	position: fixed;
 	right: 0;
 	left: 0;
-	z-index: 1;
+	z-index: 2;
 	overflow-y: visible !important;
 	max-height: 62px;
 }
@@ -42,7 +43,7 @@
 	right: 0;
 	left: 0;
 	bottom: 0;
-	z-index: 1;
+	z-index: 2;
 }
 
 .disabled-cursor {
@@ -90,25 +91,28 @@
 	background-color: #111111;
 }
 
-.fade-in {
-	animation: fadeIn 1s 1;
-	-webkit-animation: fadeIn 5s 1;
+.LinkButton {
+	border-bottom: solid #0d6efd 5px;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
 }
 
-@keyframes fadeIn {
-	0% {
-		opacity: 0%;
-	}
-	100% {
-		opacity: 100%;
-	}
+.top {
+	margin-bottom: 200px;
 }
 
-@-webkit-keyframes fadeIn {
-	0% {
-		opacity: 0%;
-	}
-	100% {
-		opacity: 100%;
-	}
+.content,
+.content-row,
+.top-content-row {
+	position: relative;
+	z-index: 1;
+}
+
+.content-row {
+	margin-top: 500px;
+}
+
+.top-content-row {
+	margin-top: 300px;
 }

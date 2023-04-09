@@ -13,7 +13,7 @@
 	content: "";
 	position: fixed;
 	z-index: -1;
-	background-image: url("/homepage_back.jpg");
+	background-image: url("/base_back.jpeg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-position: center;
@@ -25,12 +25,16 @@
 	filter: blur(50px);
 }
 
-/*#Homepage img {
+#Homepage {
+	font-family: Consolas, monaco, monospace !important;
+}
+
+#Homepage .gap-image {
 	position: absolute;
-	left: auto;
-	right: auto;
-	top: 50%;
-	-webkit-transform: translateY(-50%) !important;
-	-ms-transform: translateY(-50%) !important;
-	transform: translateY(-50%) !important;
-}*/
+
+	top: 300px;
+
+	width: 100%;
+
+	z-index: -1;
+}

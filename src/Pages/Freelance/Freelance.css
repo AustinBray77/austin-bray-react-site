@@ -1,0 +1,23 @@
+#Freelance::before {
+	content: "";
+	position: fixed;
+	background-image: url("/base_back.jpeg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+
+	-webkit-filter: blur(50px);
+	-moz-filter: blur(50px);
+	-o-filter: blur(50px);
+	-ms-filter: blur(50px);
+	filter: blur(50px);
+}
+
+#Freelance .list-item {
+	margin-top: 50px;
+}
+
+#Freelance img {
+	width: 200px;
+	height: 200px;
+}
