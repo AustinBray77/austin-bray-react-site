@@ -103,7 +103,7 @@ const FreelanceRow = () => {
 							</LinkButton>
 						</Col>
 						<Col xs={6}>
-							<Row className="fade-in justify-content-center">
+							<Row className="justify-content-center fade-in">
 								<img src="./citl.png" />
 							</Row>
 						</Col>{" "}

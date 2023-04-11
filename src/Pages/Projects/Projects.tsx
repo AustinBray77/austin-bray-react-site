@@ -34,7 +34,7 @@ const ProjRow = (props: {
 					<Col
 						sm={12}
 						md={6}
-						className={showElements ? "fly-in" : "hidden-anim-left"}
+						className={showElements ? "fly-in-left" : "hidden"}
 					>
 						<h1 className="text-start">{props.title}</h1>
 						{props.children}
@@ -44,7 +44,7 @@ const ProjRow = (props: {
 						md={6}
 						className={
 							"img-col position-relative text-center " +
-							(showElements ? "fly-in" : "hidden-anim-right")
+							(showElements ? "fly-in-right" : "hidden")
 						}
 					>
 						<img src={props.img} className="rounded img-fluid" />

@@ -51,7 +51,7 @@
 }
 
 .hidden {
-	size: 0px 0px;
+	opacity: 0;
 }
 
 .br-10 {

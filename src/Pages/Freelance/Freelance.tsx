@@ -3,12 +3,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./Freelance.css";
 
 const Freelance = (): JSX.Element => {
-	const [hasLoaded, setHasLoaded] = useState(false);
-
-	setTimeout(() => {
-		setHasLoaded(true);
-	}, 1);
-
 	return (
 		<Container id="Freelance">
 			<Row
@@ -18,137 +12,54 @@ const Freelance = (): JSX.Element => {
 				<Col xs={6}>
 					<Row>
 						<h1>Why Austin?</h1>
-						<h3
-							className={
-								"list-item anim-speed-1 " +
-								(hasLoaded ? "fly-in" : "hidden-anim-left")
-							}
-						>
-							Line 1
-						</h3>
-						<h3
-							className={
-								"list-item anim-speed-2 " +
-								(hasLoaded ? "fly-in" : "hidden-anim-left")
-							}
-						>
-							Line 2
-						</h3>
-						<h3
-							className={
-								"list-item anim-speed-3 " +
-								(hasLoaded ? "fly-in" : "hidden-anim-left")
-							}
-						>
-							Line 3
-						</h3>
-						<h3
-							className={
-								"list-item anim-speed-4 " +
-								(hasLoaded ? "fly-in" : "hidden-anim-left")
-							}
-						>
-							Line 4
-						</h3>
-						<h3
-							className={
-								"list-item anim-speed-5 " +
-								(hasLoaded ? "fly-in" : "hidden-anim-left")
-							}
-						>
-							Line 5
-						</h3>
+						<h3 className={"list-item anim-speed-1  fly-in-left"}>Line 1</h3>
+						<h3 className={"list-item anim-speed-2  fly-in-left"}>Line 2</h3>
+						<h3 className={"list-item anim-speed-3  fly-in-left"}>Line 3</h3>
+						<h3 className={"list-item anim-speed-4  fly-in-left"}>Line 4</h3>
+						<h3 className={"list-item anim-speed-5 fly-in-left"}>Line 5</h3>
 					</Row>
 				</Col>
 				<Col xs={6}>
 					<Row className="justify-content-center">
+						<img src="wawa.jpg" className={"anim-speed-1 fade-in"} />
+						<img src="wawa.jpg" className={"anim-speed-1 fade-in"} />
+						<img src="wawa.jpg" className={"anim-speed-1 fade-in"} />
+						<img src="wawa.jpg" className={"anim-speed-1 fade-in"} />
+					</Row>
+					<Row className="justify-content-center">
 						<img
 							src="wawa.jpg"
-							className={
-								"anim-speed-1 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
+							className={"anim-speed-2 margin-slide-down m-25"}
 						/>
 						<img
 							src="wawa.jpg"
-							className={
-								"anim-speed-1 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
+							className={"anim-speed-2 margin-slide-down m-25"}
 						/>
 						<img
 							src="wawa.jpg"
-							className={
-								"anim-speed-1 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
+							className={"anim-speed-2 margin-slide-down m-25"}
 						/>
 						<img
 							src="wawa.jpg"
-							className={
-								"anim-speed-1 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
+							className={"anim-speed-2 margin-slide-down m-25"}
 						/>
 					</Row>
 					<Row className="justify-content-center">
 						<img
 							src="wawa.jpg"
-							className={
-								"anim-speed-2 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
+							className={"anim-speed-3 margin-slide-down m-25"}
 						/>
 						<img
 							src="wawa.jpg"
-							className={
-								"anim-speed-2 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
+							className={"anim-speed-3 margin-slide-down m-25"}
 						/>
 						<img
 							src="wawa.jpg"
-							className={
-								"anim-speed-2 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
+							className={"anim-speed-3 margin-slide-down m-25"}
 						/>
 						<img
 							src="wawa.jpg"
-							className={
-								"anim-speed-2 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
-						/>
-					</Row>
-					<Row className="justify-content-center">
-						<img
-							src="wawa.jpg"
-							className={
-								"anim-speed-3 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
-						/>
-						<img
-							src="wawa.jpg"
-							className={
-								"anim-speed-3 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
-						/>
-						<img
-							src="wawa.jpg"
-							className={
-								"anim-speed-3 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
-						/>
-						<img
-							src="wawa.jpg"
-							className={
-								"anim-speed-3 " +
-								(hasLoaded ? "margin-slide-down" : "hidden-anim-slide-down")
-							}
+							className={"anim-speed-3 margin-slide-down m-25"}
 						/>
 					</Row>
 				</Col>
