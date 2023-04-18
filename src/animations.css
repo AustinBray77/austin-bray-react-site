@@ -90,8 +90,12 @@
 }
 
 .margin-slide-down {
-	animation: marginSlideDown 1s 1;
-	-webkit-animation: marginSlideDown 1s 1;
+	animation-name: marginSlideDown, fadeIn;
+	animation-iteration-count: 1, 1;
+	animation-duration: 1s, 1s;
+	-webkit-animation-name: marginSlideDown, fadeIn;
+	-webkit-animation-iteration-count: 1, 1;
+	-webkit-animation-duration: 1s, 1s;
 }
 
 @keyframes marginSlideDown {

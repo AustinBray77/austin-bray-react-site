@@ -12,35 +12,53 @@ const Freelance = (): JSX.Element => {
 				<Col xs={6}>
 					<Row>
 						<h1>Why Austin?</h1>
-						<h3 className={"list-item anim-speed-1  fly-in-left"}>Line 1</h3>
-						<h3 className={"list-item anim-speed-2  fly-in-left"}>Line 2</h3>
-						<h3 className={"list-item anim-speed-3  fly-in-left"}>Line 3</h3>
-						<h3 className={"list-item anim-speed-4  fly-in-left"}>Line 4</h3>
-						<h3 className={"list-item anim-speed-5 fly-in-left"}>Line 5</h3>
+						<h3 className={"list-item anim-speed-1  fly-in-left"}>
+							Multiple Years Experience in many promenient languages
+						</h3>
+						<h3 className={"list-item anim-speed-2  fly-in-left"}>
+							Multiple Years Experience using industry standard source control
+							and development tools.
+						</h3>
+						<h3 className={"list-item anim-speed-3  fly-in-left"}>
+							Experience developing many different project types
+						</h3>
+						<h3 className={"list-item anim-speed-4  fly-in-left"}>
+							Expert communication and coperative skills allow me to create your
+							project your way
+						</h3>
+						<h3 className={"list-item anim-speed-5 fly-in-left"}>
+							Low price for expert level value!
+						</h3>
 					</Row>
 				</Col>
 				<Col xs={6}>
 					<Row className="justify-content-center">
-						<img src="wawa.jpg" className={"anim-speed-1 fade-in"} />
-						<img src="wawa.jpg" className={"anim-speed-1 fade-in"} />
-						<img src="wawa.jpg" className={"anim-speed-1 fade-in"} />
-						<img src="wawa.jpg" className={"anim-speed-1 fade-in"} />
+						<img
+							src="../Freelance/csharp.png"
+							className={"anim-speed-1 fade-in"}
+						/>
+						<img
+							src="../Freelance/cpp.png"
+							className={"anim-speed-1 fade-in"}
+						/>
+						<img src="../Freelance/ts.png" className={"anim-speed-1 fade-in"} />
+						<img src="../Freelance/js.png" className={"anim-speed-1 fade-in"} />
 					</Row>
 					<Row className="justify-content-center">
 						<img
-							src="wawa.jpg"
+							src="../Freelance/java.png"
 							className={"anim-speed-2 margin-slide-down m-25"}
 						/>
 						<img
-							src="wawa.jpg"
+							src="../Freelance/py.png"
 							className={"anim-speed-2 margin-slide-down m-25"}
 						/>
 						<img
-							src="wawa.jpg"
+							src="../Freelance/gh.png"
 							className={"anim-speed-2 margin-slide-down m-25"}
 						/>
 						<img
-							src="wawa.jpg"
+							src="../Freelance/git.png"
 							className={"anim-speed-2 margin-slide-down m-25"}
 						/>
 					</Row>

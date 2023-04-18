@@ -11,9 +11,12 @@ function DownloadElement(props: {
 	children: string | JSX.Element | JSX.Element[];
 	filePath: string;
 	sourceCode: string;
+	className?: string | null;
 }): JSX.Element {
 	return (
-		<Row className="bg-dark mt-4 br-20">
+		<Row
+			className={"bg-pitch fade-in margin-slide-down m-25 " + props.className}
+		>
 			<Col xs={6} className="py-4 text-center">
 				{props.children}
 			</Col>
@@ -67,38 +70,41 @@ export default function Download(): JSX.Element {
 	return (
 		<Container id="Download" className="">
 			<Row className="justify-content-center">
-				<Col xs={8}>
-					<DownloadElement
-						filePath="GameOfLifeWin32.zip"
-						sourceCode="https://github.com/AustinBray77/game-of-life-cpp"
-					>
-						<h3 className="text-light">Game Of Life Win 32 (Windows)</h3>
-					</DownloadElement>
-					<DownloadElement
-						filePath="/projects/algo"
-						sourceCode="https://github.com/AustinBray77/austin-bray-react-site/tree/master/src/Pages/Projects/AlgoritmVisualizer"
-					>
-						<h3 className="text-light">Algorithm Visualizer (Web)</h3>
-					</DownloadElement>
-					<DownloadElement
-						filePath="https://play.google.com/store/apps/details?id=com.SixBeachesGaming.BlockSnake2D"
-						sourceCode="https://github.com/AustinBray77/BlockSnake2D"
-					>
-						<h3 className="text-light">Block Snake 2D (Android)</h3>
-					</DownloadElement>
-					<DownloadElement
-						filePath=""
-						sourceCode="https://github.com/AustinBray77/ScienceFairProject"
-					>
-						<h3 className="text-light">Brachristochrone AI Pathfinder (N/A)</h3>
-					</DownloadElement>
-					<DownloadElement
-						filePath="PSD-Viewer-Setup.msi"
-						sourceCode="https://github.com/AustinBray77/PSD-Viewer"
-					>
-						<h3 className="text-light">PSD Viewer (Windows)</h3>
-					</DownloadElement>
-				</Col>
+				<DownloadElement
+					filePath="GameOfLifeWin32.zip"
+					sourceCode="https://github.com/AustinBray77/game-of-life-cpp"
+					className={"anim-speed-1"}
+				>
+					<h3 className="text-light">Game Of Life Win 32 (Windows)</h3>
+				</DownloadElement>
+				<DownloadElement
+					filePath="/projects/algo"
+					sourceCode="https://github.com/AustinBray77/austin-bray-react-site/tree/master/src/Pages/Projects/AlgoritmVisualizer"
+					className={"anim-speed-2"}
+				>
+					<h3 className="text-light">Algorithm Visualizer (Web)</h3>
+				</DownloadElement>
+				<DownloadElement
+					filePath="https://play.google.com/store/apps/details?id=com.SixBeachesGaming.BlockSnake2D"
+					sourceCode="https://github.com/AustinBray77/BlockSnake2D"
+					className={"anim-speed-3"}
+				>
+					<h3 className="text-light">Block Snake 2D (Android)</h3>
+				</DownloadElement>
+				<DownloadElement
+					filePath=""
+					sourceCode="https://github.com/AustinBray77/ScienceFairProject"
+					className={"anim-speed-4"}
+				>
+					<h3 className="text-light">Brachristochrone AI Pathfinder (N/A)</h3>
+				</DownloadElement>
+				<DownloadElement
+					filePath="PSD-Viewer-Setup.msi"
+					sourceCode="https://github.com/AustinBray77/PSD-Viewer"
+					className={"anim-speed-5"}
+				>
+					<h3 className="text-light">PSD Viewer (Windows)</h3>
+				</DownloadElement>
 			</Row>
 		</Container>
 	);
