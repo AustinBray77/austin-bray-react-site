@@ -1,30 +1,42 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./Contact.css";
+import Typewriter from "../../Typewriter";
 
 export default function Contact(): JSX.Element {
 	return (
 		<Container id="Contact">
-			<Row className="justify-content-center my-5">
-				<Col xs={4} className="bg-dark text-light text-center py-4 br-10">
-					<h1>Contact Information</h1>
-					<p>
-						Email Address: austin.bray77@gmail.com
-						<br />
-						<br />
-						Github: <a href="https://github.com/AustinBray77">AustinBray77</a>
-						<br />
-						<br />
-						LinkedIn:{" "}
-						<a href="https://www.linkedin.com/in/austin-bray-63061522b/">
-							Austin Bray
-						</a>
-						<br />
-						<br />
-						<a href="https://www.paypal.com/donate/?business=M9JLUXRAW3GKS&no_recurring=0&item_name=Help+keep+Austin+Bray+.com+free+by+donating+to+help+with+development+and+server+costs.&currency_code=CAD">
-							Donate
-						</a>
-					</p>
+			<Row style={{ marginTop: "200px" }}>
+				<Col className="bg-pitch p-5 text-light" xs={12}>
+					<h1>
+						<Typewriter text={"Contact Information:"} speed={100} />
+					</h1>
+					<button
+						onClick={() => {
+							navigator.clipboard.writeText("austin.bray77@gmail.com");
+						}}
+						className="fly-in-left"
+					>
+						<img src="../Contact/email-icon.png" />
+					</button>
+					<a
+						href="https://github.com/AustinBray77"
+						className="margin-slide-right anim-speed-2"
+					>
+						<img src="../Freelance/gh.png" />
+					</a>
+					<a
+						href="https://www.linkedin.com/in/austin-bray-63061522b/"
+						className="margin-slide-right anim-speed-3"
+					>
+						<img src="../Contact/linkedin-icon.png" />
+					</a>
+					<a
+						href="https://www.paypal.com/donate/?business=M9JLUXRAW3GKS&no_recurring=0&item_name=Help+keep+Austin+Bray+.com+free+by+donating+to+help+with+development+and+server+costs.&currency_code=CAD"
+						className="margin-slide-right anim-speed-4"
+					>
+						<img src="../Contact/paypal-icon.png" />
+					</a>
 				</Col>
 			</Row>
 		</Container>

@@ -19,3 +19,18 @@
 	z-index: 0;
 	padding-top: 50px;
 }
+
+#Contact img {
+	height: 100px;
+	max-width: 200px;
+}
+
+#Contact button {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+#Contact .margin-slide-right {
+	margin-left: 50px;
+}

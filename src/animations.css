@@ -116,6 +116,33 @@
 	}
 }
 
+.margin-slide-right {
+	animation-name: marginSlideRight, fadeIn;
+	animation-iteration-count: 1, 1;
+	animation-duration: 1s, 1s;
+	-webkit-animation-name: marginSlideRight, fadeIn;
+	-webkit-animation-iteration-count: 1, 1;
+	-webkit-animation-duration: 1s, 1s;
+}
+
+@keyframes marginSlideRight {
+	0% {
+		margin-left: 0px;
+	}
+	100% {
+		margin-left: 50px;
+	}
+}
+
+@-webkit-keyframes marginSlideRight {
+	0% {
+		margin-left: 0px;
+	}
+	100% {
+		margin-left: 50px;
+	}
+}
+
 .anim-speed-1 {
 	transition-duration: 1s !important;
 	animation-duration: 1s !important;
