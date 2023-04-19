@@ -14,6 +14,7 @@ export default function Contact(): JSX.Element {
 					<button
 						onClick={() => {
 							navigator.clipboard.writeText("austin.bray77@gmail.com");
+							alert('"austin.bray77@gmail.com" copied to clipboard!');
 						}}
 						className="fly-in-left"
 					>
