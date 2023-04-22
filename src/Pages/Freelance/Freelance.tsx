@@ -62,7 +62,7 @@ const Freelance = (): JSX.Element => {
 							className={"anim-speed-2 margin-slide-down m-25"}
 						/>
 					</Row>
-					<Row className="justify-content-center">
+					{/*<Row className="justify-content-center">
 						<img
 							src="wawa.jpg"
 							className={"anim-speed-3 margin-slide-down m-25"}
@@ -79,7 +79,7 @@ const Freelance = (): JSX.Element => {
 							src="wawa.jpg"
 							className={"anim-speed-3 margin-slide-down m-25"}
 						/>
-					</Row>
+	</Row>*/}
 				</Col>
 			</Row>
 		</Container>

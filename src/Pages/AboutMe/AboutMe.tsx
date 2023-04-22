@@ -1,9 +1,12 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import "./AboutMe.css";
 import Typewriter from "../../Typewriter";
+import { saveAs } from "file-saver";
 
 const AboutMe = (): JSX.Element => {
+	const [isHovering, setIsHovering] = useState(false);
+
 	return (
 		<Container id="AboutMe">
 			<Row
@@ -67,6 +70,19 @@ const AboutMe = (): JSX.Element => {
 							<a href="/Contact">Contact</a> page.
 						</p>
 					</div>
+					<button
+						className={
+							"LinkButton mt-5 fs-3 text-light " +
+							(isHovering ? "bg-lpitch" : "bg-pitch")
+						}
+						onMouseEnter={() => setIsHovering(true)}
+						onMouseLeave={() => setIsHovering(false)}
+						onClick={() => {
+							saveAs("Freelance/resume.pdf", "Austin's_Resume.pdf");
+						}}
+					>
+						<Typewriter text="Click here to download my resume" speed={50} />
+					</button>
 				</div>
 			</Row>
 		</Container>

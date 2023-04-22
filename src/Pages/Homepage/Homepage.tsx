@@ -219,7 +219,7 @@ const ExperienceRow = () => {
 						</Col>
 						<Col xs={6}>
 							<Row className="fade-in justify-content-center">
-								<img src="./projects_back.png" />
+								<img src="./mern.jpeg" />
 							</Row>
 						</Col>{" "}
 					</>

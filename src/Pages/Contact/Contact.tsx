@@ -38,6 +38,12 @@ export default function Contact(): JSX.Element {
 					>
 						<img src="../Contact/paypal-icon.png" />
 					</a>
+					<a
+						href="https://www.fiverr.com/austinbraysbg"
+						className="margin-slide-right anim-speed-5"
+					>
+						<img src="../Contact/fiverr-icon.png" />
+					</a>
 				</Col>
 			</Row>
 		</Container>
