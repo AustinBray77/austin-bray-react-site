@@ -3,16 +3,6 @@
 	-webkit-animation: fadeIn 1s 1;
 }
 
-.fade-in-m {
-	animation: fadeIn 3s 1;
-	-webkit-animation: fadeIn 3s 1;
-}
-
-.fade-in-l {
-	animation: fadeIn 5s 1;
-	-webkit-animation: fadeIn 5s 1;
-}
-
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
@@ -143,32 +133,16 @@
 	}
 }
 
-.anim-speed-1 {
-	transition-duration: 1s !important;
-	animation-duration: 1s !important;
-	-webkit-animation-duration: 1s !important;
+@mixin anim-speed($num) {
+    @if ($num) {
+        @for $i from 1 through $num {
+            .anim-speed-#{$i} {
+                transition-duration: $i*(1s) !important;
+	            animation-duration: $i*(1s) !important;
+	            -webkit-animation-duration: $i*(1s) !important;
+            }
+        }
+    }
 }
 
-.anim-speed-2 {
-	transition-duration: 2s !important;
-	animation-duration: 2s !important;
-	-webkit-animation-duration: 2s !important;
-}
-
-.anim-speed-3 {
-	transition-duration: 3s !important;
-	animation-duration: 3s !important;
-	-webkit-animation-duration: 3s !important;
-}
-
-.anim-speed-4 {
-	transition-duration: 4s !important;
-	animation-duration: 4s !important;
-	-webkit-animation-duration: 4s !important;
-}
-
-.anim-speed-5 {
-	transition-duration: 5s !important;
-	animation-duration: 5s !important;
-	-webkit-animation-duration: 5s !important;
-}
+@include anim-speed(6);

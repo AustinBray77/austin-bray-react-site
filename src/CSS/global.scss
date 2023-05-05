@@ -54,25 +54,9 @@
 	opacity: 0;
 }
 
-.br-10 {
-	border-radius: 10px !important;
-}
-
-.br-15 {
-	border-radius: 15px !important;
-}
-
-.br-20 {
-	border-radius: 20px !important;
-}
-
 .row {
 	margin-left: auto;
 	margin-right: auto;
-}
-
-.m-25 {
-	margin-top: 25px;
 }
 
 .dropdown-content {
@@ -120,3 +104,27 @@
 .top-content-row {
 	margin-top: 300px;
 }
+
+@mixin margin-top($num, $count) {
+    @if($num) {
+        @for $i from 1 through $count {
+            .mtop-#{$i*$num} {
+                margin-top: $i * $num * (1px);
+            }
+        } 
+    }
+}
+
+@mixin border-radius($num, $count) {
+    @if($num) {
+        @for $i from 1 through $count {
+            .br-#{$i*$num} {
+                border-radius: $i*$num* (1px);
+            }
+        }
+    }
+}
+
+@include margin-top(5, 20);
+@include margin-top(100, 8);
+@include border-radius(5, 5);

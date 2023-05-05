@@ -44,6 +44,12 @@ export default function Contact(): JSX.Element {
 					>
 						<img src="../Contact/fiverr-icon.png" />
 					</a>
+					<a
+						href="https://www.freelancer.com/u/AustinBraySBG"
+						className="margin-slide-right anim-speed-6"
+					>
+						<img src="../Contact/freelancer-icon.png" />
+					</a>
 				</Col>
 			</Row>
 		</Container>

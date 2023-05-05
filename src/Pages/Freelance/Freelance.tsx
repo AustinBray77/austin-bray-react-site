@@ -20,7 +20,7 @@ const Freelance = (): JSX.Element => {
 							and development tools.
 						</h3>
 						<h3 className={"list-item anim-speed-3  fly-in-left"}>
-							Experience developing many different project types
+							Five Stars on Freelancer.com with multiple projects
 						</h3>
 						<h3 className={"list-item anim-speed-4  fly-in-left"}>
 							Expert communication and coperative skills allow me to create your
@@ -47,39 +47,48 @@ const Freelance = (): JSX.Element => {
 					<Row className="justify-content-center">
 						<img
 							src="../Freelance/java.png"
-							className={"anim-speed-2 margin-slide-down m-25"}
+							className={"anim-speed-2 margin-slide-down mtop-25"}
 						/>
 						<img
 							src="../Freelance/py.png"
-							className={"anim-speed-2 margin-slide-down m-25"}
+							className={"anim-speed-2 margin-slide-down mtop-25"}
 						/>
 						<img
 							src="../Freelance/gh.png"
-							className={"anim-speed-2 margin-slide-down m-25"}
+							className={"anim-speed-2 margin-slide-down mtop-25"}
 						/>
 						<img
 							src="../Freelance/git.png"
-							className={"anim-speed-2 margin-slide-down m-25"}
+							className={"anim-speed-2 margin-slide-down mtop-25"}
 						/>
 					</Row>
-					{/*<Row className="justify-content-center">
+					<Row className="justify-content-center">
 						<img
-							src="wawa.jpg"
-							className={"anim-speed-3 margin-slide-down m-25"}
+							src="../Freelance/star.png"
+							className={"anim-speed-3 margin-slide-down mtop-25"}
+							style={{ width: "175px" }}
 						/>
 						<img
-							src="wawa.jpg"
-							className={"anim-speed-3 margin-slide-down m-25"}
+							src="../Freelance/star.png"
+							className={"anim-speed-3 margin-slide-down mtop-25"}
+							style={{ width: "175px" }}
 						/>
 						<img
-							src="wawa.jpg"
-							className={"anim-speed-3 margin-slide-down m-25"}
+							src="../Freelance/star.png"
+							className={"anim-speed-3 margin-slide-down mtop-25"}
+							style={{ width: "175px" }}
 						/>
 						<img
-							src="wawa.jpg"
-							className={"anim-speed-3 margin-slide-down m-25"}
+							src="../Freelance/star.png"
+							className={"anim-speed-3 margin-slide-down mtop-25"}
+							style={{ width: "175px" }}
 						/>
-	</Row>*/}
+						<img
+							src="../Freelance/star.png"
+							className={"anim-speed-3 margin-slide-down mtop-25"}
+							style={{ width: "175px" }}
+						/>
+					</Row>
 				</Col>
 			</Row>
 		</Container>
