@@ -29,14 +29,14 @@ const ProjRow = (props: {
 
 	return (
 		<Row style={{ marginTop: props.topRow ? "300px" : "550px" }}>
-			<div className="p-5 bg-pitch text-light" ref={rowRef}>
+			<div className="p-5 bg-pd text-pl" ref={rowRef}>
 				<Row>
 					<Col
 						sm={12}
 						md={6}
 						className={showElements ? "fly-in-left" : "hidden"}
 					>
-						<h1 className="text-start">{props.title}</h1>
+						<h1 className="text-start text-sl">{props.title}</h1>
 						{props.children}
 					</Col>
 					<Col
@@ -109,16 +109,6 @@ export default function Projects(): JSX.Element {
 					project, visit the <a href="/download">downloads</a> page.
 				</p>
 			</ProjRow>
-			{/* <ProjRow title="Totris" img="/totris.png">
-				<p>
-					Totris is a different spin on the popular game Tetris. I used React
-					and Typescript to create this project. My goal with this project to
-					learn about creating an interactable system in react as well as
-					different algorithms reloving around the game. To use this project,
-					click <a href="/projects/totris">here</a>. To see the source code for
-					this project, visit the <a href="/download">downloads</a> page.
-				</p>
-			</ProjRow> */}
 			<ProjRow title="Pathfinding AI" img="/AI.png">
 				<p>
 					For my grade 11 physics class, I was instructed to create an
@@ -139,6 +129,18 @@ export default function Projects(): JSX.Element {
 					</a>
 					. To see the source code for this project, visit the{" "}
 					<a href="/download">downloads</a> page.
+				</p>
+			</ProjRow>
+			<ProjRow title="RSD-Viewer (Password Manager 2.0)" img="/psdviewer.png">
+				<p>
+					To expand my knowledge base, I decided to rebuild my original password
+					viewer project in the tauri framework. For the back end rust was used
+					as is standard with tauri apps, for the front end I used React JS,
+					Typescript, and tailwind which was new for me. Through this I learned
+					more about front and back end communication, building windows apps and
+					installers, as well as Rust and tailwind. The app is currently under
+					LTS and still has active updates, to download or view the source code,
+					visit the <a href="/download">downloads</a> page.
 				</p>
 			</ProjRow>
 			<ProjRow title="Password Manager" img="/psdviewer.png">

@@ -5,7 +5,6 @@ import {
 	BrowserRouter as Router,
 } from "react-router-dom";
 import Homepage from "./Pages/Homepage/Homepage";
-import MHomepage from "./Pages/Homepage/MHomepage";
 import Navbar from "./Navbar";
 import Projects from "./Pages/Projects/Projects";
 import Download from "./Pages/Download/Download";
@@ -28,10 +27,6 @@ function PageNotFound(): JSX.Element {
 	);
 }
 
-const isMobile = (): boolean => {
-	return window.innerWidth < window.innerHeight;
-};
-
 export default function App(): JSX.Element {
 	document.title = "Austin Bray's React Site";
 
@@ -40,7 +35,7 @@ export default function App(): JSX.Element {
 			<Router>
 				<Navbar />
 				<Switch>
-					<Route index element={isMobile() ? <MHomepage /> : <Homepage />} />
+					<Route index element={<Homepage />} />
 					<Route path="/projects" element={<Projects />} />
 					<Route path="/projects/algo" element={<AlgorithmVisualizer />} />
 					<Route path="/projects/encryptor" element={<Encryptor />} />

@@ -1,13 +1,25 @@
+:root {
+	--primary-dark: #2B2D42;
+	--primary-light: #8D99AE;
+	--primary-accent: #F8F32B;
+	--secondary-dark: #000;
+	--secondary-light: #fff;
+}
+
 ::-webkit-scrollbar {
 	width: 10px;
 }
 
 ::-webkit-scrollbar {
-	background: #212529;
+	background: var(--secondary-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #0d6efd;
+	background: var(--primary-dark);
+}
+
+#app {
+	font-family: Consolas, monaco, monospace !important;
 }
 
 #app > .container::before {
@@ -19,7 +31,6 @@
 	height: 100vh;
 	width: 100%;
 	padding-top: 62px;
-	padding-bottom: 45px;
 	max-width: none !important;
 	margin-left: auto;
 	margin-right: auto;
@@ -27,6 +38,19 @@
 	padding-right: 0;
 	overflow-y: auto;
 	overflow-x: hidden;
+}
+
+a {
+	color: var(--primary-accent);
+	transition: all 750ms;
+}
+
+a:hover {
+	color: var(--secondary-dark);
+}
+
+.text-pl a:hover {
+	color: var(--primary-light);
 }
 
 .navbar {
@@ -62,7 +86,6 @@
 .dropdown-content {
 	display: none;
 	position: absolute;
-	background-color: #212529;
 	min-width: 160px;
 	z-index: 1;
 }
@@ -71,16 +94,52 @@
 	display: block;
 }
 
-.bg-pitch {
-	background-color: #010101;
+.bg-pd {
+	background-color: var(--primary-dark);
 }
 
-.bg-lpitch {
-	background-color: #111111;
+.bg-pl {
+	background-color: var(--primary-light);
+}
+
+.bg-sd {
+	background-color: var(--secondary-dark);
+}
+
+.bg-sl {
+	background-color: var(--secondary-light);
+}
+
+.text-pl {
+	color: var(--primary-light) !important;
+}
+
+.text-sl {
+	color: var(--secondary-light);
+}
+
+.text-sd {
+	color: var(--secondary-dark);
+}
+
+.btn {
+	border: 0px;
+	border-radius: 0px;
+	transition: all 750ms;
+}
+
+.btn-dark {
+	color: var(--primary-light);
+}
+
+.btn-dark:hover {
+	background-color: var(--secondary-dark);
+	color: var(--secondary-light) !important;
 }
 
 .LinkButton {
-	border-bottom: solid #0d6efd 5px;
+	border-bottom: solid var(--primary-accent) 5px;
+	transition: all 750ms;
 	border-top: 0px;
 	border-left: 0px;
 	border-right: 0px;
@@ -98,11 +157,11 @@
 }
 
 .content-row {
-	margin-top: 500px;
+	margin-top: 0px;
 }
 
 .top-content-row {
-	margin-top: 300px;
+	margin-bottom: 0vh;
 }
 
 @mixin margin-top($num, $count) {

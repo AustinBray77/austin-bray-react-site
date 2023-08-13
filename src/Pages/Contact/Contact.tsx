@@ -7,7 +7,7 @@ export default function Contact(): JSX.Element {
 	return (
 		<Container id="Contact">
 			<Row style={{ marginTop: "200px" }}>
-				<Col className="bg-pitch p-5 text-light" xs={12}>
+				<Col className="bg-pd p-5 text-light" xs={12}>
 					<h1>
 						<Typewriter text={"Contact Information:"} speed={100} />
 					</h1>

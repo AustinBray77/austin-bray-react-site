@@ -15,7 +15,7 @@ const LinkButton = (props: {
 	return (
 		<button
 			className={
-				"LinkButton fs-3 text-light " + (isHovering ? "bg-lpitch" : "bg-pitch")
+				"LinkButton fs-3 " + (isHovering ? "bg-sd text-pl" : "bg-pl text-pd")
 			}
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}
@@ -28,8 +28,8 @@ const LinkButton = (props: {
 
 const IntroductionRow = () => {
 	return (
-		<Row className="bg-pitch text-light p-5 top-content-row">
-			<Col xs={6}>
+		<Row className="bg-pl text-pd p-5 top-content-row">
+			<Col md={6} xs={12} className="text-center text-md-start">
 				<h1 style={{ fontWeight: "bold" }}>
 					<Typewriter text={"Welcome to Austin's Website!"} speed={100} />
 				</h1>
@@ -45,7 +45,7 @@ const IntroductionRow = () => {
 					/>
 				</p>
 			</Col>
-			<Col xs={6}>
+			<Col md={6} xs={12}>
 				<Row className="fade-in justify-content-center">
 					<img
 						style={{
@@ -79,16 +79,16 @@ const FreelanceRow = () => {
 
 	return (
 		<div ref={FreelanceRef} className="content-row">
-			<Row className="bg-pitch text-light p-5">
+			<Row className="bg-pl text-pd p-5">
 				{animateFreelanceRow ? (
 					<>
 						{" "}
-						<Col xs={6}>
+						<Col md={6} xs={12} className="text-center text-md-start">
 							<h1 style={{ fontWeight: "bold" }}>
 								<Typewriter text={"Your Website, Your Way"} speed={100} />
 							</h1>
 							<br />
-							<p className="fs-4" style={{ height: "250px" }}>
+							<p className="fs-4 info-paragraph">
 								<Typewriter
 									text={
 										"I have plenty of experience creating various beatiful" +
@@ -102,7 +102,7 @@ const FreelanceRow = () => {
 								<Typewriter text={"See what I can do for you ->"} speed={100} />
 							</LinkButton>
 						</Col>
-						<Col xs={6}>
+						<Col md={6} xs={12}>
 							<Row className="justify-content-center fade-in">
 								<img src="./citl.png" />
 							</Row>
@@ -135,16 +135,16 @@ const ProjectRow = () => {
 
 	return (
 		<div ref={ProjectsRef} className="content-row">
-			<Row className="bg-pitch text-light p-5">
+			<Row className="bg-pl text-pd p-5">
 				{animateProjectsRow ? (
 					<>
 						{" "}
-						<Col xs={6}>
+						<Col md={6} xs={12} className="text-center text-md-start">
 							<h1 style={{ fontWeight: "bold" }}>
 								<Typewriter text={"Projects"} speed={100} />
 							</h1>
 							<br />
-							<p className="fs-4" style={{ height: "350px" }}>
+							<p className="fs-4 info-paragraph">
 								<Typewriter
 									text={
 										"I have created many different coding projects through my 4+ years of" +
@@ -159,7 +159,7 @@ const ProjectRow = () => {
 								<Typewriter text={"See all of my projects ->"} speed={100} />
 							</LinkButton>
 						</Col>
-						<Col xs={6}>
+						<Col md={6} xs={12}>
 							<Row className="fade-in justify-content-center">
 								<img src="./projects_back.png" />
 							</Row>
@@ -192,16 +192,20 @@ const ExperienceRow = () => {
 
 	return (
 		<div ref={ExperienceRef} className="content-row">
-			<Row className="bg-pitch text-light p-5">
+			<Row className="bg-pl text-pd p-5">
 				{animateExperienceRow ? (
 					<>
-						{" "}
-						<Col xs={6}>
+						<Col md={6} xs={12}>
+							<Row className="fade-in justify-content-center">
+								<img src="./experience_row.jpg" />
+							</Row>
+						</Col>
+						<Col md={6} xs={12} className="text-center text-md-end">
 							<h1 style={{ fontWeight: "bold" }}>
 								<Typewriter text={"Experience and Resume"} speed={100} />
 							</h1>
 							<br />
-							<p className="fs-4" style={{ height: "350px" }}>
+							<p className="fs-4 info-paragraph">
 								<Typewriter
 									text={
 										"I have experience working with C#, C++, Java, Javascript, and" +
@@ -217,11 +221,6 @@ const ExperienceRow = () => {
 								<Typewriter text={"View more and my resume ->"} speed={100} />
 							</LinkButton>
 						</Col>
-						<Col xs={6}>
-							<Row className="fade-in justify-content-center">
-								<img src="./mern.jpeg" />
-							</Row>
-						</Col>{" "}
 					</>
 				) : (
 					""
@@ -232,11 +231,44 @@ const ExperienceRow = () => {
 };
 
 export default function Homepage(): JSX.Element {
+	const spacerRef = useRef<HTMLDivElement>(null);
+	const [videoState, setVideoState] = useState(0);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver((entries) => {
+			console.log(entries.length);
+
+			if (entries[0].isIntersecting) {
+				setVideoState(1);
+			} else {
+				setVideoState(0);
+			}
+		});
+
+		if (spacerRef.current != null) {
+			observer.observe(spacerRef.current);
+		}
+	}, []);
+
 	return (
 		<Container id="Homepage">
+			<iframe
+				src="https://www.youtube.com/embed/Id8oZS95KxQ?autoplay=1&mute=1&controls=0&loop=1&playlist=Id8oZS95KxQ&amp;showinfo=0"
+				title="YouTube video player"
+				className={videoState == 1 ? "hidden" : ""}
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			></iframe>
+			<iframe
+				src="https://www.youtube.com/embed/y9PTNTSpGJs?autoplay=1&mute=1&controls=0&loop=1&playlist=y9PTNTSpGJs&amp;showinfo=0"
+				title="YouTube video player"
+				className={videoState == 0 ? "hidden" : ""}
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			></iframe>
 			<IntroductionRow />
+			<div className="spacer" ref={spacerRef}></div>
 			<FreelanceRow />
 			<ProjectRow />
+			<div className="spacer"></div>
 			<ExperienceRow />
 		</Container>
 	);

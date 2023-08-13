@@ -3,16 +3,6 @@
   -webkit-animation: fadeIn 1s 1;
 }
 
-.fade-in-m {
-  animation: fadeIn 3s 1;
-  -webkit-animation: fadeIn 3s 1;
-}
-
-.fade-in-l {
-  animation: fadeIn 5s 1;
-  -webkit-animation: fadeIn 5s 1;
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0;

@@ -6,6 +6,7 @@ const NavLink = (props: {
 	path: string;
 	id: string;
 	title: string;
+	children?: string | JSX.Element | JSX.Element[];
 }): JSX.Element => {
 	let location = useLocation();
 
@@ -13,12 +14,13 @@ const NavLink = (props: {
 		<Link
 			to={props.path}
 			className={
-				"btn btn-dark bg-lpitch border border-dark m-2 " +
+				"btn btn-dark bg-pd my-2 mx-4 " +
 				(location.pathname == props.path ? "disabled-cursor" : "")
 			}
 			id={props.id}
 		>
 			{props.title}
+			{props.children}
 		</Link>
 	);
 };
@@ -45,65 +47,66 @@ export default function Navbar(): JSX.Element {
 	const [ShowBlogsDropdown, setShowBlogsDropdown] = useState(0);
 
 	return (
-		<div
-			className={
-				"navbar navbar-expand-lg navbar-dark bg-lpitch text-light pl-1"
-			}
-		>
-			<NavLink path="/" id="HomeBTN" title="Home" />
-			<div
-				onMouseEnter={() => {
-					setShowBlogsDropdown(1);
-				}}
-				onMouseLeave={() => {
-					setShowBlogsDropdown(0);
-				}}
-			>
-				<NavLink path="/blog" id="BlogBTN" title="Blog" />
-				<span
-					className="iconify"
-					data-icon="simple-line-icons:arrow-down"
-					style={{ color: "#f8f9fa" }}
-				></span>
+		<div className="navbar navbar-expand-lg bg-pd text-pl pl-1">
+			<div className="collapse navbar-collapse">
+				<NavLink path="/" id="HomeBTN" title="Home" />
 				<div
-					id="BlogsDropdown"
-					className={
-						"bg-lpitch dropdown-content " +
-						(ShowBlogsDropdown == 1 ? "show" : "")
-					}
+					onMouseEnter={() => {
+						setShowBlogsDropdown(1);
+					}}
+					onMouseLeave={() => {
+						setShowBlogsDropdown(0);
+					}}
 				>
-					{blogLinkList()}
+					<NavLink path="/blog" id="BlogBTN" title="Blog">
+						<span
+							className="iconify mx-2 text-pl"
+							data-icon="simple-line-icons:arrow-down"
+						></span>
+					</NavLink>
+					<div
+						id="BlogsDropdown"
+						className={
+							"bg-pd dropdown-content " + (ShowBlogsDropdown == 1 ? "show" : "")
+						}
+					>
+						{blogLinkList()}
+					</div>
 				</div>
-			</div>
-			<div
-				onMouseEnter={() => {
-					setShowProjectsDropdown(1);
-				}}
-				onMouseLeave={() => {
-					setShowProjectsDropdown(0);
-				}}
-			>
-				<NavLink path="/projects" id="ProjectsBTN" title="Projects" />
-				<span
-					className="iconify"
-					data-icon="simple-line-icons:arrow-down"
-					style={{ color: "#f8f9fa" }}
-				></span>
 				<div
-					id="ProjectsDropdown"
-					className={
-						"bg-lpitch dropdown-content " +
-						(ShowProjectsDropdown == 1 ? "show" : "")
-					}
+					onMouseEnter={() => {
+						setShowProjectsDropdown(1);
+					}}
+					onMouseLeave={() => {
+						setShowProjectsDropdown(0);
+					}}
 				>
-					<NavLink path="/projects/algo" id="AlgoBTN" title="Algo Visualizer" />
-					{/*<br />
+					<NavLink path="/projects" id="ProjectsBTN" title="Projects">
+						<span
+							className="iconify mx-2 text-pl"
+							data-icon="simple-line-icons:arrow-down"
+						></span>
+					</NavLink>
+					<div
+						id="ProjectsDropdown"
+						className={
+							"bg-pd dropdown-content " +
+							(ShowProjectsDropdown == 1 ? "show" : "")
+						}
+					>
+						<NavLink
+							path="/projects/algo"
+							id="AlgoBTN"
+							title="Algo Visualizer"
+						/>
+						{/*<br />
 					<NavLink path="/projects/totris" id="TotrisBTN" title="Totris" />*/}
+					</div>
 				</div>
+				<NavLink path="/download" id="DownloadBTN" title="Download" />
+				<NavLink path="/about-me" id="AboutMeBTN" title="About Me" />
+				<NavLink path="/contact" id="ContactBTN" title="Contact" />
 			</div>
-			<NavLink path="/download" id="DownloadBTN" title="Download" />
-			<NavLink path="/about-me" id="AboutMeBTN" title="About Me" />
-			<NavLink path="/contact" id="ContactBTN" title="Contact" />
 		</div>
 	);
 }

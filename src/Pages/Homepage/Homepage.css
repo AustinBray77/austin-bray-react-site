@@ -3,26 +3,11 @@
 }
 
 #Homepage .bottom-banner {
+	background-color: var(--primary-light);
 	position: absolute;
 	bottom: 30px;
 	left: 10%;
 	right: 10%;
-}
-
-#Homepage::before {
-	content: "";
-	position: fixed;
-	z-index: -1;
-	background-image: url("/base_back.jpeg");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-position: center;
-
-	-webkit-filter: blur(50px);
-	-moz-filter: blur(50px);
-	-o-filter: blur(50px);
-	-ms-filter: blur(50px);
-	filter: blur(50px);
 }
 
 #Homepage {
@@ -37,4 +22,27 @@
 	width: 100%;
 
 	z-index: -1;
+}
+
+#Homepage .info-paragraph {
+	min-height: 25vh;
+}
+
+#Homepage img {
+	max-height: 45vh;
+}
+
+#Homepage iframe {
+	position: fixed;
+	height: 120%;
+	width: 120%;
+	z-index: -1;
+	left: -10%;
+}
+
+#Homepage .spacer {
+	height: 70vh;
+	width: 100vw;
+	z-index: 1;
+	background-color: #0000;
 }
