@@ -2,51 +2,62 @@ import React, { useState, useEffect, useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./Projects.css";
 
+const Dropdown = (props: {
+	children: JSX.Element[];
+	title: string;
+}): JSX.Element => {
+	const [contentState, setContentState] = useState("hidden");
+
+	if (contentState == "fly-out-top") {
+		setTimeout(() => {
+			setContentState("hidden");
+		}, 1000);
+	}
+
+	return (
+		<Row className="text-pl anim-speed-1">
+			<button
+				className="bg-pd btn text-pl p-5"
+				onClick={() => {
+					if (contentState == "hidden") {
+						setContentState("fly-in-top");
+					} else if (contentState == "fly-in-top") {
+						setContentState("fly-out-top");
+					}
+				}}
+				style={{ zIndex: "10" }}
+			>
+				<Row>
+					<Col xs={12} md={6}>
+						<h1 className="display-1">{props.title}</h1>
+					</Col>
+					<Col xs={12} md={6}>
+						<h1 className="display-1">+</h1>
+					</Col>
+				</Row>
+			</button>
+			<div className={contentState} style={{ padding: 0 }}>
+				{props.children}
+			</div>
+		</Row>
+	);
+};
+
 const ProjRow = (props: {
 	children: JSX.Element | JSX.Element[];
 	title: string;
 	img: string;
 	topRow?: boolean;
 }): JSX.Element => {
-	const rowRef = useRef<HTMLDivElement>(null);
-	const [showElements, setShowElements] = useState(false);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver((entries) => {
-			let entry = entries[0];
-
-			if (entry.isIntersecting) {
-				setShowElements(true);
-			} else {
-				setShowElements(false);
-			}
-		});
-
-		if (rowRef.current != null) {
-			observer.observe(rowRef.current);
-		}
-	});
-
 	return (
-		<Row style={{ marginTop: props.topRow ? "300px" : "550px" }}>
-			<div className="p-5 bg-pd text-pl" ref={rowRef}>
+		<Row>
+			<div className="p-5 bg-pd text-pl">
 				<Row>
-					<Col
-						sm={12}
-						md={6}
-						className={showElements ? "fly-in-left" : "hidden"}
-					>
+					<Col sm={12} md={6}>
 						<h1 className="text-start text-sl">{props.title}</h1>
 						{props.children}
 					</Col>
-					<Col
-						sm={12}
-						md={6}
-						className={
-							"img-col position-relative text-center " +
-							(showElements ? "fly-in-right" : "hidden")
-						}
-					>
+					<Col sm={12} md={6} className="img-col position-relative text-center">
 						<img src={props.img} className="rounded img-fluid" />
 					</Col>
 				</Row>
@@ -58,33 +69,36 @@ const ProjRow = (props: {
 export default function Projects(): JSX.Element {
 	return (
 		<Container id="Projects">
-			<ProjRow title="Block Snake 2D" img="/blcksnk.png" topRow={true}>
-				<p>
-					Block Snake 2D is my first major Unity project coded in C#. The goal
-					of this project was to see through the full publication of an app on a
-					major distrubting platform (google play store) and to develop a game
-					for android through Unity, which I had not done before. I believe I
-					was successful in both of these goals and it really taught me alot
-					about how much it actaully takes to make a fully functioning app and
-					how to push it to production. To download and play Block Snake 2D ,
-					click{" "}
-					<a href="https://play.google.com/store/apps/details?id=com.SixBeachesGaming.BlockSnake2D">
-						here
-					</a>
-					. To see the source code for this project, go to the source code page.
-				</p>
-			</ProjRow>
-			<ProjRow title="Conway's Game Of Life" img="/gameoflife(temp).png">
-				<p>
-					A replication of conway's game of life was another one of my major
-					projects. I used to C++ and the WIN 32 Api for windows to create this
-					project. My goal from this project was to learn more about object
-					oriented C++ and the WIN 32 Api, which I believe I was successful in
-					doing. To use this project simply go to the{" "}
-					<a href="/download">downloads</a> page and download it from there, it
-					is only available for windows computers.
-				</p>
-			</ProjRow>
+			<Dropdown title="Test">
+				<ProjRow title="Block Snake 2D" img="/blcksnk.png">
+					<p>
+						Block Snake 2D is my first major Unity project coded in C#. The goal
+						of this project was to see through the full publication of an app on
+						a major distrubting platform (google play store) and to develop a
+						game for android through Unity, which I had not done before. I
+						believe I was successful in both of these goals and it really taught
+						me alot about how much it actaully takes to make a fully functioning
+						app and how to push it to production. To download and play Block
+						Snake 2D , click{" "}
+						<a href="https://play.google.com/store/apps/details?id=com.SixBeachesGaming.BlockSnake2D">
+							here
+						</a>
+						. To see the source code for this project, go to the source code
+						page.
+					</p>
+				</ProjRow>
+				<ProjRow title="Conway's Game Of Life" img="/gameoflife(temp).png">
+					<p>
+						A replication of conway's game of life was another one of my major
+						projects. I used to C++ and the WIN 32 Api for windows to create
+						this project. My goal from this project was to learn more about
+						object oriented C++ and the WIN 32 Api, which I believe I was
+						successful in doing. To use this project simply go to the{" "}
+						<a href="/download">downloads</a> page and download it from there,
+						it is only available for windows computers.
+					</p>
+				</ProjRow>
+			</Dropdown>
 			<ProjRow title="Chess In The library" img="/citl.png">
 				<p>
 					<a href="https://www.chessinthelibrary.com">
@@ -131,7 +145,7 @@ export default function Projects(): JSX.Element {
 					<a href="/download">downloads</a> page.
 				</p>
 			</ProjRow>
-			<ProjRow title="RSD-Viewer (Password Manager 2.0)" img="/psdviewer.png">
+			<ProjRow title="RSD-Viewer (Password Manager 2.0)" img="/rsd_icon.png">
 				<p>
 					To expand my knowledge base, I decided to rebuild my original password
 					viewer project in the tauri framework. For the back end rust was used

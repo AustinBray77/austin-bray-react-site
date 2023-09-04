@@ -32,3 +32,11 @@
 	height: 300px !important;
 	width: auto !important;
 }
+
+#Projects .hidden {
+	height: 0px;
+}
+
+#Projects .btn:focus {
+	box-shadow: none !important;
+}

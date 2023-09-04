@@ -46,8 +46,8 @@ export default function App(): JSX.Element {
 					{/*<Route path="/projects/totris" element={<Totris />} />*/}
 					<Route path="/download" element={<Download />} />
 					<Route path="/contact" element={<Contact />} />
-					<Route path="/blog" element={<Blog />} />
-					<Route path="/blog/:article" element={<Blog />} />
+					{/*<Route path="/blog" element={<Blog />} />
+					<Route path="/blog/:article" element={<Blog />} />*/}
 					<Route path="/about-me" element={<AboutMe />} />
 					<Route path="/freelance" element={<Freelance />} />
 					<Route path="*" element={<PageNotFound />} />

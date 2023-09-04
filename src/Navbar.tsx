@@ -50,7 +50,7 @@ export default function Navbar(): JSX.Element {
 		<div className="navbar navbar-expand-lg bg-pd text-pl pl-1">
 			<div className="collapse navbar-collapse">
 				<NavLink path="/" id="HomeBTN" title="Home" />
-				<div
+				{/*<div
 					onMouseEnter={() => {
 						setShowBlogsDropdown(1);
 					}}
@@ -72,7 +72,7 @@ export default function Navbar(): JSX.Element {
 					>
 						{blogLinkList()}
 					</div>
-				</div>
+					</div> */}
 				<div
 					onMouseEnter={() => {
 						setShowProjectsDropdown(1);
