@@ -1,16 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, LegacyRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./Projects.css";
+
+enum ContentState {
+	Hidden = "hidden",
+	Show = "fly-in-top",
+	Hide = "fly-out-top",
+}
 
 const Dropdown = (props: {
 	children: JSX.Element[];
 	title: string;
+	contentState: ContentState;
+	setContentState: React.Dispatch<React.SetStateAction<ContentState>>;
 }): JSX.Element => {
-	const [contentState, setContentState] = useState("hidden");
-
-	if (contentState == "fly-out-top") {
+	if (props.contentState.toString() == "fly-out-top") {
 		setTimeout(() => {
-			setContentState("hidden");
+			props.setContentState(ContentState.Hidden);
 		}, 1000);
 	}
 
@@ -19,10 +25,10 @@ const Dropdown = (props: {
 			<button
 				className="bg-pd btn text-pl p-5"
 				onClick={() => {
-					if (contentState == "hidden") {
-						setContentState("fly-in-top");
-					} else if (contentState == "fly-in-top") {
-						setContentState("fly-out-top");
+					if (props.contentState.toString() == "hidden") {
+						props.setContentState(ContentState.Show);
+					} else if (props.contentState.toString() == "fly-in-top") {
+						props.setContentState(ContentState.Hide);
 					}
 				}}
 				style={{ zIndex: "10" }}
@@ -36,7 +42,13 @@ const Dropdown = (props: {
 					</Col>
 				</Row>
 			</button>
-			<div className={contentState} style={{ padding: 0 }}>
+			<div
+				className={props.contentState}
+				style={{
+					padding: 0,
+					position: "absolute",
+				}}
+			>
 				{props.children}
 			</div>
 		</Row>
@@ -67,9 +79,16 @@ const ProjRow = (props: {
 };
 
 export default function Projects(): JSX.Element {
+	const [contentState, setContentState] = useState(ContentState.Hidden);
+	const [activeDropdown, setActiveDropdown] = useState(0);
+
 	return (
 		<Container id="Projects">
-			<Dropdown title="Test">
+			<Dropdown
+				title="Test"
+				contentState={contentState}
+				setContentState={setContentState}
+			>
 				<ProjRow title="Block Snake 2D" img="/blcksnk.png">
 					<p>
 						Block Snake 2D is my first major Unity project coded in C#. The goal
