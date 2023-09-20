@@ -214,6 +214,25 @@
 	}
 }
 
+
+.fly-in-topV {
+	animation-name: flyInTop;
+	animation-iteration-count: 1, 1;
+	animation-duration: 1s, 1s;
+	-webkit-animation-name: flyInTop;
+	-webkit-animation-iteration-count: 1, 1;
+	-webkit-animation-duration: 1s, 1s;
+}
+
+.fly-out-topV {
+	animation-name: flyOutTop;
+	animation-iteration-count: 1, 1;
+	animation-duration: 1s, 1s;
+	-webkit-animation-name: flyOutTop;
+	-webkit-animation-iteration-count: 1, 1;
+	-webkit-animation-duration: 1s, 1s;
+}
+
 @mixin anim-speed($num) {
     @if ($num) {
         @for $i from 1 through $num {

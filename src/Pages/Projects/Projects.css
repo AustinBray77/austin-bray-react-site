@@ -40,3 +40,8 @@
 #Projects .btn:focus {
 	box-shadow: none !important;
 }
+
+#Projects .dropdown-row {
+	transition-duration: 0s !important;
+	-webkit-transition-duration: 0s !important;
+}
