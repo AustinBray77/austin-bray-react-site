@@ -32,6 +32,71 @@ const Dropdown = (props: {
 	const [animatedHeight, setAnimatedHeight] = useState(0);
 	const [firstCall, setFirstCall] = useState(true);
 
+	const animateDown = () => {
+		if (
+			props.state.activeRowReference == null ||
+			props.state.activeRowReference.current == null
+		) {
+			return;
+		}
+
+		if (firstCall) {
+			setFirstCall(false);
+			setAnimatedHeight(
+				props.state.activeRowReference.current.clientHeight - 200
+			);
+		}
+
+		if (animatedHeight < 0) {
+			setAnimatedHeight(0);
+			return;
+		}
+
+		let speed: number =
+			(props.state.activeRowReference.current.clientHeight - 200) / 200;
+
+		const timeoutId = setTimeout(() => {
+			setAnimatedHeight((value) => value - speed);
+		}, 1);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	};
+
+	const animateUp = () => {
+		if (
+			props.state.activeRowReference == null ||
+			props.state.activeRowReference.current == null
+		) {
+			return;
+		}
+
+		if (firstCall) {
+			setFirstCall(false);
+			setAnimatedHeight(0);
+		}
+
+		if (
+			animatedHeight >
+			props.state.activeRowReference.current.clientHeight - 200
+		) {
+			setAnimatedHeight(0);
+			return;
+		}
+
+		let speed: number =
+			(props.state.activeRowReference.current.clientHeight - 200) / 200;
+
+		const timeoutId = setTimeout(() => {
+			setAnimatedHeight((value) => value + speed);
+		}, 1);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	};
+
 	useEffect(() => {
 		if (
 			props.state.activeDropdown >= props.index ||
@@ -43,30 +108,11 @@ const Dropdown = (props: {
 			return;
 		}
 
-		if (firstCall) {
-			setFirstCall(false);
-			setAnimatedHeight(
-				props.state.activeRowReference.current.clientHeight - 200
-			);
-		}
-
-		if (animatedHeight <= 0) {
-			return;
-		}
-
-		let speed: number =
-			(props.state.activeRowReference.current.clientHeight - 200) / 250;
-
-		const timeoutId = setTimeout(() => {
-			setAnimatedHeight((value) => value - speed);
-		}, 1);
-
-		return () => {
-			clearTimeout(timeoutId);
-		};
+		if (props.state.contentState == ContentState.Show) animateDown();
+		else animateUp();
 	}, [props.state.activeDropdown, animatedHeight]);
 
-	console.log(-animatedHeight);
+	console.log(animatedHeight);
 
 	return (
 		<Row
@@ -109,6 +155,7 @@ const Dropdown = (props: {
 				}
 				style={{
 					padding: 0,
+					zIndex: "1",
 				}}
 			>
 				{props.children}
