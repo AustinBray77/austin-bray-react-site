@@ -44,13 +44,12 @@ const blogLinkList = (): JSX.Element[] => {
 
 export default function Navbar(): JSX.Element {
 	const [ShowProjectsDropdown, setShowProjectsDropdown] = useState(0);
-	const [ShowBlogsDropdown, setShowBlogsDropdown] = useState(0);
+	//const [ShowBlogsDropdown, setShowBlogsDropdown] = useState(0);
 
 	return (
 		<div className="navbar navbar-expand-lg bg-pd text-pl pl-1">
-			<div className="collapse navbar-collapse">
-				<NavLink path="/" id="HomeBTN" title="Home" />
-				{/*<div
+			<NavLink path="/" id="HomeBTN" title="Home" />
+			{/*<div
 					onMouseEnter={() => {
 						setShowBlogsDropdown(1);
 					}}
@@ -73,40 +72,35 @@ export default function Navbar(): JSX.Element {
 						{blogLinkList()}
 					</div>
 					</div> */}
+			<div
+				onMouseEnter={() => {
+					setShowProjectsDropdown(1);
+				}}
+				onMouseLeave={() => {
+					setShowProjectsDropdown(0);
+				}}
+			>
+				<NavLink path="/projects" id="ProjectsBTN" title="Projects">
+					<span
+						className="iconify mx-2 text-pl"
+						data-icon="simple-line-icons:arrow-down"
+					></span>
+				</NavLink>
 				<div
-					onMouseEnter={() => {
-						setShowProjectsDropdown(1);
-					}}
-					onMouseLeave={() => {
-						setShowProjectsDropdown(0);
-					}}
+					id="ProjectsDropdown"
+					className={
+						"bg-pd dropdown-content " +
+						(ShowProjectsDropdown == 1 ? "show" : "")
+					}
 				>
-					<NavLink path="/projects" id="ProjectsBTN" title="Projects">
-						<span
-							className="iconify mx-2 text-pl"
-							data-icon="simple-line-icons:arrow-down"
-						></span>
-					</NavLink>
-					<div
-						id="ProjectsDropdown"
-						className={
-							"bg-pd dropdown-content " +
-							(ShowProjectsDropdown == 1 ? "show" : "")
-						}
-					>
-						<NavLink
-							path="/projects/algo"
-							id="AlgoBTN"
-							title="Algo Visualizer"
-						/>
-						{/*<br />
+					<NavLink path="/projects/algo" id="AlgoBTN" title="Algo Visualizer" />
+					{/*<br />
 					<NavLink path="/projects/totris" id="TotrisBTN" title="Totris" />*/}
-					</div>
 				</div>
-				<NavLink path="/download" id="DownloadBTN" title="Download" />
-				<NavLink path="/about-me" id="AboutMeBTN" title="About Me" />
-				<NavLink path="/contact" id="ContactBTN" title="Contact" />
 			</div>
+			<NavLink path="/download" id="DownloadBTN" title="Download" />
+			<NavLink path="/about-me" id="AboutMeBTN" title="About Me" />
+			<NavLink path="/contact" id="ContactBTN" title="Contact" />
 		</div>
 	);
 }

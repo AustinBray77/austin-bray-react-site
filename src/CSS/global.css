@@ -59,7 +59,7 @@ a:hover {
   left: 0;
   z-index: 2;
   overflow-y: visible !important;
-  max-height: 62px;
+  max-height: 200px !important;
 }
 
 #Footer {

@@ -29,8 +29,8 @@ const LinkButton = (props: {
 const IntroductionRow = () => {
 	return (
 		<Row className="bg-pl text-pd p-5 top-content-row">
-			<Col md={6} xs={12} className="text-center text-md-start">
-				<h1 style={{ fontWeight: "bold" }}>
+			<Col md={6} xs={12} className="text-center text-md-start mt-5 mt-sm-0">
+				<h1 className="fw-bold mt-5 mt-md-0 ">
 					<Typewriter text={"Welcome to Austin's Website!"} speed={100} />
 				</h1>
 				<br />
