@@ -4,8 +4,9 @@ import "./Projects.css";
 
 enum ContentState {
 	Hidden = "hidden",
-	Show = "fly-in-top",
-	Hide = "fly-out-top",
+	Shown = "",
+	Show = "fade-in",
+	Hide = "fade-out",
 }
 
 type DropdownState = {
@@ -22,14 +23,10 @@ const Dropdown = (props: {
 	state: DropdownState;
 	index: number;
 }): JSX.Element => {
-	if (props.state.contentState.toString() == "fly-out-top") {
-		setTimeout(() => {
-			props.state.setContentState(ContentState.Hidden);
-			props.state.setActiveDropdown(-1);
-		}, 1000);
-	}
+	const animationDurations = 500; //ms
 
 	const [animatedHeight, setAnimatedHeight] = useState(0);
+	const [animatedOpacity, setAnimatedOpacity] = useState(0);
 	const [firstCall, setFirstCall] = useState(true);
 
 	const animateDown = () => {
@@ -53,7 +50,8 @@ const Dropdown = (props: {
 		}
 
 		let speed: number =
-			(props.state.activeRowReference.current.clientHeight - 200) / 200;
+			(props.state.activeRowReference.current.clientHeight - 200) /
+			animationDurations;
 
 		const timeoutId = setTimeout(() => {
 			setAnimatedHeight((value) => value - speed);
@@ -86,7 +84,8 @@ const Dropdown = (props: {
 		}
 
 		let speed: number =
-			(props.state.activeRowReference.current.clientHeight - 200) / 200;
+			(props.state.activeRowReference.current.clientHeight - 200) /
+			animationDurations;
 
 		const timeoutId = setTimeout(() => {
 			setAnimatedHeight((value) => value + speed);
@@ -101,18 +100,54 @@ const Dropdown = (props: {
 		if (
 			props.state.activeDropdown >= props.index ||
 			props.state.activeDropdown == -1 ||
-			props.state.activeRowReference == null ||
-			props.state.activeRowReference.current == null
+			props.state.contentState == ContentState.Hidden ||
+			props.state.contentState == ContentState.Shown
 		) {
 			setFirstCall(true);
+			setAnimatedHeight(0);
 			return;
 		}
 
 		if (props.state.contentState == ContentState.Show) animateDown();
 		else animateUp();
-	}, [props.state.activeDropdown, animatedHeight]);
+	}, [props.state.activeDropdown, animatedHeight, props.state.contentState]);
 
-	console.log(animatedHeight);
+	const fade = (direction: number) => {
+		let speed = 100 / animationDurations;
+
+		let timeoutId = setTimeout(() => {
+			setAnimatedOpacity((value) => value + speed * direction);
+		}, 1);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	};
+
+	useEffect(() => {
+		if (
+			props.state.activeDropdown != props.index ||
+			props.state.contentState == ContentState.Shown ||
+			props.state.contentState == ContentState.Hidden
+		) {
+			return;
+		}
+
+		if (animatedOpacity > 100) {
+			setAnimatedOpacity(100);
+			props.state.setContentState(ContentState.Shown);
+			return;
+		}
+
+		if (animatedOpacity < 0) {
+			setAnimatedOpacity(0);
+			props.state.setContentState(ContentState.Hidden);
+			props.state.setActiveDropdown(-1);
+			return;
+		}
+
+		fade(props.state.contentState == ContentState.Show ? 1 : -1);
+	}, [props.state.activeDropdown, props.state.contentState, animatedOpacity]);
 
 	return (
 		<Row
@@ -129,10 +164,10 @@ const Dropdown = (props: {
 			<button
 				className="bg-pd btn text-pl p-5"
 				onClick={() => {
-					if (props.state.contentState.toString() == "hidden") {
+					if (props.state.contentState == ContentState.Hidden) {
 						props.state.setContentState(ContentState.Show);
 						props.state.setActiveDropdown(props.index);
-					} else if (props.state.contentState.toString() == "fly-in-top") {
+					} else if (props.state.contentState == ContentState.Shown) {
 						props.state.setContentState(ContentState.Hide);
 					}
 				}}
@@ -148,14 +183,13 @@ const Dropdown = (props: {
 				</Row>
 			</button>
 			<div
-				className={
-					props.state.activeDropdown == props.index
-						? props.state.contentState
-						: "hidden"
-				}
 				style={{
 					padding: 0,
 					zIndex: "1",
+					opacity: `${animatedOpacity}%`,
+					height: `${
+						props.state.activeDropdown == props.index ? "100%" : "0px"
+					}`,
 				}}
 			>
 				{props.children}
