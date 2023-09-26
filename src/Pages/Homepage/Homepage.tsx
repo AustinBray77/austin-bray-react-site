@@ -250,6 +250,9 @@ export default function Homepage(): JSX.Element {
 		}
 	}, []);
 
+	let iFrameWidth: number =
+		(125 * (window.innerHeight * 16)) / (window.innerWidth * 9);
+
 	return (
 		<Container id="Homepage">
 			<iframe
@@ -257,12 +260,18 @@ export default function Homepage(): JSX.Element {
 				title="YouTube video player"
 				className={videoState == 1 ? "hidden" : ""}
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				style={{
+					width: `${iFrameWidth}vw`,
+				}}
 			></iframe>
 			<iframe
 				src="https://www.youtube.com/embed/y9PTNTSpGJs?autoplay=1&mute=1&controls=0&loop=1&playlist=y9PTNTSpGJs&amp;showinfo=0"
 				title="YouTube video player"
 				className={videoState == 0 ? "hidden" : ""}
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				style={{
+					width: `${iFrameWidth}vw`,
+				}}
 			></iframe>
 			<IntroductionRow />
 			<div className="spacer" ref={spacerRef}></div>

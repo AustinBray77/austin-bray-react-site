@@ -6,7 +6,7 @@
 	content: "";
 	position: fixed;
 	z-index: -1;
-	background-image: url("~/public/projects_back.png");
+	background-image: url("~/projects_back.png");
 	background-repeat: no-repeat;
 	background-size: 1920px 1080px;
 	background-position: center;

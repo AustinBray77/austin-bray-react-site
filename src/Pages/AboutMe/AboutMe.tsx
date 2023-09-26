@@ -13,14 +13,14 @@ const AboutMe = (): JSX.Element => {
 				className="justify-content-center bg-pitch text-light"
 				style={{ marginTop: "100px" }}
 			>
-				<div className="mb-5 text-start p-5">
+				<div className="mb-5 text-start p-5 bg-pd">
 					<h1>
 						<Typewriter text="About Me" speed={100} />
 					</h1>
 					<br />
 					<div className="fly-in-left anim-speed-2">
 						<h3>Who am I:</h3>
-						<p>
+						<p className="text-pl">
 							Hi, I'm Austin! I am a 18 year old developer from Canada. I love
 							programming, video games, math, science, and sometimes chess. I
 							have experience developing in a multitude of languages and
@@ -42,7 +42,7 @@ const AboutMe = (): JSX.Element => {
 					<br />
 					<div className="fly-in-left anim-speed-3">
 						<h3>Why this:</h3>
-						<p>
+						<p className="text-pl">
 							I created this website as a way to show off my skills and hold all
 							of my projects in one place for people to see. This website is for
 							people looking to enjoy themselves but also potential employers
@@ -52,7 +52,7 @@ const AboutMe = (): JSX.Element => {
 					<br />
 					<div className="fly-in-left anim-speed-4">
 						<h3>Why pick me:</h3>
-						<p>
+						<p className="text-pl">
 							As seen from my projects, I have a wide range of skills in many
 							different programming languages. I am a good solo developer with
 							my Block Snake 2D and PSD-Viewer projects, and even this website,
@@ -72,7 +72,7 @@ const AboutMe = (): JSX.Element => {
 					</div>
 					<button
 						className={
-							"LinkButton mt-5 fs-3 text-light " +
+							"LinkButton mt-5 fs-3 text-light btn-dark " +
 							(isHovering ? "bg-lpitch" : "bg-pitch")
 						}
 						onMouseEnter={() => setIsHovering(true)}

@@ -162,7 +162,7 @@ const Dropdown = (props: {
 			}
 		>
 			<button
-				className="bg-pd btn text-pl p-5"
+				className="bg-pl btn text-pd p-5"
 				onClick={() => {
 					if (props.state.contentState == ContentState.Hidden) {
 						props.state.setContentState(ContentState.Show);
@@ -175,7 +175,7 @@ const Dropdown = (props: {
 			>
 				<Row>
 					<Col xs={12} md={6}>
-						<h1 className="display-1">{props.title}</h1>
+						<h1 className="display-1 fw-lighter">{props.title}</h1>
 					</Col>
 					<Col xs={12} md={6}>
 						<h1 className="display-1">+</h1>
