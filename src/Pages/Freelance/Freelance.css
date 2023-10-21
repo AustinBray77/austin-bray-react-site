@@ -1,7 +1,7 @@
 #Freelance::before {
 	content: "";
 	position: fixed;
-	background-image: url("~/base_back.jpeg");
+	background-image: url("../../images/base_back.jpeg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-position: center;

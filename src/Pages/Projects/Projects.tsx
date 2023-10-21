@@ -22,6 +22,7 @@ const Dropdown = (props: {
 	title: string;
 	state: DropdownState;
 	index: number;
+	className?: string;
 }): JSX.Element => {
 	const animationDurations = 500; //ms
 
@@ -151,7 +152,7 @@ const Dropdown = (props: {
 
 	return (
 		<Row
-			className={"text-pl anim-speed-1 dropdown-row"}
+			className={"text-pl anim-speed-1 dropdown-row " + props.className}
 			style={{
 				transform: "translateY(" + -animatedHeight + "px)",
 			}}
@@ -235,36 +236,43 @@ export default function Projects(): JSX.Element {
 
 	return (
 		<Container id="Projects">
-			<Dropdown title="Game Dev" state={dropDownState} index={0}>
-				<ProjRow title="Block Snake 2D" img="/blcksnk.png">
-					<p>
-						Block Snake 2D is my first major Unity project coded in C#. The goal
-						of this project was to see through the full publication of an app on
-						a major distrubting platform (google play store) and to develop a
-						game for android through Unity, which I had not done before. I
-						believe I was successful in both of these goals and it really taught
-						me alot about how much it actaully takes to make a fully functioning
-						app and how to push it to production. To download and play Block
-						Snake 2D , click{" "}
-						<a href="https://play.google.com/store/apps/details?id=com.SixBeachesGaming.BlockSnake2D">
-							here
-						</a>
-						. To see the source code for this project, go to the source code
-						page.
-					</p>
-				</ProjRow>
-				<ProjRow title="Conway's Game Of Life" img="/gameoflife(temp).png">
-					<p>
-						A replication of conway's game of life was another one of my major
-						projects. I used to C++ and the WIN 32 Api for windows to create
-						this project. My goal from this project was to learn more about
-						object oriented C++ and the WIN 32 Api, which I believe I was
-						successful in doing. To use this project simply go to the{" "}
-						<a href="/download">downloads</a> page and download it from there,
-						it is only available for windows computers.
-					</p>
-				</ProjRow>
-			</Dropdown>
+			<div className="mt-5 mt-sm-0">
+				<Dropdown
+					title="Game Dev"
+					state={dropDownState}
+					index={0}
+					className="mt-5 mt-sm-0"
+				>
+					<ProjRow title="Block Snake 2D" img="/blcksnk.png">
+						<p>
+							Block Snake 2D is my first major Unity project coded in C#. The
+							goal of this project was to see through the full publication of an
+							app on a major distrubting platform (google play store) and to
+							develop a game for android through Unity, which I had not done
+							before. I believe I was successful in both of these goals and it
+							really taught me alot about how much it actaully takes to make a
+							fully functioning app and how to push it to production. To
+							download and play Block Snake 2D , click{" "}
+							<a href="https://play.google.com/store/apps/details?id=com.SixBeachesGaming.BlockSnake2D">
+								here
+							</a>
+							. To see the source code for this project, go to the source code
+							page.
+						</p>
+					</ProjRow>
+					<ProjRow title="Conway's Game Of Life" img="/gameoflife(temp).png">
+						<p>
+							A replication of conway's game of life was another one of my major
+							projects. I used to C++ and the WIN 32 Api for windows to create
+							this project. My goal from this project was to learn more about
+							object oriented C++ and the WIN 32 Api, which I believe I was
+							successful in doing. To use this project simply go to the{" "}
+							<a href="/download">downloads</a> page and download it from there,
+							it is only available for windows computers.
+						</p>
+					</ProjRow>
+				</Dropdown>
+			</div>
 			<Dropdown title="Web Dev" state={dropDownState} index={1}>
 				<ProjRow title="Chess In The library" img="/citl.png">
 					<p>

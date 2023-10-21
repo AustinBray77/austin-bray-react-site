@@ -17,10 +17,10 @@ function DownloadElement(props: {
 		<Row
 			className={"bg-pd fade-in margin-slide-down mtop-25 " + props.className}
 		>
-			<Col xs={6} className="py-4 text-center">
+			<Col md={6} xs={12} className="py-4 text-center">
 				{props.children}
 			</Col>
-			<Col xs={3} className="py-4 text-center">
+			<Col md={3} xs={6} className="py-4 text-center">
 				<Row className="px-3">
 					{props.filePath != "" ? (
 						<Button
@@ -50,7 +50,7 @@ function DownloadElement(props: {
 					)}
 				</Row>
 			</Col>
-			<Col xs={3} className="py-4 px-auto text-center">
+			<Col md={3} xs={6} className="py-4 px-auto text-center">
 				<Row className="px-3">
 					{props.sourceCode != "" ? (
 						<Button
@@ -74,12 +74,12 @@ function DownloadElement(props: {
 
 export default function Download(): JSX.Element {
 	return (
-		<Container id="Download" className="">
-			<Row className="justify-content-center">
+		<Container id="Download">
+			<Row className="justify-content-center mt-5 mt-sm-0">
 				<DownloadElement
 					filePath="GameOfLifeWin32.zip"
 					sourceCode="https://github.com/AustinBray77/game-of-life-cpp"
-					className={"anim-speed-1"}
+					className={"anim-speed-1 mt-5 mt-sm-0"}
 				>
 					<h3 className="text-sl">Game Of Life Win 32 (Windows)</h3>
 				</DownloadElement>
