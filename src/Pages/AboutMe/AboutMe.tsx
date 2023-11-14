@@ -22,52 +22,43 @@ const AboutMe = (): JSX.Element => {
 						<h3>Who am I:</h3>
 						<p className="text-pl">
 							Hi, I'm Austin! I am a 18 year old developer from Canada. I love
-							programming, video games, math, science, and sometimes chess. I
-							have experience developing in a multitude of languages and
+							programming, video games, math, science, and chess. I have
+							experience developing in a multitude of languages and
 							environments, alone or in a team, and for work or for fun.
-							Currently I serve as the head web master of the{" "}
-							<a href="https://chessinthelibrary.com/">
-								Chess in the Library organization
-							</a>
-							, and as freelance web developer working with Tumblewire
-							incorporated. I am also a competitive programmer and sometimes
-							compete on the{" "}
-							<a href="https://dmoj.ca/user/AustinBray05">DMOJ</a> website where
-							I am ranked Top 2000 out of 250000 competitve programmers on dmoj
-							by rating. I am also currently in school, and go to danforth
-							collegiate and technical institute where I am enrolled in the MaST
-							(Math, Science and Technology) specialization program.
+							Currently I am in my first year of the computer science program at
+							McMaster University and am looking for a co-op position for the
+							Summer of 2024.
 						</p>
 					</div>
 					<br />
 					<div className="fly-in-left anim-speed-3">
-						<h3>Why this:</h3>
+						<h3>My Experience:</h3>
 						<p className="text-pl">
-							I created this website as a way to show off my skills and hold all
-							of my projects in one place for people to see. This website is for
-							people looking to enjoy themselves but also potential employers
-							who want to get a better sense of who I am and my skills.
+							I have professional and have been educating on the use of many
+							different programming languages and technologies. I have
+							professional experience with:
+							<ul>
+								<li>C# (Unity, WinForms)</li>
+								<li>Typescript (React.js, Node.js)</li>
+								<li>C++</li>
+								<li>Rust (Tauri)</li>
+							</ul>
+							And I have been formally educated on:
+							<ul>
+								<li>Python (2 Courses)</li>
+								<li>Elm</li>
+								<li>Java</li>
+							</ul>
 						</p>
 					</div>
 					<br />
 					<div className="fly-in-left anim-speed-4">
 						<h3>Why pick me:</h3>
 						<p className="text-pl">
-							As seen from my projects, I have a wide range of skills in many
-							different programming languages. I am a good solo developer with
-							my Block Snake 2D and PSD-Viewer projects, and even this website,
-							as good examples of this. But I am also a good team player with my
-							Pathfinding AI project and role at Chess in the Library showing
-							how I am capable of developing in a team. I am also ruthlessly
-							ambitious and ready to make a name for myself, meaning I will
-							provide you with the highest quality service possible. With all
-							this said, I will only being accepting freelance offers of
-							technologies which are already in my repitoir. Those being: C#
-							(Unity, Winforms, ASP.NET, Selenium), Java/Typescript (React.js,
-							Node.js, Express), C++ (Win32 API, IO Console). If you are
-							interest in hiring me for creating an application using one of
-							those technologies, please visit the{" "}
-							<a href="/Contact">Contact</a> page.
+							As seen from the paragraph, I have the experience and technical
+							knowledge to code (or learn to) anything that you could need me
+							to. However, the real reason you should hire me is because of my
+							drive and passion for programming.
 						</p>
 					</div>
 					<button
