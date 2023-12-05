@@ -58,7 +58,13 @@ const AboutMe = (): JSX.Element => {
 							As seen from the paragraph, I have the experience and technical
 							knowledge to code (or learn to) anything that you could need me
 							to. However, the real reason you should hire me is because of my
-							drive and passion for programming.
+							drive and passion for programming. I am passionate for creating
+							elegant solutions to problems, personally I believe the art of the
+							solution is just that, an art. There is a beauty to elegant and
+							efficient algorithms and systems, and I am very driven to create
+							this beauty. For you, this means the best product possible; I
+							wouldn't feel right delivering code I didn't think was beatiful
+							and efficient.
 						</p>
 					</div>
 					<button
@@ -69,7 +75,7 @@ const AboutMe = (): JSX.Element => {
 						onMouseEnter={() => setIsHovering(true)}
 						onMouseLeave={() => setIsHovering(false)}
 						onClick={() => {
-							saveAs("Freelance/resume.pdf", "Austin's_Resume.pdf");
+							saveAs("Freelance/resume.pdf", "Austin_Resume.pdf");
 						}}
 					>
 						<Typewriter text="Click here to download my resume" speed={50} />
