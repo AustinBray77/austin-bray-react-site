@@ -30,6 +30,8 @@ function PageNotFound(): JSX.Element {
 }
 
 export default function App(): JSX.Element {
+	document.title = "Welcome to Austin's Website!";
+
 	return (
 		<div id="app">
 			<Router>
