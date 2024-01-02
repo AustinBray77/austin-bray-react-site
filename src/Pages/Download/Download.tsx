@@ -73,6 +73,8 @@ function DownloadElement(props: {
 }
 
 export default function Download(): JSX.Element {
+	document.title = "Downloads";
+
 	return (
 		<Container id="Download">
 			<Row className="justify-content-center mt-5 mt-sm-0">

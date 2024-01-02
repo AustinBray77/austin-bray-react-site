@@ -234,6 +234,8 @@ export default function Projects(): JSX.Element {
 		activeRowReference: useRef<HTMLDivElement>(null),
 	};
 
+	document.title = "Projects";
+
 	return (
 		<Container id="Projects">
 			<div className="mt-5 mt-sm-0">

@@ -4,12 +4,14 @@ import "./Contact.css";
 import Typewriter from "../../Typewriter";
 
 export default function Contact(): JSX.Element {
+	document.title = "Contact Austin";
+
 	return (
 		<Container id="Contact">
 			<Row style={{ marginTop: "200px" }}>
 				<Col className="bg-pd p-5 text-light" xs={12}>
 					<h1>
-						<Typewriter text={"Contact Information:"} speed={100} />
+						<Typewriter text={"Contact Austin On:"} speed={100} />
 					</h1>
 					<button
 						onClick={() => {
@@ -24,7 +26,7 @@ export default function Contact(): JSX.Element {
 						href="https://github.com/AustinBray77"
 						className="margin-slide-right anim-speed-2"
 					>
-						<img src="../Freelance/gh.png" />
+						<img src="../Contact/gh.png" />
 					</a>
 					<a
 						href="https://www.linkedin.com/in/austin-bray-63061522b/"

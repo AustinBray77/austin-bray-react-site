@@ -3,91 +3,38 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./Freelance.css";
 
 const Freelance = (): JSX.Element => {
+	document.title = "Freelance";
+
 	return (
 		<Container id="Freelance">
-			<Row
-				className="bg-pitch p-5 text-light content"
-				style={{ marginTop: "10vh" }}
-			>
+			<Row className="bg-pd p-5 content" style={{ marginTop: "10vh" }}>
 				<Col xs={6}>
 					<Row>
 						<h1>Why Austin?</h1>
-						<h3 className={"list-item anim-speed-1  fly-in-left"}>
-							Multiple Years Experience in many promenient languages
-						</h3>
-						<h3 className={"list-item anim-speed-2  fly-in-left"}>
-							Multiple Years Experience using industry standard source control
-							and development tools.
-						</h3>
-						<h3 className={"list-item anim-speed-3  fly-in-left"}>
-							Five Stars on Freelancer.com with multiple projects
-						</h3>
-						<h3 className={"list-item anim-speed-4  fly-in-left"}>
-							Expert communication and coperative skills allow me to create your
-							project your way
-						</h3>
-						<h3 className={"list-item anim-speed-5 fly-in-left"}>
-							Low price for expert level value!
+						<p>
+							Austin has extensive creating websites using web technology,
+							including but not limited to:
+							<ul>
+								<li>React JS</li>
+								<li>WordPress</li>
+								<li>Webflow</li>
+							</ul>
+							This means Austin can create any site that you need! From his work
+							with Chess In The Library.com for 2 years as the Senior Web Master
+							To his work with Tumblewire as their current Website Developer.
+							Austin can do what you need!
+						</p>
+						<h3>
+							Want to learn more? Visit the <a href="/contact">contact</a> page
+							and send me a message!
 						</h3>
 					</Row>
 				</Col>
 				<Col xs={6}>
 					<Row className="justify-content-center">
-						<img
-							src="../Freelance/csharp.png"
-							className={"anim-speed-1 fade-in"}
-						/>
-						<img
-							src="../Freelance/cpp.png"
-							className={"anim-speed-1 fade-in"}
-						/>
-						<img src="../Freelance/ts.png" className={"anim-speed-1 fade-in"} />
-						<img src="../Freelance/js.png" className={"anim-speed-1 fade-in"} />
-					</Row>
-					<Row className="justify-content-center">
-						<img
-							src="../Freelance/java.png"
-							className={"anim-speed-2 margin-slide-down mtop-25"}
-						/>
-						<img
-							src="../Freelance/py.png"
-							className={"anim-speed-2 margin-slide-down mtop-25"}
-						/>
-						<img
-							src="../Freelance/gh.png"
-							className={"anim-speed-2 margin-slide-down mtop-25"}
-						/>
-						<img
-							src="../Freelance/git.png"
-							className={"anim-speed-2 margin-slide-down mtop-25"}
-						/>
-					</Row>
-					<Row className="justify-content-center">
-						<img
-							src="../Freelance/star.png"
-							className={"anim-speed-3 margin-slide-down mtop-25"}
-							style={{ width: "175px" }}
-						/>
-						<img
-							src="../Freelance/star.png"
-							className={"anim-speed-3 margin-slide-down mtop-25"}
-							style={{ width: "175px" }}
-						/>
-						<img
-							src="../Freelance/star.png"
-							className={"anim-speed-3 margin-slide-down mtop-25"}
-							style={{ width: "175px" }}
-						/>
-						<img
-							src="../Freelance/star.png"
-							className={"anim-speed-3 margin-slide-down mtop-25"}
-							style={{ width: "175px" }}
-						/>
-						<img
-							src="../Freelance/star.png"
-							className={"anim-speed-3 margin-slide-down mtop-25"}
-							style={{ width: "175px" }}
-						/>
+						<Col xs={10}>
+							<img src="../tumble.png" width={"100%"} height={300} />
+						</Col>
 					</Row>
 				</Col>
 			</Row>

@@ -13,11 +13,11 @@
 	filter: blur(50px);
 }
 
-#Freelance .list-item {
-	margin-top: 50px;
+#Freelance h1,
+#Freelance h3 {
+	color: var(--secondary-light);
 }
 
-#Freelance img {
-	width: 200px;
-	max-height: 200px;
+#Freelance p {
+	color: var(--primary-light);
 }

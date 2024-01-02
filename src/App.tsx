@@ -20,16 +20,16 @@ import DecompressionQuiz from "./Pages/Projects/DecompressionQuiz/DecompressionQ
 import Freelance from "./Pages/Freelance/Freelance";
 
 function PageNotFound(): JSX.Element {
+	document.title = "Page Not Found";
+
 	return (
-		<Container id="PageNotFound" className="text-center bg-light">
-			<h1>The page you are looking for does not exist.</h1>
+		<Container id="PageNotFound" className="text-center bg-pl">
+			<h1 className="text-pd">The page you are looking for does not exist.</h1>
 		</Container>
 	);
 }
 
 export default function App(): JSX.Element {
-	document.title = "Austin Bray's React Site";
-
 	return (
 		<div id="app">
 			<Router>
