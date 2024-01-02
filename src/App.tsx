@@ -21,8 +21,8 @@ import Freelance from "./Pages/Freelance/Freelance";
 
 function PageNotFound(): JSX.Element {
 	return (
-		<Container id="PageNotFound" className="text-center bg-light">
-			<h1>The page you are looking for does not exist.</h1>
+		<Container id="PageNotFound" className="text-center bg-pl">
+			<h1 className="text-pd">The page you are looking for does not exist.</h1>
 		</Container>
 	);
 }

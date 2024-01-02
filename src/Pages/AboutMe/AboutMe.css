@@ -11,3 +11,12 @@
 #AboutMe {
 	z-index: 0;
 }
+
+#AboutMe h1,
+#AboutMe h3 {
+	color: var(--secondary-light);
+}
+
+#AboutMe p {
+	color: var(--primary-light);
+}

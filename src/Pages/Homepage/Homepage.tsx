@@ -161,7 +161,7 @@ const ProjectRow = () => {
 						</Col>
 						<Col md={6} xs={12}>
 							<Row className="fade-in justify-content-center">
-								<img src="./projects_back.png" />
+								<img src="./algovisualizer.png" />
 							</Row>
 						</Col>{" "}
 					</>
@@ -197,7 +197,7 @@ const ExperienceRow = () => {
 					<>
 						<Col md={6} xs={12}>
 							<Row className="fade-in justify-content-center">
-								<img src="./experience_row.jpg" />
+								<img src="./experience.png" />
 							</Row>
 						</Col>
 						<Col md={6} xs={12} className="text-center text-md-end">

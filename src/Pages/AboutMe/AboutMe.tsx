@@ -9,10 +9,7 @@ const AboutMe = (): JSX.Element => {
 
 	return (
 		<Container id="AboutMe">
-			<Row
-				className="justify-content-center bg-pitch text-light"
-				style={{ marginTop: "100px" }}
-			>
+			<Row className="justify-content-center" style={{ marginTop: "100px" }}>
 				<div className="mb-5 text-start p-5 bg-pd">
 					<h1>
 						<Typewriter text="About Me" speed={100} />
@@ -20,7 +17,7 @@ const AboutMe = (): JSX.Element => {
 					<br />
 					<div className="fly-in-left anim-speed-2">
 						<h3>Who am I:</h3>
-						<p className="text-pl">
+						<p>
 							Hi, I'm Austin! I am a 18 year old developer from Canada. I love
 							programming, video games, math, science, and chess. I have
 							experience developing in a multitude of languages and
@@ -33,7 +30,7 @@ const AboutMe = (): JSX.Element => {
 					<br />
 					<div className="fly-in-left anim-speed-3">
 						<h3>My Experience:</h3>
-						<p className="text-pl">
+						<p>
 							I have professional and have been educating on the use of many
 							different programming languages and technologies. I have
 							professional experience with:
@@ -54,7 +51,7 @@ const AboutMe = (): JSX.Element => {
 					<br />
 					<div className="fly-in-left anim-speed-4">
 						<h3>Why pick me:</h3>
-						<p className="text-pl">
+						<p>
 							As seen from the paragraph, I have the experience and technical
 							knowledge to code (or learn to) anything that you could need me
 							to. However, the real reason you should hire me is because of my
