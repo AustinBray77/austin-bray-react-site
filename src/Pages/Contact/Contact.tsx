@@ -4,6 +4,8 @@ import "./Contact.css";
 import Typewriter from "../../Typewriter";
 
 export default function Contact(): JSX.Element {
+	document.title = "Contact Austin";
+
 	return (
 		<Container id="Contact">
 			<Row style={{ marginTop: "200px" }}>

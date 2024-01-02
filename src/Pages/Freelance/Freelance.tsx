@@ -3,6 +3,8 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./Freelance.css";
 
 const Freelance = (): JSX.Element => {
+	document.title = "Freelance";
+
 	return (
 		<Container id="Freelance">
 			<Row className="bg-pd p-5 content" style={{ marginTop: "10vh" }}>

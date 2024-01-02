@@ -5,6 +5,8 @@ import Typewriter from "../../Typewriter";
 import { saveAs } from "file-saver";
 
 const AboutMe = (): JSX.Element => {
+	document.title = "About Me";
+
 	const [isHovering, setIsHovering] = useState(false);
 
 	return (
