@@ -12,8 +12,8 @@ import AlgorithmVisualizer from "./Pages/Projects/AlgoritmVisualizer/AlgorithmVi
 import Contact from "./Pages/Contact/Contact";
 import { Container } from "react-bootstrap";
 import Encryptor from "./Pages/Projects/Encryptor/Encryptor";
-import Totris from "./Pages/Projects/Totris/Totris";
-import Blog from "./Pages/Blog/Blog";
+//import Totris from "./Pages/Projects/Totris/Totris";
+//import Blog from "./Pages/Blog/Blog";
 import Footer from "./Footer";
 import AboutMe from "./Pages/AboutMe/AboutMe";
 import DecompressionQuiz from "./Pages/Projects/DecompressionQuiz/DecompressionQuiz";
