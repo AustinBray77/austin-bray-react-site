@@ -1,47 +1,62 @@
 #Projects .row > div > p {
-	padding-top: 25px;
+    padding-top: 25px;
 }
 
 #Projects::before {
-	content: "";
-	position: fixed;
-	z-index: -1;
-	background-image: url("../../images/projects_back.png");
-	background-repeat: no-repeat;
-	background-size: 1920px 1080px;
-	background-position: center;
+    content: "";
+    position: fixed;
+    z-index: -1;
+    background-image: url("../../images/projects_back.png");
+    background-repeat: no-repeat;
+    background-size: 1920px 1080px;
+    background-position: center;
 
-	-webkit-filter: blur(5px);
-	-moz-filter: blur(5px);
-	-o-filter: blur(5px);
-	-ms-filter: blur(5px);
-	filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
 }
 
 #Projects {
-	z-index: 0;
-	padding-top: 50px;
-	overflow-x: hidden;
+    z-index: 0;
+    padding-top: 50px;
+    overflow-x: hidden;
 }
 
 #Projects .img-col {
-	min-height: 300px !important;
+    min-height: 300px !important;
 }
 
 #Projects .img-col > img {
-	height: 300px !important;
-	width: auto !important;
+    height: 300px !important;
+    width: auto !important;
 }
 
 #Projects .hidden {
-	height: 0px;
+    height: 0px;
 }
 
 #Projects .btn:focus {
-	box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 #Projects .dropdown-row {
-	transition-duration: 0s !important;
-	-webkit-transition-duration: 0s !important;
+    transition-duration: 0s !important;
+    -webkit-transition-duration: 0s !important;
+}
+
+#Projects .project {
+    transition: all 2s ease-in-out;
+    -webkit-transition: all 2s ease-in-out;
+}
+
+#Projects .show-project {
+    max-height: 200vh;
+    opacity: 1;
+}
+
+#Projects .hide-project {
+    max-height: 0vh;
+    opacity: 0;
 }

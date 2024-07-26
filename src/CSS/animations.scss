@@ -1,245 +1,244 @@
 .fade-in {
-	animation: fadeIn 1s 1;
-	-webkit-animation: fadeIn 1s 1;
+    animation: fadeIn 1s 1;
+    -webkit-animation: fadeIn 1s 1;
 }
 
 @keyframes fadeIn {
-	0% {
-		opacity: 0;
-		filter: blur(5px);
-	}
-	100% {
-		opacity: 1;
-		filter: blur(0px);
-	}
+    0% {
+        opacity: 0;
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+    }
 }
 
 @-webkit-keyframes fadeIn {
-	0% {
-		-webkit-opacity: 0;
-		-webkit-filter: blur(5px);
-	}
-	100% {
-		-webkit-opacity: 1;
-		-webkit-filter: blur(0px);
-	}
+    0% {
+        -webkit-opacity: 0;
+        -webkit-filter: blur(5px);
+    }
+    100% {
+        -webkit-opacity: 1;
+        -webkit-filter: blur(0px);
+    }
 }
 
 .fade-out {
-	animation: fadeOut 1s 1;
-	-webkit-animation: fadeOut 1s 1;
+    animation: fadeOut 1s 1;
+    -webkit-animation: fadeOut 1s 1;
 }
 
 @keyframes fadeOut {
-	0% {
-		opacity: 1;
-		filter: blur(0px);
-	}
-	100% {
-		opacity: 0;
-		filter: blur(5px);
-	}
+    0% {
+        opacity: 1;
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(5px);
+    }
 }
 
 @-webkit-keyframes fadeOut {
-	0% {
-		-webkit-opacity: 1;
-		-webkit-filter: blur(0px);
-	}
-	100% {
-		-webkit-opacity: 0;
-		-webkit-filter: blur(5px);
-	}
+    0% {
+        -webkit-opacity: 1;
+        -webkit-filter: blur(0px);
+    }
+    100% {
+        -webkit-opacity: 0;
+        -webkit-filter: blur(5px);
+    }
 }
 
 .fly-in-top {
-	animation-name: flyInTop, fadeIn;
-	animation-iteration-count: 1, 1;
-	animation-duration: 1s, 1s;
-	-webkit-animation-name: flyInTop, fadeIn;
-	-webkit-animation-iteration-count: 1, 1;
-	-webkit-animation-duration: 1s, 1s;
+    animation-name: flyInTop, fadeIn;
+    animation-iteration-count: 1, 1;
+    animation-duration: 1s, 1s;
+    -webkit-animation-name: flyInTop, fadeIn;
+    -webkit-animation-iteration-count: 1, 1;
+    -webkit-animation-duration: 1s, 1s;
 }
 
 @keyframes flyInTop {
-	0% {
-		transform: translateY(-100%);
-	}
-	100% {
-		transform: translateY(0%);
-	}
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 
 @-webkit-keyframes flyInTop {
-	0% {
-		transform: translateY(-100%);
-	}
-	100% {
-		transform: translateY(0%);
-	}
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 
 .fly-out-top {
-	animation-name: flyOutTop, fadeOut;
-	animation-iteration-count: 1, 1;
-	animation-duration: 1s, 1s;
-	-webkit-animation-name: flyOutTop, fadeOut;
-	-webkit-animation-iteration-count: 1, 1;
-	-webkit-animation-duration: 1s, 1s;
+    animation-name: flyOutTop, fadeOut;
+    animation-iteration-count: 1, 1;
+    animation-duration: 1s, 1s;
+    -webkit-animation-name: flyOutTop, fadeOut;
+    -webkit-animation-iteration-count: 1, 1;
+    -webkit-animation-duration: 1s, 1s;
 }
 
 @keyframes flyOutTop {
-	0% {
-		transform: translateY(0%);
-	}
-	100% {
-		transform: translateY(-100%);
-	}
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
 }
 
 @-webkit-keyframes flyOutTop {
-	0% {
-		transform: translateY(0%);
-	}
-	100% {
-		transform: translateY(-100%);
-	}
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
 }
 
 .fly-in-right {
-	animation-name: flyInRight, fadeIn;
-	animation-iteration-count: 1, 1;
-	animation-duration: 1s, 1s;
-	-webkit-animation-name: flyInRight, fadeIn;
-	-webkit-animation-iteration-count: 1, 1;
-	-webkit-animation-duration: 1s, 1s;
+    animation-name: flyInRight, fadeIn;
+    animation-iteration-count: 1, 1;
+    animation-duration: 1s, 1s;
+    -webkit-animation-name: flyInRight, fadeIn;
+    -webkit-animation-iteration-count: 1, 1;
+    -webkit-animation-duration: 1s, 1s;
 }
 
 @keyframes flyInRight {
-	0% {
-		transform: translateX(100%);
-	}
-	100% {
-		transform: translateX(0%);
-	}
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 @-webkit-keyframes flyInRight {
-	0% {
-		transform: translateX(100%);
-	}
-	100% {
-		transform: translateX(0%);
-	}
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 .fly-in-left {
-	animation-name: flyInLeft, fadeIn;
-	animation-iteration-count: 1, 1;
-	animation-duration: 1s, 1s;
-	-webkit-animation-name: flyInLeft, fadeIn;
-	-webkit-animation-iteration-count: 1, 1;
-	-webkit-animation-duration: 1s, 1s;
+    animation-name: flyInLeft, fadeIn;
+    animation-iteration-count: 1, 1;
+    animation-duration: 1s, 1s;
+    -webkit-animation-name: flyInLeft, fadeIn;
+    -webkit-animation-iteration-count: 1, 1;
+    -webkit-animation-duration: 1s, 1s;
 }
 
 @keyframes flyInLeft {
-	0% {
-		transform: translateX(-100%);
-	}
-	100% {
-		transform: translateX(0%);
-	}
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 @-webkit-keyframes flyInLeft {
-	0% {
-		transform: translateX(-100%);
-	}
-	100% {
-		transform: translateX(0%);
-	}
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 .margin-slide-down {
-	animation-name: marginSlideDown, fadeIn;
-	animation-iteration-count: 1, 1;
-	animation-duration: 1s, 1s;
-	-webkit-animation-name: marginSlideDown, fadeIn;
-	-webkit-animation-iteration-count: 1, 1;
-	-webkit-animation-duration: 1s, 1s;
+    animation-name: marginSlideDown, fadeIn;
+    animation-iteration-count: 1, 1;
+    animation-duration: 1s, 1s;
+    -webkit-animation-name: marginSlideDown, fadeIn;
+    -webkit-animation-iteration-count: 1, 1;
+    -webkit-animation-duration: 1s, 1s;
 }
 
 @keyframes marginSlideDown {
-	0% {
-		margin-top: 0px;
-	}
-	100% {
-		margin-top: 25px;
-	}
+    0% {
+        margin-top: 0px;
+    }
+    100% {
+        margin-top: 25px;
+    }
 }
 
 @-webkit-keyframes marginSlideDown {
-	0% {
-		margin-top: 0px;
-	}
-	100% {
-		margin-top: 25px;
-	}
+    0% {
+        margin-top: 0px;
+    }
+    100% {
+        margin-top: 25px;
+    }
 }
 
 .margin-slide-right {
-	animation-name: marginSlideRight, fadeIn;
-	animation-iteration-count: 1, 1;
-	animation-duration: 1s, 1s;
-	-webkit-animation-name: marginSlideRight, fadeIn;
-	-webkit-animation-iteration-count: 1, 1;
-	-webkit-animation-duration: 1s, 1s;
+    animation-name: marginSlideRight, fadeIn;
+    animation-iteration-count: 1, 1;
+    animation-duration: 1s, 1s;
+    -webkit-animation-name: marginSlideRight, fadeIn;
+    -webkit-animation-iteration-count: 1, 1;
+    -webkit-animation-duration: 1s, 1s;
 }
 
 @keyframes marginSlideRight {
-	0% {
-		margin-left: 0px;
-	}
-	100% {
-		margin-left: 50px;
-	}
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 50px;
+    }
 }
 
 @-webkit-keyframes marginSlideRight {
-	0% {
-		margin-left: 0px;
-	}
-	100% {
-		margin-left: 50px;
-	}
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 50px;
+    }
 }
 
-
 .fly-in-topV {
-	animation-name: flyInTop;
-	animation-iteration-count: 1, 1;
-	animation-duration: 1s, 1s;
-	-webkit-animation-name: flyInTop;
-	-webkit-animation-iteration-count: 1, 1;
-	-webkit-animation-duration: 1s, 1s;
+    animation-name: flyInTop;
+    animation-iteration-count: 1, 1;
+    animation-duration: 1s, 1s;
+    -webkit-animation-name: flyInTop;
+    -webkit-animation-iteration-count: 1, 1;
+    -webkit-animation-duration: 1s, 1s;
 }
 
 .fly-out-topV {
-	animation-name: flyOutTop;
-	animation-iteration-count: 1, 1;
-	animation-duration: 1s, 1s;
-	-webkit-animation-name: flyOutTop;
-	-webkit-animation-iteration-count: 1, 1;
-	-webkit-animation-duration: 1s, 1s;
+    animation-name: flyOutTop;
+    animation-iteration-count: 1, 1;
+    animation-duration: 1s, 1s;
+    -webkit-animation-name: flyOutTop;
+    -webkit-animation-iteration-count: 1, 1;
+    -webkit-animation-duration: 1s, 1s;
 }
 
 @mixin anim-speed($num) {
     @if ($num) {
         @for $i from 1 through $num {
             .anim-speed-#{$i} {
-                transition-duration: $i*(1s) !important;
-	            animation-duration: $i*(1s) !important;
-	            -webkit-animation-duration: $i*(1s) !important;
+                transition-duration: $i * (1s) !important;
+                animation-duration: $i * (1s) !important;
+                -webkit-animation-duration: $i * (1s) !important;
             }
         }
     }
