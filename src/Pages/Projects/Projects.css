@@ -49,14 +49,17 @@
 #Projects .project {
     transition: all 2s ease-in-out;
     -webkit-transition: all 2s ease-in-out;
+    overflow-y: hidden;
 }
 
 #Projects .show-project {
+    transition-duration: 2s;
     max-height: 200vh;
     opacity: 1;
 }
 
 #Projects .hide-project {
+    transition-duration: 1s;
     max-height: 0vh;
     opacity: 0;
 }
