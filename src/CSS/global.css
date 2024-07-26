@@ -1,7 +1,7 @@
 :root {
-  --primary-dark: #2B2D42;
-  --primary-light: #8D99AE;
-  --primary-accent: #F8F32B;
+  --primary-dark: #2b2d42;
+  --primary-light: #8d99ae;
+  --primary-accent: #f8f32b;
   --secondary-dark: #000;
   --secondary-light: #fff;
 }
@@ -38,6 +38,7 @@
   padding-right: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 
 a {
@@ -163,6 +164,10 @@ a:hover {
 
 .top-content-row {
   margin-bottom: 0vh;
+}
+
+.youtube-container {
+  pointer-events: none;
 }
 
 .mtop-5 {
