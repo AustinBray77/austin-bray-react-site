@@ -29,7 +29,7 @@ const LinkButton = (props: {
 const IntroductionRow = () => {
 	return (
 		<Row className="bg-pl text-pd p-5 top-content-row">
-			<Col md={6} xs={12} className="text-center text-md-start mt-5 mt-sm-0">
+			<Col md={8} xs={12} className="text-center text-md-start mt-5 mt-sm-0">
 				<h1 className="fw-bold mt-5 mt-md-0 ">
 					<Typewriter text={"Welcome to Austin's Website!"} speed={100} />
 				</h1>
@@ -45,11 +45,10 @@ const IntroductionRow = () => {
 					/>
 				</p>
 			</Col>
-			<Col md={6} xs={12}>
+			<Col md={4} xs={12}>
 				<Row className="fade-in justify-content-center">
 					<img
 						style={{
-							height: "250px",
 							maxWidth: "250px",
 						}}
 						src="./headshot.jpg"

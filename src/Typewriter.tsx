@@ -12,7 +12,7 @@ const Typewriter = (props: { text: string; speed: number }) => {
 
 		let timeoutTime = props.speed;
 
-		if (props.text.charCodeAt(currentStringIndex.current - 1) == 32) {
+		if (props.text.charCodeAt(currentStringIndex.current - 1) === 32) {
 			timeoutTime *= 2;
 		}
 

@@ -32,8 +32,8 @@ const Dropdown = (props: {
 
 	const animateDown = () => {
 		if (
-			props.state.activeRowReference == null ||
-			props.state.activeRowReference.current == null
+			props.state.activeRowReference === null ||
+			props.state.activeRowReference.current === null
 		) {
 			return;
 		}
@@ -65,8 +65,8 @@ const Dropdown = (props: {
 
 	const animateUp = () => {
 		if (
-			props.state.activeRowReference == null ||
-			props.state.activeRowReference.current == null
+			props.state.activeRowReference === null ||
+			props.state.activeRowReference.current === null
 		) {
 			return;
 		}
@@ -100,16 +100,16 @@ const Dropdown = (props: {
 	useEffect(() => {
 		if (
 			props.state.activeDropdown >= props.index ||
-			props.state.activeDropdown == -1 ||
-			props.state.contentState == ContentState.Hidden ||
-			props.state.contentState == ContentState.Shown
+			props.state.activeDropdown === -1 ||
+			props.state.contentState === ContentState.Hidden ||
+			props.state.contentState === ContentState.Shown
 		) {
 			setFirstCall(true);
 			setAnimatedHeight(0);
 			return;
 		}
 
-		if (props.state.contentState == ContentState.Show) animateDown();
+		if (props.state.contentState === ContentState.Show) animateDown();
 		else animateUp();
 	}, [props.state.activeDropdown, animatedHeight, props.state.contentState]);
 
@@ -127,9 +127,9 @@ const Dropdown = (props: {
 
 	useEffect(() => {
 		if (
-			props.state.activeDropdown != props.index ||
-			props.state.contentState == ContentState.Shown ||
-			props.state.contentState == ContentState.Hidden
+			props.state.activeDropdown !== props.index ||
+			props.state.contentState === ContentState.Shown ||
+			props.state.contentState === ContentState.Hidden
 		) {
 			return;
 		}
@@ -147,7 +147,7 @@ const Dropdown = (props: {
 			return;
 		}
 
-		fade(props.state.contentState == ContentState.Show ? 1 : -1);
+		fade(props.state.contentState === ContentState.Show ? 1 : -1);
 	}, [props.state.activeDropdown, props.state.contentState, animatedOpacity]);
 
 	return (
@@ -157,7 +157,7 @@ const Dropdown = (props: {
 				transform: "translateY(" + -animatedHeight + "px)",
 			}}
 			ref={
-				props.state.activeDropdown == props.index
+				props.state.activeDropdown === props.index
 					? props.state.activeRowReference
 					: null
 			}
@@ -165,10 +165,10 @@ const Dropdown = (props: {
 			<button
 				className="bg-pl btn text-pd p-5"
 				onClick={() => {
-					if (props.state.contentState == ContentState.Hidden) {
+					if (props.state.contentState === ContentState.Hidden) {
 						props.state.setContentState(ContentState.Show);
 						props.state.setActiveDropdown(props.index);
-					} else if (props.state.contentState == ContentState.Shown) {
+					} else if (props.state.contentState === ContentState.Shown) {
 						props.state.setContentState(ContentState.Hide);
 					}
 				}}
@@ -189,7 +189,7 @@ const Dropdown = (props: {
 					zIndex: "1",
 					opacity: `${animatedOpacity}%`,
 					height: `${
-						props.state.activeDropdown == props.index ? "100%" : "0px"
+						props.state.activeDropdown === props.index ? "100%" : "0px"
 					}`,
 				}}
 			>

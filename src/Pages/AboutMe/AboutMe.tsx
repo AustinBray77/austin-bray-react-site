@@ -74,7 +74,7 @@ const AboutMe = (): JSX.Element => {
 						onMouseEnter={() => setIsHovering(true)}
 						onMouseLeave={() => setIsHovering(false)}
 						onClick={() => {
-							saveAs("Freelance/resume.pdf", "Austin_Resume.pdf");
+							saveAs("AboutMe/resume.pdf", "Austin_Resume.pdf");
 						}}
 					>
 						<Typewriter text="Click here to download my resume" speed={50} />
