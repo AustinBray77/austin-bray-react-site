@@ -11,10 +11,7 @@ export default function Contact(): JSX.Element {
             <Row style={{ marginTop: "200px" }}>
                 <Col className="bg-pd p-5 text-light" xs={12}>
                     <h1>
-                        <Typewriter
-                            children={"Contact Austin On:"}
-                            speed={100}
-                        />
+                        <Typewriter children={"Contact Austin:"} speed={100} />
                     </h1>
                     <button
                         onClick={() => {
