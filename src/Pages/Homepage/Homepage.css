@@ -32,19 +32,25 @@
     height: 40vh;
 }
 
-#Homepage img {
-    height: 45vh;
+#Homepage .img-container {
+    max-height: 45vh;
     border: 4px solid var(--primary-dark);
     border-radius: 10px;
     padding: 0px;
+    overflow: hidden;
+    width: fit-content;
+    height: fit-content;
+}
+
+#Homepage .img-container > img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 #Homepage iframe {
     position: fixed;
     height: 120%;
-    width: 120%;
     z-index: -1;
-    left: -10%;
 }
 
 #Homepage .spacer {
