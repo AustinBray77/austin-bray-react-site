@@ -31,26 +31,31 @@ const IntroductionRow = () => {
     return (
         <Row className="bg-pl text-pd p-5 top-content-row">
             <Col
-                md={7}
+                lg={8}
                 xs={12}
-                className="text-center text-md-start mt-5 mt-sm-0"
+                className="text-center text-lg-start mt-4 mt-sm-0"
             >
-                <h1 className="fw-bold mt-5 mt-md-0 ">
-                    <Typewriter speed={100}>
-                        Welcome to Austin's Website!
-                    </Typewriter>
+                <h1 className="fw-bold mt-5 mt-md-0">
+                    <Typewriter speed={100}>Hi, I'm Austin.</Typewriter>
                 </h1>
                 <br />
-                <p className="fs-4">
+                <p className="fs-4 vh-lg-35">
                     <Typewriter speed={25}>
-                        This website is a hub for viewing all of my projects and
-                        progress in the field of computer science. Through this,
-                        I hope to give you a look at what I am capable of and
-                        what I could possibly do for you.
+                        I am a student at McMaster University currently entering
+                        my second year in the Computer Science program. My
+                        experience includes working as a QA Analyst (Co-Op) with
+                        CIBC and as a Software Developer (Part-Time) with
+                        Tumblewire Inc. To learn more about me, click below or
+                        keep scrolling!
                     </Typewriter>
                 </p>
+                <LinkButton path="/about-me">
+                    <Typewriter speed={100}>
+                        {"Learn more about me ->"}
+                    </Typewriter>
+                </LinkButton>
             </Col>
-            <Col md={5} xs={12} className="image-col">
+            <Col lg={4} xs={12} className="image-col">
                 <Row className="fade-in justify-content-center">
                     <div className="img-container">
                         <img src="./headshot.jpg" style={{ height: "45vh" }} />
@@ -85,11 +90,11 @@ const FreelanceRow = () => {
                     <>
                         {" "}
                         <Col
-                            md={6}
+                            lg={6}
                             xs={12}
-                            className="text-center text-md-start"
+                            className="text-center text-lg-start"
                         >
-                            <h1 style={{ fontWeight: "bold" }}>
+                            <h1 className="fw-bold">
                                 <Typewriter speed={100}>
                                     Your Website, Your Way
                                 </Typewriter>
@@ -111,7 +116,7 @@ const FreelanceRow = () => {
                                 />
                             </LinkButton>
                         </Col>
-                        <Col md={6} xs={12} className="image-col">
+                        <Col lg={6} xs={12} className="image-col">
                             <Row className="justify-content-center fade-in">
                                 <div className="img-container">
                                     <img src="./citl.png" />
@@ -151,22 +156,23 @@ const ProjectRow = () => {
                     <>
                         {" "}
                         <Col
-                            md={6}
+                            lg={6}
                             xs={12}
-                            className="text-center text-md-start"
+                            className="text-center text-lg-start"
                         >
-                            <h1 style={{ fontWeight: "bold" }}>
-                                <Typewriter speed={100}>Projects</Typewriter>
+                            <h1 className="fw-bold">
+                                <Typewriter speed={100}>My Projects</Typewriter>
                             </h1>
                             <br />
-                            <p className="fs-4 info-paragraph">
+                            <p className="fs-4 vh-lg-40 vh-sm-30 vh-xs-45">
                                 <Typewriter speed={25}>
-                                    I have created many different coding
-                                    projects through my 4+ years of programming.
-                                    These span from web design to game
-                                    development, and from personal to paid
-                                    projects. To see all of this visit the
-                                    projects page.
+                                    During my spare time I like to experiment
+                                    and learn new technologies by creating
+                                    projects. Through this, I have crossed many
+                                    fields of software development. I have
+                                    projects in web development, desktop
+                                    development, AI modeling, game development,
+                                    and more. To view my projects click below!
                                 </Typewriter>
                             </p>
                             <LinkButton path="/projects">
@@ -175,7 +181,7 @@ const ProjectRow = () => {
                                 </Typewriter>
                             </LinkButton>
                         </Col>
-                        <Col md={6} xs={12} className="image-col">
+                        <Col lg={6} xs={12} className="image-col">
                             <Row className="fade-in justify-content-center">
                                 <div className="img-container">
                                     <img src="./algovisualizer.png" />
@@ -213,15 +219,15 @@ const ExperienceRow = () => {
             <Row className="bg-pl text-pd p-5">
                 {animateExperienceRow ? (
                     <>
-                        <Col md={6} xs={12} className="image-col">
+                        <Col lg={6} xs={12} className="image-col">
                             <Row className="fade-in justify-content-center">
                                 <div className="img-container">
                                     <img src="./experience.png" />
                                 </div>
                             </Row>
                         </Col>
-                        <Col md={6} xs={12} className="text-center text-md-end">
-                            <h1 style={{ fontWeight: "bold" }}>
+                        <Col lg={6} xs={12} className="text-center text-lg-end">
+                            <h1 className="fw-bold">
                                 <Typewriter speed={100}>
                                     Experience and Resume
                                 </Typewriter>
@@ -253,18 +259,23 @@ const ExperienceRow = () => {
     );
 };
 
+enum BackgroundState {
+    Video1,
+    Video2,
+}
+
 export default function Homepage(): JSX.Element {
     const spacerRef = useRef<HTMLDivElement>(null);
-    const [videoState, setVideoState] = useState(0);
+    const [videoState, setVideoState] = useState(BackgroundState.Video1);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
-            console.log(entries.length);
+            let topSpacer = entries[0];
 
-            if (entries[0].isIntersecting) {
-                setVideoState(1);
+            if (topSpacer.isIntersecting) {
+                setVideoState(BackgroundState.Video1);
             } else {
-                setVideoState(0);
+                setVideoState(BackgroundState.Video2);
             }
         });
 
@@ -279,14 +290,15 @@ export default function Homepage(): JSX.Element {
 
     document.title = "Welcome to Austin's Website!";
 
+    let video1State = videoState === BackgroundState.Video1 ? "hidden" : "";
+    let video2State = videoState === BackgroundState.Video2 ? "hidden" : "";
+
     return (
         <Container id="Homepage">
             <iframe
                 src="https://www.youtube.com/embed/lRTtMcx6rSM?si=PwEwqr1AbDoQqppL&autoplay=1&mute=1&controls=0&loop=1&amp;showinfo=0"
                 title="YouTube video player"
-                className={
-                    (videoState == 1 ? "hidden" : "") + " youtube-container"
-                }
+                className={video1State + " youtube-container"}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 style={{
                     width: `${iFrameWidth}vw`,
@@ -296,9 +308,7 @@ export default function Homepage(): JSX.Element {
             <iframe
                 src="https://www.youtube.com/embed/y9PTNTSpGJs?autoplay=1&mute=1&controls=0&loop=1&playlist=y9PTNTSpGJs&amp;showinfo=0"
                 title="YouTube video player"
-                className={
-                    (videoState == 0 ? "hidden" : "") + " youtube-container"
-                }
+                className={video2State + " youtube-container"}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 style={{
                     width: `${iFrameWidth}vw`,
@@ -307,8 +317,8 @@ export default function Homepage(): JSX.Element {
             ></iframe>
             <IntroductionRow />
             <div className="spacer" ref={spacerRef}></div>
-            <FreelanceRow />
             <ProjectRow />
+            <FreelanceRow />
             <div className="spacer"></div>
             <ExperienceRow />
         </Container>
