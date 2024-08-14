@@ -278,7 +278,7 @@ export default function Homepage(): JSX.Element {
     return (
         <Container id="Homepage">
             <iframe
-                src="https://www.youtube.com/embed/Id8oZS95KxQ?autoplay=1&mute=1&controls=0&loop=1&playlist=Id8oZS95KxQ&amp;showinfo=0"
+                src="https://www.youtube.com/embed/lRTtMcx6rSM?si=PwEwqr1AbDoQqppL&autoplay=1&mute=1&controls=0&loop=1&amp;showinfo=0"
                 title="YouTube video player"
                 className={
                     (videoState == 1 ? "hidden" : "") + " youtube-container"
