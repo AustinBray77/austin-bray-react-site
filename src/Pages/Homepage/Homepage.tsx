@@ -51,6 +51,7 @@ const NewIntro = () => {
             title="Hi, I'm Austin."
             body={{
                 heightFunc: (size: WindowSizes) => {
+                    console.log("Called");
                     if (size < WindowSizes.XS) {
                         return 45;
                     }

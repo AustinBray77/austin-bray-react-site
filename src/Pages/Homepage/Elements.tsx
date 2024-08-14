@@ -1,5 +1,5 @@
 import Typewriter from "../../Typewriter";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { getWindowSize, WindowSizes } from "../../Sizing";
@@ -28,11 +28,11 @@ const LinkButton = (props: {
 };
 
 const RowTitle = (props: { children: string; showSpeed?: number }) => {
-    let speed = props.showSpeed != undefined ? props.showSpeed : 100;
-
     return (
         <h1 className="fw-bold">
-            <Typewriter speed={speed}>{props.children}</Typewriter>
+            <Typewriter speed={props.showSpeed ?? 100}>
+                {props.children}
+            </Typewriter>
         </h1>
     );
 };
@@ -45,11 +45,12 @@ type BodyProps = {
 
 const RowBody = (props: BodyProps) => {
     const height = props.heightFunc(getWindowSize(window)).toString() + "vh";
-    let speed = props.showSpeed != undefined ? props.showSpeed : 25;
 
     return (
         <p className="fs-4" style={{ height: height }}>
-            <Typewriter speed={speed}>{props.children}</Typewriter>
+            <Typewriter speed={props.showSpeed ?? 25}>
+                {props.children}
+            </Typewriter>
         </p>
     );
 };
@@ -59,11 +60,11 @@ const RowButton = (props: {
     path: string;
     showSpeed?: number;
 }) => {
-    let speed = props.showSpeed != undefined ? props.showSpeed : 100;
-
     return (
         <LinkButton path={props.path}>
-            <Typewriter speed={speed}>{props.children}</Typewriter>
+            <Typewriter speed={props.showSpeed ?? 100}>
+                {props.children}
+            </Typewriter>
         </LinkButton>
     );
 };
@@ -89,7 +90,7 @@ const StandardRow = (props: {
     img: ImgProps;
     ratio?: number;
 }) => {
-    let ratio = props.ratio != undefined ? props.ratio : 6;
+    let ratio = props.ratio ?? 6;
 
     return (
         <Row className="bg-pl text-pd p-5 top-content-row">
