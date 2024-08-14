@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "./Homepage.css";
@@ -31,7 +31,7 @@ const IntroductionRow = () => {
     return (
         <Row className="bg-pl text-pd p-5 top-content-row">
             <Col
-                md={8}
+                md={7}
                 xs={12}
                 className="text-center text-md-start mt-5 mt-sm-0"
             >
@@ -50,14 +50,11 @@ const IntroductionRow = () => {
                     </Typewriter>
                 </p>
             </Col>
-            <Col md={4} xs={12} className="image-col">
+            <Col md={5} xs={12} className="image-col">
                 <Row className="fade-in justify-content-center">
-                    <img
-                        style={{
-                            maxWidth: "250px",
-                        }}
-                        src="./headshot.jpg"
-                    />
+                    <div className="img-container">
+                        <img src="./headshot.jpg" style={{ height: "45vh" }} />
+                    </div>
                 </Row>
             </Col>
         </Row>
@@ -116,7 +113,9 @@ const FreelanceRow = () => {
                         </Col>
                         <Col md={6} xs={12} className="image-col">
                             <Row className="justify-content-center fade-in">
-                                <img src="./citl.png" />
+                                <div className="img-container">
+                                    <img src="./citl.png" />
+                                </div>
                             </Row>
                         </Col>{" "}
                     </>
@@ -178,7 +177,9 @@ const ProjectRow = () => {
                         </Col>
                         <Col md={6} xs={12} className="image-col">
                             <Row className="fade-in justify-content-center">
-                                <img src="./algovisualizer.png" />
+                                <div className="img-container">
+                                    <img src="./algovisualizer.png" />
+                                </div>
                             </Row>
                         </Col>{" "}
                     </>
@@ -214,7 +215,9 @@ const ExperienceRow = () => {
                     <>
                         <Col md={6} xs={12} className="image-col">
                             <Row className="fade-in justify-content-center">
-                                <img src="./experience.png" />
+                                <div className="img-container">
+                                    <img src="./experience.png" />
+                                </div>
                             </Row>
                         </Col>
                         <Col md={6} xs={12} className="text-center text-md-end">
@@ -270,8 +273,9 @@ export default function Homepage(): JSX.Element {
         }
     }, []);
 
-    let iFrameWidth: number =
-        (125 * (window.innerHeight * 16)) / (window.innerWidth * 9);
+    let iFrameWidth: number = useMemo(() => {
+        return (200 * (window.innerHeight * 16)) / (window.innerWidth * 9);
+    }, [window.innerWidth, window.innerHeight]);
 
     document.title = "Welcome to Austin's Website!";
 
@@ -286,6 +290,7 @@ export default function Homepage(): JSX.Element {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 style={{
                     width: `${iFrameWidth}vw`,
+                    left: `${(100 - iFrameWidth) / 2}vw`,
                 }}
             ></iframe>
             <iframe
@@ -297,6 +302,7 @@ export default function Homepage(): JSX.Element {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 style={{
                     width: `${iFrameWidth}vw`,
+                    left: `${(100 - iFrameWidth) / 2}vw`,
                 }}
             ></iframe>
             <IntroductionRow />
