@@ -3,29 +3,8 @@ import { useNavigate } from "react-router";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "./Homepage.css";
 import Typewriter from "../../Typewriter";
-
-const LinkButton = (props: {
-    children: string | string[] | JSX.Element | JSX.Element[];
-    path: string;
-}) => {
-    const [isHovering, setIsHovering] = useState(false);
-
-    const navigate = useNavigate();
-
-    return (
-        <button
-            className={
-                "LinkButton fs-3 " +
-                (isHovering ? "bg-sd text-pl" : "bg-pl text-pd")
-            }
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-            onClick={() => navigate(props.path)}
-        >
-            {props.children}
-        </button>
-    );
-};
+import { LinkButton, StandardRow } from "./Elements";
+import { WindowSizes } from "../../Sizing";
 
 const IntroductionRow = () => {
     return (
@@ -63,6 +42,32 @@ const IntroductionRow = () => {
                 </Row>
             </Col>
         </Row>
+    );
+};
+
+const NewIntro = () => {
+    return (
+        <StandardRow
+            title="Hi, I'm Austin."
+            body={{
+                heightFunc: (size: WindowSizes) => {
+                    if (size < WindowSizes.XS) {
+                        return 45;
+                    }
+                    if (size < WindowSizes.MD) {
+                        return 35;
+                    }
+
+                    return 40;
+                },
+                children:
+                    "I am a student at McMaster University currently entering my second year in the Computer Science program. My experience includes working as a QA Analyst (Co-Op) with CIBC and as a Software Developer (Part-Time) with Tumblewire Inc. To learn more about me, click below or keep scrolling!",
+            }}
+            button="Learn more about me ->"
+            path="/about-me"
+            img={{ src: "./headshot.jpg", style: { height: "45vh" } }}
+            ratio={8}
+        />
     );
 };
 
@@ -315,7 +320,7 @@ export default function Homepage(): JSX.Element {
                     left: `${(100 - iFrameWidth) / 2}vw`,
                 }}
             ></iframe>
-            <IntroductionRow />
+            <NewIntro />
             <div className="spacer" ref={spacerRef}></div>
             <ProjectRow />
             <FreelanceRow />
