@@ -37,7 +37,13 @@
     height: 0px;
 }
 
-#Projects .btn:focus {
+#Projects .no-default {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0px;
+}
+
+#Projects button:focus {
     box-shadow: none !important;
 }
 
