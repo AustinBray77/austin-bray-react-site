@@ -17,7 +17,7 @@ const Dropdown = (props: {
     return (
         <Row className={"text-pl anim-speed-1 dropdown-row " + props.className}>
             <button
-                className="bg-pl btn text-pd p-5"
+                className="bg-pl text-pd p-5 no-default"
                 onClick={() => {
                     if (contentState == ContentState.Hide) {
                         setContentState(ContentState.Show);

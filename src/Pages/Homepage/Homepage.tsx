@@ -109,7 +109,7 @@ const FreelanceRow = () => {
                             <p className="fs-4 info-paragraph">
                                 <Typewriter speed={25}>
                                     I have plenty of experience creating various
-                                    beatiful websites for my self and for
+                                    beautiful websites for my self and for
                                     others. To learn more on what I can do for
                                     you and the services I offer, visit my
                                     freelancing page.
