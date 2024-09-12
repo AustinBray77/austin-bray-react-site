@@ -92,6 +92,15 @@ const StandardRow = (props: {
 }) => {
     let ratio = props.ratio ?? 6;
 
+    let imgStyle = props.img.style;
+
+    if (imgStyle === undefined) {
+        imgStyle = {};
+    }
+
+    imgStyle["height"] =
+        props.body.heightFunc(getWindowSize(window)).toString() + "vh";
+
     return (
         <Row className="bg-pl text-pd p-5 top-content-row">
             <Col
@@ -111,7 +120,7 @@ const StandardRow = (props: {
             </Col>
             <Col lg={12 - ratio} xs={12} className="image-col">
                 <Row className="fade-in justify-content-center">
-                    <RowImage src={props.img.src} style={props.img.style} />
+                    <RowImage src={props.img.src} style={imgStyle} />
                 </Row>
             </Col>
         </Row>

@@ -66,7 +66,7 @@ const NewIntro = () => {
             }}
             button="Learn more about me ->"
             path="/about-me"
-            img={{ src: "./headshot.jpg", style: { height: "45vh" } }}
+            img={{ src: "./headshot.jpg" }}
             ratio={8}
         />
     );
