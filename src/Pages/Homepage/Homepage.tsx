@@ -5,47 +5,9 @@ import "./Homepage.css";
 import Typewriter from "../../Typewriter";
 import { LinkButton, StandardRow } from "./Elements";
 import { WindowSizes } from "../../Sizing";
+import { useOnScreen } from "../../Hooks";
 
 const IntroductionRow = () => {
-    return (
-        <Row className="bg-pl text-pd p-5 top-content-row">
-            <Col
-                lg={8}
-                xs={12}
-                className="text-center text-lg-start mt-4 mt-sm-0"
-            >
-                <h1 className="fw-bold mt-5 mt-md-0">
-                    <Typewriter speed={100}>Hi, I'm Austin.</Typewriter>
-                </h1>
-                <br />
-                <p className="fs-4 vh-lg-35">
-                    <Typewriter speed={25}>
-                        I am a student at McMaster University currently entering
-                        my second year in the Computer Science program. My
-                        experience includes working as a QA Analyst (Co-Op) with
-                        CIBC and as a Software Developer (Part-Time) with
-                        Tumblewire Inc. To learn more about me, click below or
-                        keep scrolling!
-                    </Typewriter>
-                </p>
-                <LinkButton path="/about-me">
-                    <Typewriter speed={100}>
-                        {"Learn more about me ->"}
-                    </Typewriter>
-                </LinkButton>
-            </Col>
-            <Col lg={4} xs={12} className="image-col">
-                <Row className="fade-in justify-content-center">
-                    <div className="img-container">
-                        <img src="./headshot.jpg" style={{ height: "45vh" }} />
-                    </div>
-                </Row>
-            </Col>
-        </Row>
-    );
-};
-
-const NewIntro = () => {
     return (
         <StandardRow
             title="Hi, I'm Austin."
@@ -68,6 +30,33 @@ const NewIntro = () => {
             path="/about-me"
             img={{ src: "./headshot.jpg" }}
             ratio={8}
+        />
+    );
+};
+
+const ProjectRow = () => {
+    return (
+        <StandardRow
+            title="My Projects"
+            body={{
+                heightFunc: (size: WindowSizes) => {
+                    console.log("Called");
+                    if (size < WindowSizes.XS) {
+                        return 45;
+                    }
+                    if (size < WindowSizes.MD) {
+                        return 35;
+                    }
+
+                    return 40;
+                },
+                children:
+                    "During my spare time I like to experiment and learn new technologies by creating projects. Through this, I have crossed many fields of software development. I have projects in web development, desktop development, AI modeling, game development, and more. To view my projects click below!",
+            }}
+            button="See all of my projects ->"
+            path="/projects"
+            img={{ src: "./algovisualizer.png" }}
+            ratio={6}
         />
     );
 };
@@ -126,71 +115,6 @@ const FreelanceRow = () => {
                             <Row className="justify-content-center fade-in">
                                 <div className="img-container">
                                     <img src="./citl.png" />
-                                </div>
-                            </Row>
-                        </Col>{" "}
-                    </>
-                ) : (
-                    ""
-                )}
-            </Row>
-        </div>
-    );
-};
-
-const ProjectRow = () => {
-    const ProjectsRef = useRef<HTMLDivElement>(null);
-    const [animateProjectsRow, setAnimateProjectsRow] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            let entry = entries[0];
-            if (entry.isIntersecting) {
-                setAnimateProjectsRow(true);
-            }
-        });
-
-        if (ProjectsRef.current != null) {
-            observer.observe(ProjectsRef.current);
-        }
-    }, []);
-
-    return (
-        <div ref={ProjectsRef} className="content-row">
-            <Row className="bg-pl text-pd p-5">
-                {animateProjectsRow ? (
-                    <>
-                        {" "}
-                        <Col
-                            lg={6}
-                            xs={12}
-                            className="text-center text-lg-start"
-                        >
-                            <h1 className="fw-bold">
-                                <Typewriter speed={100}>My Projects</Typewriter>
-                            </h1>
-                            <br />
-                            <p className="fs-4 vh-lg-40 vh-sm-30 vh-xs-45">
-                                <Typewriter speed={25}>
-                                    During my spare time I like to experiment
-                                    and learn new technologies by creating
-                                    projects. Through this, I have crossed many
-                                    fields of software development. I have
-                                    projects in web development, desktop
-                                    development, AI modeling, game development,
-                                    and more. To view my projects click below!
-                                </Typewriter>
-                            </p>
-                            <LinkButton path="/projects">
-                                <Typewriter speed={100}>
-                                    {"See all of my projects ->"}
-                                </Typewriter>
-                            </LinkButton>
-                        </Col>
-                        <Col lg={6} xs={12} className="image-col">
-                            <Row className="fade-in justify-content-center">
-                                <div className="img-container">
-                                    <img src="./algovisualizer.png" />
                                 </div>
                             </Row>
                         </Col>{" "}
@@ -272,23 +196,10 @@ enum BackgroundState {
 
 export default function Homepage(): JSX.Element {
     const spacerRef = useRef<HTMLDivElement>(null);
-    const [videoState, setVideoState] = useState(BackgroundState.Video1);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            let topSpacer = entries[0];
-
-            if (topSpacer.isIntersecting) {
-                setVideoState(BackgroundState.Video1);
-            } else {
-                setVideoState(BackgroundState.Video2);
-            }
-        });
-
-        if (spacerRef.current != null) {
-            observer.observe(spacerRef.current);
-        }
-    }, []);
+    const videoState = useOnScreen(spacerRef)
+        ? BackgroundState.Video2
+        : BackgroundState.Video1;
 
     let iFrameWidth: number = useMemo(() => {
         return (200 * (window.innerHeight * 16)) / (window.innerWidth * 9);
@@ -296,8 +207,8 @@ export default function Homepage(): JSX.Element {
 
     document.title = "Welcome to Austin's Website!";
 
-    let video1State = videoState === BackgroundState.Video1 ? "hidden" : "";
-    let video2State = videoState === BackgroundState.Video2 ? "hidden" : "";
+    let video1State = videoState === BackgroundState.Video2 ? "hidden" : "";
+    let video2State = videoState === BackgroundState.Video1 ? "hidden" : "";
 
     return (
         <Container id="Homepage">
@@ -321,7 +232,7 @@ export default function Homepage(): JSX.Element {
                     left: `${(100 - iFrameWidth) / 2}vw`,
                 }}
             ></iframe>
-            <NewIntro />
+            <IntroductionRow />
             <div className="spacer" ref={spacerRef}></div>
             <ProjectRow />
             <FreelanceRow />
