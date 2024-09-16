@@ -11,18 +11,17 @@ const IntroductionRow = () => {
     return (
         <StandardRow
             title="Hi, I'm Austin."
-            body={{
-                heightFunc: (size: WindowSizes) => {
-                    console.log("Called");
-                    if (size < WindowSizes.XS) {
-                        return 45;
-                    }
-                    if (size < WindowSizes.MD) {
-                        return 35;
-                    }
+            heightFunc={(size: WindowSizes): number => {
+                if (size == WindowSizes.XS) {
+                    return 25;
+                }
+                if (size == WindowSizes.MD) {
+                    return 7.5;
+                }
 
-                    return 40;
-                },
+                return 10;
+            }}
+            body={{
                 children:
                     "I am a student at McMaster University currently entering my second year in the Computer Science program. My experience includes working as a QA Analyst (Co-Op) with CIBC and as a Software Developer (Part-Time) with Tumblewire Inc. To learn more about me, click below or keep scrolling!",
             }}
@@ -38,18 +37,17 @@ const ProjectRow = () => {
     return (
         <StandardRow
             title="My Projects"
-            body={{
-                heightFunc: (size: WindowSizes) => {
-                    console.log("Called");
-                    if (size < WindowSizes.XS) {
-                        return 45;
-                    }
-                    if (size < WindowSizes.MD) {
-                        return 35;
-                    }
+            heightFunc={(size: WindowSizes): number => {
+                if (size == WindowSizes.XS) {
+                    return 25;
+                }
+                if (size <= WindowSizes.MD) {
+                    return 7.5;
+                }
 
-                    return 40;
-                },
+                return 10;
+            }}
+            body={{
                 children:
                     "During my spare time I like to experiment and learn new technologies by creating projects. Through this, I have crossed many fields of software development. I have projects in web development, desktop development, AI modeling, game development, and more. To view my projects click below!",
             }}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getWindowSize, WindowSizes } from "./Sizing";
 
 const useOnScreen = (ref: React.RefObject<HTMLDivElement>): boolean => {
     const [isIntersecting, setIntersecting] = useState(false);
@@ -21,4 +22,21 @@ const useOnScreen = (ref: React.RefObject<HTMLDivElement>): boolean => {
     return isIntersecting;
 };
 
-export { useOnScreen };
+function useOnResize<T>(func: (window: WindowSizes) => T, base: T): T {
+    const [value, setValue] = useState(base);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setValue(func(getWindowSize(window)));
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    return value;
+}
+export { useOnScreen, useOnResize as useRecalculateHeight };

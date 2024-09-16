@@ -1,6 +1,6 @@
 import Typewriter from "../../Typewriter";
 import React, { useRef, useState } from "react";
-import { useOnScreen } from "../../Hooks";
+import { useOnScreen, useRecalculateHeight } from "../../Hooks";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { getWindowSize, WindowSizes } from "../../Sizing";
@@ -47,16 +47,14 @@ const RowTitle = (props: {
 
 type BodyProps = {
     children: string;
-    heightFunc: (size: WindowSizes) => number;
+    height?: string;
     showSpeed?: number;
     onScreen?: boolean;
 };
 
 const RowBody = (props: BodyProps) => {
-    const height = props.heightFunc(getWindowSize(window)).toString() + "vh";
-
     return (
-        <p className="fs-4" style={{ height: height }}>
+        <p className="fs-4" style={{ height: props.height }}>
             <Typewriter
                 speed={props.showSpeed ?? 25}
                 shouldPlay={props.onScreen ?? true}
@@ -92,7 +90,7 @@ type ImgProps = {
 
 const RowImage = (props: ImgProps) => {
     return (
-        <div className="img-container">
+        <div className="img-container mt-4 mt-lg-0">
             <img src={props.src} style={props.style} />
         </div>
     );
@@ -101,6 +99,7 @@ const RowImage = (props: ImgProps) => {
 const StandardRow = (props: {
     title: string;
     body: BodyProps;
+    heightFunc: (window: WindowSizes) => number;
     button: string;
     path: string;
     img: ImgProps;
@@ -108,6 +107,7 @@ const StandardRow = (props: {
 }) => {
     const RowRef = useRef<HTMLDivElement>(null);
     const onScreen = useOnScreen(RowRef);
+    const height = useRecalculateHeight(props.heightFunc, 10).toString() + "em";
 
     let ratio = props.ratio ?? 6;
 
@@ -117,8 +117,7 @@ const StandardRow = (props: {
         imgStyle = {};
     }
 
-    imgStyle["height"] =
-        props.body.heightFunc(getWindowSize(window)).toString() + "vh";
+    imgStyle["height"] = "20em";
 
     return (
         <Row className="bg-pl text-pd p-5 top-content-row" ref={RowRef}>
@@ -130,7 +129,7 @@ const StandardRow = (props: {
                 <RowTitle onScreen={onScreen}>{props.title}</RowTitle>
                 <br />
                 <RowBody
-                    heightFunc={props.body.heightFunc}
+                    height={height}
                     showSpeed={props.body.showSpeed}
                     onScreen={onScreen}
                 >
