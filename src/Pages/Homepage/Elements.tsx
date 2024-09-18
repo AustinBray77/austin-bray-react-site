@@ -104,6 +104,7 @@ const StandardRow = (props: {
     path: string;
     img: ImgProps;
     ratio?: number;
+    reversed?: boolean;
 }) => {
     const RowRef = useRef<HTMLDivElement>(null);
     const onScreen = useOnScreen(RowRef);
@@ -119,31 +120,39 @@ const StandardRow = (props: {
 
     imgStyle["height"] = "20em";
 
+    let contentCol = (
+        <Col
+            lg={ratio}
+            xs={12}
+            className="text-center text-lg-start mt-4 mt-sm-0"
+        >
+            <RowTitle onScreen={onScreen}>{props.title}</RowTitle>
+            <br />
+            <RowBody
+                height={height}
+                showSpeed={props.body.showSpeed}
+                onScreen={onScreen}
+            >
+                {props.body.children}
+            </RowBody>
+            <RowButton path={props.path} onScreen={onScreen}>
+                {props.button}
+            </RowButton>
+        </Col>
+    );
+
+    let imageCol = (
+        <Col lg={12 - ratio} xs={12} className="image-col">
+            <Row className="fade-in justify-content-center">
+                <RowImage src={props.img.src} style={imgStyle} />
+            </Row>
+        </Col>
+    );
+
     return (
         <Row className="bg-pl text-pd p-5 top-content-row" ref={RowRef}>
-            <Col
-                lg={ratio}
-                xs={12}
-                className="text-center text-lg-start mt-4 mt-sm-0"
-            >
-                <RowTitle onScreen={onScreen}>{props.title}</RowTitle>
-                <br />
-                <RowBody
-                    height={height}
-                    showSpeed={props.body.showSpeed}
-                    onScreen={onScreen}
-                >
-                    {props.body.children}
-                </RowBody>
-                <RowButton path={props.path} onScreen={onScreen}>
-                    {props.button}
-                </RowButton>
-            </Col>
-            <Col lg={12 - ratio} xs={12} className="image-col">
-                <Row className="fade-in justify-content-center">
-                    <RowImage src={props.img.src} style={imgStyle} />
-                </Row>
-            </Col>
+            {props.reversed ? imageCol : contentCol}
+            {props.reversed ? contentCol : imageCol}
         </Row>
     );
 };

@@ -101,12 +101,13 @@ const ExperienceRow = () => {
             }}
             body={{
                 children:
-                    "I have experience working with C#, C++, Java, Javascript, and Python, among other languages. I also have experience working with many different technologies involved with this languages such as Unity, the MERN stack, WIN32 etc. To get more about my expierence and skills check out my resume.",
+                    "I have experience working with Python and JavaScript professionally, along with projects using TypeScript, Rust, C#, and more. I mostly build web apps, desktop apps, and sometimes games. To see more about my experience and my resume, click below!",
             }}
             button="View more and my resume ->"
             path="/about-me"
             img={{ src: "./experience.png" }}
             ratio={6}
+            reversed
         />
     );
 };
