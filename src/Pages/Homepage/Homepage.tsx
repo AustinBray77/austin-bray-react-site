@@ -1,11 +1,9 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import React, { useRef, useMemo } from "react";
+import { Container } from "react-bootstrap";
 import "./Homepage.css";
-import Typewriter from "../../Typewriter";
-import { LinkButton, StandardRow } from "./Elements";
+import { StandardRow } from "./Elements";
 import { WindowSizes } from "../../Sizing";
-import { useOnScreen } from "../../Hooks";
+import { useOnResize, useOnScreen } from "../../Hooks";
 
 const IntroductionRow = () => {
     return (
@@ -124,9 +122,16 @@ export default function Homepage(): JSX.Element {
         ? BackgroundState.Video2
         : BackgroundState.Video1;
 
-    let iFrameWidth: number = useMemo(() => {
+    const calculateIFrameWidth = (window: Window): number => {
+        console.log("Calculating iFrame width");
+
         return (200 * (window.innerHeight * 16)) / (window.innerWidth * 9);
-    }, [window.innerWidth, window.innerHeight]);
+    };
+
+    let iFrameWidth: number = useOnResize(
+        calculateIFrameWidth,
+        calculateIFrameWidth(window)
+    );
 
     document.title = "Welcome to Austin's Website!";
 

@@ -1,9 +1,9 @@
 import Typewriter from "../../Typewriter";
 import React, { useRef, useState } from "react";
-import { useOnScreen, useRecalculateHeight } from "../../Hooks";
+import { useOnScreen, useNormalizedOnResize } from "../../Hooks";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import { getWindowSize, WindowSizes } from "../../Sizing";
+import { WindowSizes } from "../../Sizing";
 
 const LinkButton = (props: {
     children: string | string[] | JSX.Element | JSX.Element[];
@@ -108,7 +108,8 @@ const StandardRow = (props: {
 }) => {
     const RowRef = useRef<HTMLDivElement>(null);
     const onScreen = useOnScreen(RowRef);
-    const height = useRecalculateHeight(props.heightFunc, 10).toString() + "em";
+    const height =
+        useNormalizedOnResize(props.heightFunc, 10).toString() + "em";
 
     let ratio = props.ratio ?? 6;
 

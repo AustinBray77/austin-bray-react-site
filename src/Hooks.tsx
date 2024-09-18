@@ -22,12 +22,21 @@ const useOnScreen = (ref: React.RefObject<HTMLDivElement>): boolean => {
     return isIntersecting;
 };
 
-function useOnResize<T>(func: (window: WindowSizes) => T, base: T): T {
+function useNormalizedOnResize<T>(
+    func: (window: WindowSizes) => T,
+    base: T
+): T {
+    return useOnResize((window: Window) => {
+        return func(getWindowSize(window));
+    }, base);
+}
+
+function useOnResize<T>(func: (window: Window) => T, base: T): T {
     const [value, setValue] = useState(base);
 
     useEffect(() => {
         const handleResize = () => {
-            setValue(func(getWindowSize(window)));
+            setValue(func(window));
         };
 
         window.addEventListener("resize", handleResize);
@@ -39,4 +48,4 @@ function useOnResize<T>(func: (window: WindowSizes) => T, base: T): T {
 
     return value;
 }
-export { useOnScreen, useOnResize as useRecalculateHeight };
+export { useOnScreen, useOnResize, useNormalizedOnResize };
