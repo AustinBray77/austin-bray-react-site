@@ -23,34 +23,38 @@ const AboutMe = (): JSX.Element => {
                     <div className="fly-in-left anim-speed-2">
                         <h3>Who am I:</h3>
                         <p>
-                            Hi, I'm Austin! I am a 18 year old developer from
-                            Canada. I love programming, video games, math,
-                            science, and chess. I have experience developing in
-                            a multitude of languages and environments, alone or
-                            in a team, and for work or for fun. Currently I am
-                            in my first year of the computer science program at
-                            McMaster University and am looking for a co-op
-                            position for the Summer of 2024.
+                            Hi, I'm Austin! I am a 19-year-old developer from
+                            Canada. I love programming, video games, and math. I
+                            have experience developing in a multitude of
+                            languages and environments, alone or in a team, and
+                            for work or fun. Currently, I am in my second year
+                            of the Honours Computer Science program at McMaster
+                            University and I am looking for a co-op position for
+                            the Summer of 2025.
                         </p>
                     </div>
                     <br />
                     <div className="fly-in-left anim-speed-3">
                         <h3>My Experience:</h3>
                         <p>
-                            I have professional and have been educating on the
-                            use of many different programming languages and
-                            technologies. I have professional experience with:
+                            I have professional experience with:
                             <ul>
+                                <li>Rust (Tauri, Rocket)</li>
+                                <li>
+                                    Typescript (React.js, Node.js, Express.js)
+                                </li>
+                                <li>Python (Databricks, Pandas)</li>
+                                <li>SQL (Databricks, MySQL)</li>
                                 <li>C# (Unity, WinForms)</li>
-                                <li>Typescript (React.js, Node.js)</li>
                                 <li>C++</li>
-                                <li>Rust (Tauri)</li>
                             </ul>
-                            And I have been formally educated on:
+                            I have been formally educated on:
                             <ul>
-                                <li>Python (2 Courses)</li>
-                                <li>Elm</li>
+                                <li>Python</li>
+                                <li>C</li>
                                 <li>Java</li>
+                                <li>Assembly</li>
+                                <li>Elm</li>
                             </ul>
                         </p>
                     </div>
@@ -58,19 +62,19 @@ const AboutMe = (): JSX.Element => {
                     <div className="fly-in-left anim-speed-4">
                         <h3>Why pick me:</h3>
                         <p>
-                            As seen from the paragraph, I have the experience
-                            and technical knowledge to code (or learn to)
-                            anything that you could need me to. However, the
-                            real reason you should hire me is because of my
-                            drive and passion for programming. I am passionate
-                            for creating elegant solutions to problems,
-                            personally I believe the art of the solution is just
-                            that, an art. There is a beauty to elegant and
-                            efficient algorithms and systems, and I am very
-                            driven to create this beauty. For you, this means
-                            the best product possible; I wouldn't feel right
-                            delivering code I didn't think was beatiful and
-                            efficient.
+                            As seen from my experience, I have a wide breadth of
+                            knowledge covering various technologies. I am a
+                            quick learner and a self-starter, always creating
+                            new projects in the hope of expanding my knowledge.
+                            Along with my technical skills, I am a great team
+                            player and have experience working in a team
+                            environment. So whether you need a solo dev to carry
+                            your project, or a new addition to your agile team,
+                            I am the right choice for you. If you are interested
+                            in my services you can download my resume below or
+                            find my contact information on the{" "}
+                            <a href="/contact">contact</a> page. I look forward
+                            to hearing from you!
                         </p>
                     </div>
                     <button
