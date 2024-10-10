@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./Projects.css";
+import Project from "./Elements";
 
 enum ContentState {
     Show = "project show-project",
@@ -116,6 +117,47 @@ const GameDevDropdown = (): JSX.Element => {
 const WebDevDropdown = (): JSX.Element => {
     return (
         <Dropdown title="Web Dev">
+            <Project
+                project={{
+                    logo: "/rsd_icon.png",
+                    name: "RSD-Viewer",
+                    link: "/about-me",
+                }}
+                technologies={[
+                    {
+                        logo: "/rsd_icon.png",
+                        name: "Rust",
+                        link: "https://www.rust-lang.org/",
+                    },
+                    {
+                        logo: "/rsd_icon.png",
+                        name: "React",
+                        link: "https://reactjs.org/",
+                    },
+                    {
+                        logo: "/rsd_icon.png",
+                        name: "Typescript",
+                        link: "https://www.typescriptlang.org/",
+                    },
+                    {
+                        logo: "/rsd_icon.png",
+                        name: "Tailwind",
+                        link: "https://tailwindcss.com/",
+                    },
+                ]}
+                information={{
+                    mainFeatures: [
+                        "Secure password storage",
+                        "Cross platform",
+                        "Easy to use",
+                    ],
+                    mostProudOf: [
+                        "Learning React",
+                        "Learning Tailwind",
+                        "Learning Rust",
+                    ],
+                }}
+            ></Project>
             <ProjRow title="Chess In The library" img="/citl.png">
                 <p>
                     <a href="https://www.chessinthelibrary.com">
