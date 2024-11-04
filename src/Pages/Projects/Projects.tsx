@@ -117,7 +117,7 @@ const GameDevDropdown = (): JSX.Element => {
 const WebDevDropdown = (): JSX.Element => {
     return (
         <Dropdown title="Web Dev">
-            <Project
+            {/* <Project
                 project={{
                     logo: "/rsd_icon.png",
                     name: "RSD-Viewer",
@@ -157,7 +157,7 @@ const WebDevDropdown = (): JSX.Element => {
                         "Learning Rust",
                     ],
                 }}
-            ></Project>
+            ></Project> */}
             <ProjRow title="Chess In The library" img="/citl.png">
                 <p>
                     <a href="https://www.chessinthelibrary.com">
