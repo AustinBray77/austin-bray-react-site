@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Typewriter = (props: { children: string; speed: number }) => {
+const Typewriter = (props: {
+    children: string;
+    speed: number;
+    shouldPlay?: boolean;
+}) => {
     const [currentText, setCurrentText] = useState("");
     const currentStringIndex = useRef(0);
     const [cursorEnabled, setCursorEnabled] = useState(true);
@@ -17,6 +21,10 @@ const Typewriter = (props: { children: string; speed: number }) => {
         }
 
         const timeoutId = setTimeout(() => {
+            if (props.shouldPlay != undefined && !props.shouldPlay) {
+                return;
+            }
+
             setCurrentText(
                 (value) =>
                     value + props.children.charAt(currentStringIndex.current++)
@@ -26,7 +34,7 @@ const Typewriter = (props: { children: string; speed: number }) => {
         return () => {
             clearTimeout(timeoutId);
         };
-    }, [currentStringIndex.current]);
+    }, [currentStringIndex.current, props.shouldPlay]);
 
     useEffect(() => {
         if (currentStringIndex.current >= props.children.length) {
@@ -34,13 +42,17 @@ const Typewriter = (props: { children: string; speed: number }) => {
         }
 
         const timeoutId = setTimeout(() => {
+            if (props.shouldPlay != undefined && !props.shouldPlay) {
+                return;
+            }
+
             setCursorEnabled((value) => !value);
         }, 200);
 
         return () => {
             clearTimeout(timeoutId);
         };
-    }, [cursorEnabled]);
+    }, [cursorEnabled, props.shouldPlay]);
 
     return (
         <div>

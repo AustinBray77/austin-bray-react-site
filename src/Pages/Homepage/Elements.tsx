@@ -1,8 +1,9 @@
 import Typewriter from "../../Typewriter";
-import React, { useMemo, useState } from "react";
+import React, { useRef, useState } from "react";
+import { useOnScreen, useNormalizedOnResize } from "../../Hooks";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import { getWindowSize, WindowSizes } from "../../Sizing";
+import { WindowSizes } from "../../Sizing";
 
 const LinkButton = (props: {
     children: string | string[] | JSX.Element | JSX.Element[];
@@ -27,10 +28,17 @@ const LinkButton = (props: {
     );
 };
 
-const RowTitle = (props: { children: string; showSpeed?: number }) => {
+const RowTitle = (props: {
+    children: string;
+    showSpeed?: number;
+    onScreen?: boolean;
+}) => {
     return (
         <h1 className="fw-bold">
-            <Typewriter speed={props.showSpeed ?? 100}>
+            <Typewriter
+                speed={props.showSpeed ?? 100}
+                shouldPlay={props.onScreen ?? true}
+            >
                 {props.children}
             </Typewriter>
         </h1>
@@ -39,16 +47,18 @@ const RowTitle = (props: { children: string; showSpeed?: number }) => {
 
 type BodyProps = {
     children: string;
-    heightFunc: (size: WindowSizes) => number;
+    height?: string;
     showSpeed?: number;
+    onScreen?: boolean;
 };
 
 const RowBody = (props: BodyProps) => {
-    const height = props.heightFunc(getWindowSize(window)).toString() + "vh";
-
     return (
-        <p className="fs-4" style={{ height: height }}>
-            <Typewriter speed={props.showSpeed ?? 25}>
+        <p className="fs-4" style={{ height: props.height }}>
+            <Typewriter
+                speed={props.showSpeed ?? 25}
+                shouldPlay={props.onScreen ?? true}
+            >
                 {props.children}
             </Typewriter>
         </p>
@@ -59,10 +69,14 @@ const RowButton = (props: {
     children: string;
     path: string;
     showSpeed?: number;
+    onScreen?: boolean;
 }) => {
     return (
         <LinkButton path={props.path}>
-            <Typewriter speed={props.showSpeed ?? 100}>
+            <Typewriter
+                speed={props.showSpeed ?? 100}
+                shouldPlay={props.onScreen ?? true}
+            >
                 {props.children}
             </Typewriter>
         </LinkButton>
@@ -76,7 +90,7 @@ type ImgProps = {
 
 const RowImage = (props: ImgProps) => {
     return (
-        <div className="img-container">
+        <div className="img-container mt-4 mt-lg-0">
             <img src={props.src} style={props.style} />
         </div>
     );
@@ -85,35 +99,61 @@ const RowImage = (props: ImgProps) => {
 const StandardRow = (props: {
     title: string;
     body: BodyProps;
+    heightFunc: (window: WindowSizes) => number;
     button: string;
     path: string;
     img: ImgProps;
     ratio?: number;
+    reversed?: boolean;
 }) => {
+    const RowRef = useRef<HTMLDivElement>(null);
+    const onScreen = useOnScreen(RowRef);
+    const height =
+        useNormalizedOnResize(props.heightFunc, 10).toString() + "em";
+
     let ratio = props.ratio ?? 6;
 
-    return (
-        <Row className="bg-pl text-pd p-5 top-content-row">
-            <Col
-                lg={ratio}
-                xs={12}
-                className="text-center text-lg-start mt-4 mt-sm-0"
+    let imgStyle = props.img.style;
+
+    if (imgStyle === undefined) {
+        imgStyle = {};
+    }
+
+    imgStyle["height"] = "20em";
+
+    let contentCol = (
+        <Col
+            lg={ratio}
+            xs={12}
+            className="text-center text-lg-start mt-4 mt-sm-0"
+        >
+            <RowTitle onScreen={onScreen}>{props.title}</RowTitle>
+            <br />
+            <RowBody
+                height={height}
+                showSpeed={props.body.showSpeed}
+                onScreen={onScreen}
             >
-                <RowTitle>{props.title}</RowTitle>
-                <br />
-                <RowBody
-                    heightFunc={props.body.heightFunc}
-                    showSpeed={props.body.showSpeed}
-                >
-                    {props.body.children}
-                </RowBody>
-                <RowButton path={props.path}>{props.button}</RowButton>
-            </Col>
-            <Col lg={12 - ratio} xs={12} className="image-col">
-                <Row className="fade-in justify-content-center">
-                    <RowImage src={props.img.src} style={props.img.style} />
-                </Row>
-            </Col>
+                {props.body.children}
+            </RowBody>
+            <RowButton path={props.path} onScreen={onScreen}>
+                {props.button}
+            </RowButton>
+        </Col>
+    );
+
+    let imageCol = (
+        <Col lg={12 - ratio} xs={12} className="image-col">
+            <Row className="fade-in justify-content-center">
+                <RowImage src={props.img.src} style={imgStyle} />
+            </Row>
+        </Col>
+    );
+
+    return (
+        <Row className="bg-pl text-pd p-5 top-content-row" ref={RowRef}>
+            {props.reversed ? imageCol : contentCol}
+            {props.reversed ? contentCol : imageCol}
         </Row>
     );
 };
