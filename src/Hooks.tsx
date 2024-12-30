@@ -10,7 +10,7 @@ const useOnScreen = (ref: React.RefObject<HTMLDivElement>): boolean => {
             setIntersecting(element.isIntersecting);
         });
 
-        if (ref.current != null) {
+        if (ref.current !== null) {
             observer.observe(ref.current);
         }
 
@@ -24,8 +24,13 @@ const useOnScreen = (ref: React.RefObject<HTMLDivElement>): boolean => {
 
 function useNormalizedOnResize<T>(
     func: (window: WindowSizes) => T,
-    base: T
+    base: T,
+    callInit: boolean
 ): T {
+    if (callInit) {
+        base = func(getWindowSize(window));
+    }
+
     return useOnResize((window: Window) => {
         return func(getWindowSize(window));
     }, base);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import "./AboutMe.css";
 import Typewriter from "../../Typewriter";
 import { saveAs } from "file-saver";

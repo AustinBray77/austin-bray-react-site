@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from "react";
+import React, { useRef } from "react";
 import { Container } from "react-bootstrap";
 import "./Homepage.css";
 import { StandardRow } from "./Elements";
@@ -10,10 +10,10 @@ const IntroductionRow = () => {
         <StandardRow
             title="Hi, I'm Austin."
             heightFunc={(size: WindowSizes): number => {
-                if (size == WindowSizes.XS) {
-                    return 25;
+                if (size === WindowSizes.XS) {
+                    return 17.5;
                 }
-                if (size == WindowSizes.MD) {
+                if (size === WindowSizes.MD) {
                     return 7.5;
                 }
 
@@ -25,7 +25,7 @@ const IntroductionRow = () => {
             }}
             button="Learn more about me ->"
             path="/about-me"
-            img={{ src: "./headshot.jpg" }}
+            img={{ src: "./headshot.jpg", style: { height: "20em" } }}
             ratio={8}
         />
     );
@@ -36,8 +36,8 @@ const ProjectRow = () => {
         <StandardRow
             title="My Projects"
             heightFunc={(size: WindowSizes): number => {
-                if (size == WindowSizes.XS) {
-                    return 25;
+                if (size === WindowSizes.XS) {
+                    return 17.5;
                 }
                 if (size <= WindowSizes.MD) {
                     return 7.5;
@@ -62,8 +62,8 @@ const FreelanceRow = () => {
         <StandardRow
             title="Your Website, Your way"
             heightFunc={(size: WindowSizes): number => {
-                if (size == WindowSizes.XS) {
-                    return 25;
+                if (size === WindowSizes.XS) {
+                    return 10;
                 }
                 if (size <= WindowSizes.MD) {
                     return 7.5;
@@ -88,8 +88,8 @@ const ExperienceRow = () => {
         <StandardRow
             title="Experience and Resume"
             heightFunc={(size: WindowSizes): number => {
-                if (size == WindowSizes.XS) {
-                    return 25;
+                if (size === WindowSizes.XS) {
+                    return 15;
                 }
                 if (size <= WindowSizes.MD) {
                     return 7.5;
@@ -160,7 +160,9 @@ export default function Homepage(): JSX.Element {
                     left: `${(100 - iFrameWidth) / 2}vw`,
                 }}
             ></iframe>
-            <IntroductionRow />
+            <div className="mt-8 mt-sm-0">
+                <IntroductionRow />
+            </div>
             <div className="spacer" ref={spacerRef}></div>
             <ProjectRow />
             <FreelanceRow />

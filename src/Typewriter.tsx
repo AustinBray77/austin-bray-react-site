@@ -21,7 +21,7 @@ const Typewriter = (props: {
         }
 
         const timeoutId = setTimeout(() => {
-            if (props.shouldPlay != undefined && !props.shouldPlay) {
+            if (props.shouldPlay !== undefined && !props.shouldPlay) {
                 return;
             }
 
@@ -42,7 +42,7 @@ const Typewriter = (props: {
         }
 
         const timeoutId = setTimeout(() => {
-            if (props.shouldPlay != undefined && !props.shouldPlay) {
+            if (props.shouldPlay !== undefined && !props.shouldPlay) {
                 return;
             }
 

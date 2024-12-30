@@ -29,8 +29,8 @@
 }
 
 #Projects .img-col > img {
-    height: 300px !important;
-    width: auto !important;
+    border: 4px solid var(--secondary-dark);
+    width: 100%;
 }
 
 #Projects .hidden {
