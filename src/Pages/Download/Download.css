@@ -1,5 +1,9 @@
 #Download {
-	z-index: 0;
-	padding-top: 50px;
-	background-color: var(--secondary-dark);
+    z-index: 0;
+    padding-top: 50px;
+    background-color: var(--secondary-dark);
+}
+
+#Download .download-element {
+    margin-top: 25px;
 }

@@ -109,7 +109,7 @@ const StandardRow = (props: {
     const RowRef = useRef<HTMLDivElement>(null);
     const onScreen = useOnScreen(RowRef);
     const height =
-        useNormalizedOnResize(props.heightFunc, 10).toString() + "em";
+        useNormalizedOnResize(props.heightFunc, 10, true).toString() + "em";
 
     let ratio = props.ratio ?? 6;
 
@@ -118,8 +118,6 @@ const StandardRow = (props: {
     if (imgStyle === undefined) {
         imgStyle = {};
     }
-
-    imgStyle["height"] = "20em";
 
     let contentCol = (
         <Col
@@ -151,7 +149,7 @@ const StandardRow = (props: {
     );
 
     return (
-        <Row className="bg-pl text-pd p-5 top-content-row" ref={RowRef}>
+        <Row className="bg-pl text-pd p-3 p-sm-5" ref={RowRef}>
             {props.reversed ? imageCol : contentCol}
             {props.reversed ? contentCol : imageCol}
         </Row>

@@ -20,9 +20,9 @@ const Dropdown = (props: {
             <button
                 className="bg-pl text-pd p-5 no-default"
                 onClick={() => {
-                    if (contentState == ContentState.Hide) {
+                    if (contentState === ContentState.Hide) {
                         setContentState(ContentState.Show);
-                    } else if (contentState == ContentState.Show) {
+                    } else if (contentState === ContentState.Show) {
                         setContentState(ContentState.Hide);
                     }
                 }}
@@ -79,7 +79,7 @@ const ProjRow = (props: {
 
 const GameDevDropdown = (): JSX.Element => {
     return (
-        <Dropdown title="Game Dev" className="mt-5 mt-sm-0">
+        <Dropdown title="Game Dev">
             <ProjRow title="Block Snake 2D" img="/blcksnk.png">
                 <p>
                     Block Snake 2D is my first major Unity project coded in C#.
@@ -261,7 +261,7 @@ export default function Projects(): JSX.Element {
 
     return (
         <Container id="Projects">
-            <div className="mt-5 mt-sm-0">
+            <div className="mt-6 mt-sm-0">
                 <WebDevDropdown />
             </div>
             <DesktopDevDropdown />
